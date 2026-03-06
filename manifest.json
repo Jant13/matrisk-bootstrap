@@ -1,0 +1,67 @@
+{
+  "schema": "matrisk-bootstrap-manifest",
+  "manifestVersion": 1,
+  "generatedAt": "2026-03-06T16:13:00Z",
+  "sourceBackupCreatedAt": "2026-03-06T15:56:02.343Z",
+  "overall": {
+    "dateMin": "1996-01-01",
+    "dateMax": "2026-03-05",
+    "games": [
+      "bonoloto",
+      "primitiva",
+      "euromillones",
+      "gordo",
+      "eurojackpot"
+    ],
+    "drawsTotal": 14830
+  },
+  "files": [
+    {
+      "id": "bootstrap_all",
+      "path": "bootstrap/matrisk_bootstrap_all_v2026-03-05.json.gz",
+      "format": "gzip+json",
+      "backupType": "matrisk_data_backup",
+      "backupVersion": 2,
+      "dbSchemaVersion": {
+        "historico": 3,
+        "matrix": 8
+      },
+      "bytesCompressed": 1072151,
+      "bytesUncompressed": 10112449,
+      "sha256": "f39411acf80c9404451014cd0fc451dd0c8485f6f3b36c2d7ba8013ec7a0f942",
+      "games": {
+        "bonoloto": {
+          "draws": 7559,
+          "dateMin": "1996-01-01",
+          "dateMax": "2026-03-05"
+        },
+        "primitiva": {
+          "draws": 3322,
+          "dateMin": "1996-01-04",
+          "dateMax": "2026-03-05"
+        },
+        "euromillones": {
+          "draws": 1922,
+          "dateMin": "2004-02-13",
+          "dateMax": "2026-03-03"
+        },
+        "gordo": {
+          "draws": 1093,
+          "dateMin": "2005-01-09",
+          "dateMax": "2026-03-01"
+        },
+        "eurojackpot": {
+          "draws": 934,
+          "dateMin": "2012-03-23",
+          "dateMax": "2026-03-03"
+        }
+      },
+      "alt": {
+        "path": "bootstrap/matrisk_bootstrap_all_v2026-03-05.json",
+        "format": "json",
+        "bytes": 10112449,
+        "sha256": "722192eb6d5de534faaa9992934f9f2ee99d8f40191766aa769611ae31b42f12"
+      }
+    }
+  ]
+}
