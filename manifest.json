@@ -63,5 +63,10 @@
         "sha256": "722192eb6d5de534faaa9992934f9f2ee99d8f40191766aa769611ae31b42f12"
       }
     }
-  ]
+  ],
+  "live": {
+    "file": "https://raw.githubusercontent.com/Jant13/matrisk-bootstrap/main/live/latest.json",
+    "generatedAt": "2026-03-08T17:00:00Z",
+    "dateMax": "2026-03-08"
+  }
 }
