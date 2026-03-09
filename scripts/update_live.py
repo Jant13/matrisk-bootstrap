@@ -1,18 +1,21 @@
-from __future__ import annotations
+    
+    from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from bs4 import BeautifulSoup
 
 
 ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
 
 ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot-"
+SELAE_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados"
 TIMEOUT = 25
 
 MONTHS_ES = {
@@ -37,12 +40,19 @@ class Draw:
     gameId: str
     date: str
     main: list[int]
-    secondary: list[int]
+    secondary: list[int] | None = None
+    complementario: int | None = None
+    reintegro: int | None = None
     source: str = "remote-manifest"
 
 
 def now_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    return (
+        datetime.now(timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
 
 
 def fetch_text(url: str) -> str:
@@ -54,9 +64,7 @@ def fetch_text(url: str) -> str:
     return r.text
 
 
-def parse_date_es(text: str) -> str:
-    # Ejemplo:
-    # "Último sorteo celebrado el martes, 24 de febrero de 2026"
+def parse_date_es_once(text: str) -> str:
     m = re.search(
         r"Último sorteo celebrado el [^,]+,\s*(\d{1,2}) de ([a-záéíóú]+) de (\d{4})",
         text,
@@ -77,10 +85,8 @@ def parse_date_es(text: str) -> str:
 
 
 def parse_eurojackpot_once(text: str) -> Draw:
-    date_str = parse_date_es(text)
+    date_str = parse_date_es_once(text)
 
-    # Línea típica:
-    # "Números: 4, 5, 26, 38, 48. Soles: 2, 9."
     m = re.search(
         r"Números:\s*([0-9,\s]+)\.\s*Soles:\s*([0-9,\s]+)\.",
         text,
@@ -93,13 +99,53 @@ def parse_eurojackpot_once(text: str) -> Draw:
     secondary = [int(x.strip()) for x in m.group(2).split(",") if x.strip()]
 
     if len(main) != 5 or len(secondary) != 2:
-        raise ValueError(f"Formato inesperado: main={main}, secondary={secondary}")
+        raise ValueError(f"Formato inesperado Eurojackpot: main={main}, secondary={secondary}")
 
     return Draw(
         gameId="eurojackpot",
         date=date_str,
         main=main,
         secondary=secondary,
+    )
+
+
+def parse_bonoloto_selae(html: str) -> Draw:
+    text = BeautifulSoup(html, "html.parser").get_text("\n", strip=True)
+
+    m = re.search(
+        r"Bonoloto[^\n]*?(\d{2}/\d{2}/\d{4}).*?Ver por orden de aparición(.*?)Otros resultados",
+        text,
+        flags=re.IGNORECASE | re.S,
+    )
+    if not m:
+        raise ValueError("No pude localizar el bloque de Bonoloto en resultados SELAE.")
+
+    date_es = m.group(1)
+    body = m.group(2)
+
+    day, month, year = date_es.split("/")
+    date_str = f"{year}-{month}-{day}"
+
+    nums = [int(x) for x in re.findall(r"\b\d{1,2}\b", body)]
+
+    # Esperado en el bloque:
+    # 6 números en orden de aparición
+    # 6 números en orden numérico
+    # C
+    # R
+    if len(nums) < 14:
+        raise ValueError(f"Bloque Bonoloto incompleto. Números detectados: {nums}")
+
+    main = nums[:6]
+    complementario = nums[12]
+    reintegro = nums[13]
+
+    return Draw(
+        gameId="bonoloto",
+        date=date_str,
+        main=main,
+        complementario=complementario,
+        reintegro=reintegro,
     )
 
 
@@ -114,41 +160,60 @@ def load_existing() -> dict:
 
 
 def draw_to_dict(draw: Draw) -> dict:
-    return {
-        "gameId": draw.gameId,
-        "date": draw.date,
-        "main": draw.main,
-        "secondary": draw.secondary,
-        "source": draw.source,
-    }
+    data = asdict(draw)
+    return {k: v for k, v in data.items() if v is not None}
 
 
 def main() -> None:
     LIVE_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-    text = fetch_text(ONCE_URL)
-    draw = parse_eurojackpot_once(text)
+    existing = load_existing()
+    draws_by_game: dict[str, dict] = {
+        d["gameId"]: d for d in existing.get("draws", []) if "gameId" in d
+    }
 
-    current = load_existing()
-    current_draws = current.get("draws", [])
+    errors: list[str] = []
 
-    new_draw = draw_to_dict(draw)
+    # Eurojackpot / ONCE
+    try:
+        once_text = fetch_text(ONCE_URL)
+        euro = parse_eurojackpot_once(once_text)
+        draws_by_game[euro.gameId] = draw_to_dict(euro)
+        print(f"Eurojackpot OK: {euro.date} {euro.main} + {euro.secondary}")
+    except Exception as e:
+        errors.append(f"Eurojackpot: {e}")
+        print(f"Eurojackpot ERROR: {e}")
 
-    # Si ya existe exactamente, solo refresca generatedAt sin reescribir innecesariamente
-    if current_draws == [new_draw]:
-        current["generatedAt"] = now_iso()
-    else:
-        current = {
-            "schema": "matrisk-official-sync-payload",
-            "generatedAt": now_iso(),
-            "draws": [new_draw],
-        }
+    # Bonoloto / SELAE
+    try:
+        selae_html = fetch_text(SELAE_RESULTS_URL)
+        bonoloto = parse_bonoloto_selae(selae_html)
+        draws_by_game[bonoloto.gameId] = draw_to_dict(bonoloto)
+        print(
+            f"Bonoloto OK: {bonoloto.date} {bonoloto.main} "
+            f"C({bonoloto.complementario}) R({bonoloto.reintegro})"
+        )
+    except Exception as e:
+        errors.append(f"Bonoloto: {e}")
+        print(f"Bonoloto ERROR: {e}")
+
+    if not draws_by_game:
+        raise RuntimeError("No se pudo actualizar ningún juego. " + " | ".join(errors))
+
+    payload = {
+        "schema": "matrisk-official-sync-payload",
+        "generatedAt": now_iso(),
+        "draws": sorted(draws_by_game.values(), key=lambda d: d["gameId"]),
+    }
 
     LIVE_FILE.write_text(
-        json.dumps(current, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"Updated {LIVE_FILE} with Eurojackpot draw {draw.date}: {draw.main} + {draw.secondary}")
+
+    print(f"Updated {LIVE_FILE} with {len(payload['draws'])} draws")
+    if errors:
+        print("WARNINGS: " + " | ".join(errors))
 
 
 if __name__ == "__main__":
