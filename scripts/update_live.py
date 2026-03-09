@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
 
 ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot-"
-SELAE_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados"
+BONOLOTO_RSS_URL = "https://www.loteriasyapuestas.es/es/bonoloto/resultados/.formatoRSS"
 TIMEOUT = 25
 
 MONTHS_ES = {
@@ -56,7 +56,8 @@ def now_iso() -> str:
 
 def fetch_text(url: str) -> str:
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; MaTrisK-GitHub-Action/1.0)"
+        "User-Agent": "Mozilla/5.0 (compatible; MaTrisK-GitHub-Action/1.0)",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7",
     }
     r = requests.get(url, headers=headers, timeout=TIMEOUT)
     r.raise_for_status()
@@ -98,7 +99,9 @@ def parse_eurojackpot_once(text: str) -> Draw:
     secondary = [int(x.strip()) for x in m.group(2).split(",") if x.strip()]
 
     if len(main) != 5 or len(secondary) != 2:
-        raise ValueError(f"Formato inesperado Eurojackpot: main={main}, secondary={secondary}")
+        raise ValueError(
+            f"Formato inesperado Eurojackpot: main={main}, secondary={secondary}"
+        )
 
     return Draw(
         gameId="eurojackpot",
@@ -108,36 +111,60 @@ def parse_eurojackpot_once(text: str) -> Draw:
     )
 
 
-def parse_bonoloto_selae(html: str) -> Draw:
-    text = BeautifulSoup(html, "html.parser").get_text("\n", strip=True)
+def parse_bonoloto_rss(xml_text: str) -> Draw:
+    soup = BeautifulSoup(xml_text, "html.parser")
+    item = soup.find("item")
+    if not item:
+        raise ValueError("No encontré ningún <item> en el RSS de Bonoloto.")
 
-    m = re.search(
-        r"Bonoloto[^\n]*?(\d{2}/\d{2}/\d{4}).*?Ver por orden de aparición(.*?)Otros resultados",
-        text,
-        flags=re.IGNORECASE | re.S,
+    title_tag = item.find("title")
+    desc_tag = item.find("description")
+
+    title = title_tag.get_text(" ", strip=True) if title_tag else ""
+    description_html = desc_tag.get_text(" ", strip=True) if desc_tag else ""
+
+    if not title:
+        raise ValueError("El RSS de Bonoloto no contiene título en el primer item.")
+
+    m_date = re.search(
+        r"del\s+(\d{1,2})\s+de\s+([a-záéíóú]+)\s+de\s+(\d{4})",
+        title,
+        flags=re.IGNORECASE,
     )
-    if not m:
-        raise ValueError("No pude localizar el bloque de Bonoloto en resultados SELAE.")
+    if not m_date:
+        raise ValueError(f"No pude extraer la fecha del título RSS: {title}")
 
-    date_es = m.group(1)
-    body = m.group(2)
+    day = f"{int(m_date.group(1)):02d}"
+    month_name = m_date.group(2).lower()
+    year = m_date.group(3)
 
-    day, month, year = date_es.split("/")
+    month = MONTHS_ES.get(month_name)
+    if not month:
+        raise ValueError(f"Mes no reconocido en Bonoloto RSS: {month_name}")
+
     date_str = f"{year}-{month}-{day}"
 
-    nums = [int(x) for x in re.findall(r"\b\d{1,2}\b", body)]
+    description_text = BeautifulSoup(description_html, "html.parser").get_text(
+        " ", strip=True
+    )
+    description_text = re.sub(r"\s+", " ", description_text)
 
-    # Esperado en el bloque:
-    # 6 números en orden de aparición
-    # 6 números en orden numérico
-    # C
-    # R
-    if len(nums) < 14:
-        raise ValueError(f"Bloque Bonoloto incompleto. Números detectados: {nums}")
+    m_nums = re.search(
+        r"n[uú]meros:\s*([0-9\s\-]+)\s+Complementario:\s*\(?(\d{1,2})\)?\s+Reintegro:\s*\(?(\d{1,2})\)?",
+        description_text,
+        flags=re.IGNORECASE,
+    )
+    if not m_nums:
+        raise ValueError(
+            f"No pude extraer números/C/R del RSS de Bonoloto: {description_text}"
+        )
 
-    main = nums[:6]
-    complementario = nums[12]
-    reintegro = nums[13]
+    main = [int(x.strip()) for x in m_nums.group(1).split("-") if x.strip()]
+    complementario = int(m_nums.group(2))
+    reintegro = int(m_nums.group(3))
+
+    if len(main) != 6:
+        raise ValueError(f"Bonoloto RSS devolvió {len(main)} números en lugar de 6: {main}")
 
     return Draw(
         gameId="bonoloto",
@@ -183,10 +210,10 @@ def main() -> None:
         errors.append(f"Eurojackpot: {e}")
         print(f"Eurojackpot ERROR: {e}")
 
-    # Bonoloto / SELAE
+    # Bonoloto / SELAE RSS
     try:
-        selae_html = fetch_text(SELAE_RESULTS_URL)
-        bonoloto = parse_bonoloto_selae(selae_html)
+        bonoloto_xml = fetch_text(BONOLOTO_RSS_URL)
+        bonoloto = parse_bonoloto_rss(bonoloto_xml)
         draws_by_game[bonoloto.gameId] = draw_to_dict(bonoloto)
         print(
             f"Bonoloto OK: {bonoloto.date} {bonoloto.main} "
@@ -217,3 +244,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+            
