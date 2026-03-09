@@ -1,12 +1,21 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-03-08T17:00:00Z",
+  "generatedAt": "2026-03-09T03:52:33Z",
   "draws": [
     {
       "gameId": "eurojackpot",
       "date": "2026-03-06",
-      "main": [5, 12, 18, 29, 41],
-      "secondary": [3, 9],
+      "main": [
+        8,
+        17,
+        26,
+        31,
+        47
+      ],
+      "secondary": [
+        1,
+        6
+      ],
       "source": "remote-manifest"
     }
   ]
