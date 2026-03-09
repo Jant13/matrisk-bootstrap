@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import json
 import re
 from dataclasses import dataclass, asdict
@@ -14,7 +15,10 @@ ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
 
 ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot-"
+SELAE_HOME_URL = "https://www.loteriasyapuestas.es/"
+BONOLOTO_PAGE_URL = "https://www.loteriasyapuestas.es/es/bonoloto/resultados"
 BONOLOTO_RSS_URL = "https://www.loteriasyapuestas.es/es/bonoloto/resultados/.formatoRSS"
+
 TIMEOUT = 25
 
 MONTHS_ES = {
@@ -31,6 +35,27 @@ MONTHS_ES = {
     "octubre": "10",
     "noviembre": "11",
     "diciembre": "12",
+}
+
+HTML_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (X11; Linux x86_64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/123.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
+}
+
+RSS_HEADERS = {
+    **HTML_HEADERS,
+    "Accept": "application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
+    "Referer": BONOLOTO_PAGE_URL,
 }
 
 
@@ -54,14 +79,49 @@ def now_iso() -> str:
     )
 
 
-def fetch_text(url: str) -> str:
-    headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; MaTrisK-GitHub-Action/1.0)",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7",
-    }
-    r = requests.get(url, headers=headers, timeout=TIMEOUT)
+def fetch_text(url: str, headers: dict[str, str] | None = None) -> str:
+    r = requests.get(url, headers=headers or HTML_HEADERS, timeout=TIMEOUT)
     r.raise_for_status()
     return r.text
+
+
+def fetch_bonoloto_rss() -> str:
+    session = requests.Session()
+
+    # Calentar sesión/cookies antes del RSS
+    warmup_urls = [
+        SELAE_HOME_URL,
+        BONOLOTO_PAGE_URL,
+    ]
+    for url in warmup_urls:
+        try:
+            session.get(url, headers=HTML_HEADERS, timeout=TIMEOUT)
+        except Exception:
+            pass
+
+    r = session.get(BONOLOTO_RSS_URL, headers=RSS_HEADERS, timeout=TIMEOUT)
+    r.raise_for_status()
+    return r.text
+
+
+def parse_date_long_es(text: str) -> str:
+    m = re.search(
+        r"(\d{1,2}) de ([a-záéíóú]+) de (\d{4})",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if not m:
+        raise ValueError(f"No pude extraer fecha española larga desde: {text[:160]}")
+
+    day = f"{int(m.group(1)):02d}"
+    month_name = m.group(2).lower()
+    year = m.group(3)
+
+    month = MONTHS_ES.get(month_name)
+    if not month:
+        raise ValueError(f"Mes no reconocido: {month_name}")
+
+    return f"{year}-{month}-{day}"
 
 
 def parse_date_es_once(text: str) -> str:
@@ -112,59 +172,50 @@ def parse_eurojackpot_once(text: str) -> Draw:
 
 
 def parse_bonoloto_rss(xml_text: str) -> Draw:
-    soup = BeautifulSoup(xml_text, "html.parser")
+    soup = BeautifulSoup(xml_text, "xml")
     item = soup.find("item")
     if not item:
         raise ValueError("No encontré ningún <item> en el RSS de Bonoloto.")
 
-    title_tag = item.find("title")
-    desc_tag = item.find("description")
+    title = item.title.get_text(" ", strip=True) if item.title else ""
+    desc_raw = item.description.get_text(" ", strip=False) if item.description else ""
+    desc_html = html.unescape(desc_raw)
+    desc_text = BeautifulSoup(desc_html, "html.parser").get_text(" ", strip=True)
 
-    title = title_tag.get_text(" ", strip=True) if title_tag else ""
-    description_html = desc_tag.get_text(" ", strip=True) if desc_tag else ""
-
-    if not title:
-        raise ValueError("El RSS de Bonoloto no contiene título en el primer item.")
-
-    m_date = re.search(
-        r"del\s+(\d{1,2})\s+de\s+([a-záéíóú]+)\s+de\s+(\d{4})",
-        title,
-        flags=re.IGNORECASE,
-    )
-    if not m_date:
-        raise ValueError(f"No pude extraer la fecha del título RSS: {title}")
-
-    day = f"{int(m_date.group(1)):02d}"
-    month_name = m_date.group(2).lower()
-    year = m_date.group(3)
-
-    month = MONTHS_ES.get(month_name)
-    if not month:
-        raise ValueError(f"Mes no reconocido en Bonoloto RSS: {month_name}")
-
-    date_str = f"{year}-{month}-{day}"
-
-    description_text = BeautifulSoup(description_html, "html.parser").get_text(
-        " ", strip=True
-    )
-    description_text = re.sub(r"\s+", " ", description_text)
+    date_str = parse_date_long_es(title + " " + desc_text)
 
     m_nums = re.search(
-        r"n[uú]meros:\s*([0-9\s\-]+)\s+Complementario:\s*\(?(\d{1,2})\)?\s+Reintegro:\s*\(?(\d{1,2})\)?",
-        description_text,
+        r"n[úu]meros:\s*([0-9]{1,2}(?:\s*-\s*[0-9]{1,2}){5})",
+        desc_text,
         flags=re.IGNORECASE,
     )
     if not m_nums:
         raise ValueError(
-            f"No pude extraer números/C/R del RSS de Bonoloto: {description_text}"
+            f"No pude extraer la combinación principal de Bonoloto desde: {desc_text[:250]}"
         )
 
-    main = [int(x.strip()) for x in m_nums.group(1).split("-") if x.strip()]
-    complementario = int(m_nums.group(2))
-    reintegro = int(m_nums.group(3))
+    main = [int(x.strip()) for x in m_nums.group(1).split("-")]
+
+    m_comp = re.search(
+        r"Complementario:\s*\(?\s*(\d{1,2})\s*\)?",
+        desc_text,
+        flags=re.IGNORECASE,
+    )
+    if not m_comp:
+        raise ValueError(f"No pude extraer el complementario desde: {desc_text[:250]}")
+    complementario = int(m_comp.group(1))
+
+    m_reint = re.search(
+        r"Reintegro:\s*(\d{1,2})",
+        desc_text,
+        flags=re.IGNORECASE,
+    )
+    if not m_reint:
+        raise ValueError(f"No pude extraer el reintegro desde: {desc_text[:250]}")
+    reintegro = int(m_reint.group(1))
 
     if len(main) != 6:
-        raise ValueError(f"Bonoloto RSS devolvió {len(main)} números en lugar de 6: {main}")
+        raise ValueError(f"Bonoloto principal inválida: {main}")
 
     return Draw(
         gameId="bonoloto",
@@ -202,7 +253,7 @@ def main() -> None:
 
     # Eurojackpot / ONCE
     try:
-        once_text = fetch_text(ONCE_URL)
+        once_text = fetch_text(ONCE_URL, headers=HTML_HEADERS)
         euro = parse_eurojackpot_once(once_text)
         draws_by_game[euro.gameId] = draw_to_dict(euro)
         print(f"Eurojackpot OK: {euro.date} {euro.main} + {euro.secondary}")
@@ -212,8 +263,8 @@ def main() -> None:
 
     # Bonoloto / SELAE RSS
     try:
-        bonoloto_xml = fetch_text(BONOLOTO_RSS_URL)
-        bonoloto = parse_bonoloto_rss(bonoloto_xml)
+        bonoloto_rss = fetch_bonoloto_rss()
+        bonoloto = parse_bonoloto_rss(bonoloto_rss)
         draws_by_game[bonoloto.gameId] = draw_to_dict(bonoloto)
         print(
             f"Bonoloto OK: {bonoloto.date} {bonoloto.main} "
@@ -244,4 +295,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-            
