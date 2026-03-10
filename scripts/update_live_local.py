@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
 DEBUG_HTML = ROOT / "live" / "_bonoloto_debug.html"
 DEBUG_TEXT = ROOT / "live" / "_bonoloto_debug.txt"
+DEBUG_BLOCK = ROOT / "live" / "_bonoloto_block_debug.txt"
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
 ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot-"
@@ -36,6 +37,8 @@ MONTHS_ES = {
     "noviembre": "11",
     "diciembre": "12",
 }
+
+WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
 
 
 @dataclass
@@ -154,9 +157,7 @@ def fetch_bonoloto_text_with_real_chrome() -> str:
             locale="es-ES",
             timezone_id="Europe/Madrid",
             viewport={"width": 1400, "height": 1100},
-            args=[
-                "--disable-blink-features=AutomationControlled",
-            ],
+            args=["--disable-blink-features=AutomationControlled"],
         )
 
         try:
@@ -172,6 +173,8 @@ def fetch_bonoloto_text_with_real_chrome() -> str:
                 page.wait_for_load_state("networkidle", timeout=15000)
             except PlaywrightTimeoutError:
                 pass
+
+            page.wait_for_timeout(2500)
 
             print("\nSe ha abierto Chrome real en Bonoloto.")
             print("Si aparece el banner de cookies, pulsa manualmente 'Solo usar cookies necesarias'.")
@@ -189,53 +192,75 @@ def fetch_bonoloto_text_with_real_chrome() -> str:
             context.close()
 
 
-def normalize_lines(text: str) -> list[str]:
+def normalize_text(text: str) -> str:
     text = text.replace("\xa0", " ")
-    lines = [re.sub(r"\s+", " ", x).strip() for x in text.splitlines()]
-    return [x for x in lines if x]
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\r\n?", "\n", text)
+    return text
+
+
+def extract_first_bonoloto_result_block(text: str) -> tuple[str, str]:
+    """
+    Busca el PRIMER bloque real de resultados:
+    BONOLOTO + <día semana - dd/mm/yyyy> + números + C + R
+    y evita coger 'Próximo sorteo'.
+    """
+    normalized = normalize_text(text)
+
+    pattern = re.compile(
+        rf"BONOLOTO\s+{WEEKDAYS_RE}\s*-\s*(\d{{2}}/\d{{2}}/\d{{4}})(.*?)(?=BONOLOTO\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}|BUSCAR SORTEOS|$)",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+    matches = list(pattern.finditer(normalized))
+    if not matches:
+        raise ValueError(
+            f"No pude localizar el primer bloque real de resultados de Bonoloto. Revisa: {DEBUG_TEXT}"
+        )
+
+    for m in matches:
+        date_es = m.group(2)
+        body = m.group(3)
+
+        # Nos quedamos con una ventana razonable del bloque
+        block = body[:1500]
+
+        # Tiene que contener la frase del bloque real de resultados
+        if "ver por orden de aparición" not in block.lower() and "ver por orden de aparicion" not in block.lower():
+            continue
+
+        # Extraemos números del bloque
+        values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
+
+        if len(values) >= 8:
+            DEBUG_BLOCK.write_text(
+                f"DATE={date_es}\n\nBLOCK:\n{block}\n\nVALUES:\n{values}\n",
+                encoding="utf-8",
+            )
+            return date_es, block
+
+    raise ValueError(
+        f"Encontré bloques BONOLOTO, pero ninguno contenía un bloque válido con números. Revisa: {DEBUG_BLOCK}"
+    )
 
 
 def parse_bonoloto_text(rendered_text: str) -> Draw:
-    lines = normalize_lines(rendered_text)
-
-    # Buscamos una línea con fecha dd/mm/yyyy cerca de Bonoloto
-    header_idx = None
-    date_es = None
-
-    for idx, line in enumerate(lines):
-        m = re.search(r"\b(\d{2}/\d{2}/\d{4})\b", line)
-        if not m:
-            continue
-
-        nearby = " | ".join(lines[max(0, idx - 5): idx + 15]).lower()
-        if "bonoloto" in nearby:
-            header_idx = idx
-            date_es = m.group(1)
-            break
-
-    if header_idx is None or date_es is None:
-        raise ValueError(
-            f"No pude localizar una fecha de sorteo dentro del bloque visible de Bonoloto. Revisa: {DEBUG_TEXT}"
-        )
-
-    block = " | ".join(lines[header_idx: header_idx + 40])
-
-    # Quitamos las fechas para que no contaminen la extracción de números
-    block = re.sub(r"\b\d{2}/\d{2}/\d{4}\b", " ", block)
+    date_es, block = extract_first_bonoloto_result_block(rendered_text)
 
     values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
 
     if len(values) < 8:
         raise ValueError(
-            f"No pude extraer 8 valores de Bonoloto. Detectados: {values}. Revisa: {DEBUG_TEXT}"
+            f"No pude extraer 8 valores (6 principales + C + R). Detectados: {values}. Revisa: {DEBUG_BLOCK}"
         )
 
-    day, month, year = date_es.split("/")
-    date_str = f"{year}-{month}-{day}"
-
+    # Primeros 6 = números principales, luego C y R
     main = values[:6]
     complementario = values[6]
     reintegro = values[7]
+
+    day, month, year = date_es.split("/")
+    date_str = f"{year}-{month}-{day}"
 
     return Draw(
         gameId="bonoloto",
