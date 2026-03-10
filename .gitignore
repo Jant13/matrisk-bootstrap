@@ -1,0 +1,7 @@
+
+# Toshiba local collector
+.pw-chrome-profile/
+live/_bonoloto_debug.html
+live/_bonoloto_debug.txt
+__pycache__/
+*.pyc
