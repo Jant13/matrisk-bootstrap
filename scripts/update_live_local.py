@@ -25,12 +25,17 @@ DEBUG_EUROM_HTML = ROOT / "live" / "_euromillones_debug.html"
 DEBUG_EUROM_TEXT = ROOT / "live" / "_euromillones_debug.txt"
 DEBUG_EUROM_BLOCK = ROOT / "live" / "_euromillones_block_debug.txt"
 
+DEBUG_GORDO_HTML = ROOT / "live" / "_gordo_debug.html"
+DEBUG_GORDO_TEXT = ROOT / "live" / "_gordo_debug.txt"
+DEBUG_GORDO_BLOCK = ROOT / "live" / "_gordo_block_debug.txt"
+
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
 EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
-BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
 EUROMILLONES_URL = "https://www.loteriasyapuestas.es/es/resultados/euromillones"
+GORDO_URL = "https://www.loteriasyapuestas.es/es/gordo-primitiva/resultados"
+BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 
 TIMEOUT = 30
 WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
@@ -222,10 +227,68 @@ def fetch_selae_text_with_real_chrome(
             context.close()
 
 
+def fetch_gordo_detail_text_with_real_chrome() -> str:
+    with sync_playwright() as p:
+        context = p.chromium.launch_persistent_context(
+            user_data_dir=str(CHROME_PROFILE),
+            channel="chrome",
+            headless=False,
+            locale="es-ES",
+            timezone_id="Europe/Madrid",
+            viewport={"width": 1400, "height": 1100},
+            args=["--disable-blink-features=AutomationControlled"],
+        )
+
+        try:
+            page = context.pages[0] if context.pages else context.new_page()
+            page.goto(GORDO_URL, wait_until="domcontentloaded", timeout=90000)
+
+            try:
+                dismiss_cookie_banner(page)
+            except Exception:
+                pass
+
+            try:
+                page.wait_for_load_state("networkidle", timeout=15000)
+            except PlaywrightTimeoutError:
+                pass
+
+            page.wait_for_timeout(2500)
+
+            # En esta URL aparece un listado de noticias.
+            # Entramos en la primera noticia de resultados.
+            first_link = page.locator("text=/El Gordo de la Primitiva: resultados del/i").first
+            first_link.click(timeout=10000)
+
+            try:
+                page.wait_for_load_state("networkidle", timeout=15000)
+            except PlaywrightTimeoutError:
+                pass
+
+            page.wait_for_timeout(2500)
+
+            print("\nSe ha abierto Chrome real en Gordo (detalle del último resultado).")
+            print("Si aparece el banner de cookies, pulsa manualmente 'Solo usar cookies necesarias'.")
+            print("Si ves los resultados cargados, vuelve a esta consola.")
+            input("Cuando la página de Gordo esté visible y correcta, pulsa Enter aquí... ")
+
+            html = page.content()
+            DEBUG_GORDO_HTML.write_text(html, encoding="utf-8")
+
+            visible_text = page.locator("body").inner_text()
+            DEBUG_GORDO_TEXT.write_text(visible_text, encoding="utf-8")
+
+            return visible_text
+        finally:
+            context.close()
+
+
 def extract_first_selae_result_block(
     text: str,
     title: str,
     debug_block_path: Path,
+    min_values: int = 8,
+    max_chars: int = 2600,
 ) -> tuple[str, str]:
     normalized = normalize_text(text)
     escaped_title = re.escape(title)
@@ -243,15 +306,14 @@ def extract_first_selae_result_block(
         date_es = m.group(2)
         body = m.group(3)
 
-        block = body[:2600]
+        block = body[:max_chars]
         debug_block_path.write_text(
             f"DATE={date_es}\n\nBLOCK:\n{block}\n",
             encoding="utf-8",
         )
 
         values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
-
-        if len(values) >= 8:
+        if len(values) >= min_values:
             return date_es, block
 
     raise ValueError(f"Encontré bloques de {title}, pero no pude extraer valores válidos.")
@@ -265,6 +327,8 @@ def parse_bonoloto_text(rendered_text: str) -> Draw:
         rendered_text,
         "BONOLOTO",
         DEBUG_BONO_BLOCK,
+        min_values=8,
+        max_chars=2200,
     )
 
     values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
@@ -302,6 +366,8 @@ def parse_primitiva_text(rendered_text: str) -> Draw:
         normalized,
         "LA PRIMITIVA",
         DEBUG_PRIMI_BLOCK,
+        min_values=8,
+        max_chars=2600,
     )
 
     values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
@@ -358,34 +424,27 @@ def parse_euromillones_text(rendered_text: str) -> Draw:
 
     matches = list(pattern.finditer(normalized))
     if not matches:
-        raise ValueError(f"No pude localizar el primer bloque real de resultados de EUROMILLONES.")
+        raise ValueError("No pude localizar el primer bloque real de resultados de EUROMILLONES.")
 
     for m in matches:
         date_es = m.group(2)
         body = m.group(3)
 
-        # Solo la parte alta del bloque, donde están números + estrellas
         block = body[:1200]
         DEBUG_EUROM_BLOCK.write_text(
             f"DATE={date_es}\n\nBLOCK:\n{block}\n",
             encoding="utf-8",
         )
 
-        # Cortamos antes de EL MILLÓN para no tragarnos su código
         top = re.split(r"EL MILL[ÓO]N", block, maxsplit=1, flags=re.IGNORECASE)[0]
-
         values = [int(x) for x in re.findall(r"\b\d{1,2}\b", top)]
 
-        # 5 números principales (1..50)
         main = [v for v in values if 1 <= v <= 50][:5]
-
         if len(main) != 5:
             continue
 
-        # Después de los 5 principales, las 2 estrellas deben estar en 1..12
         rest = values[5:]
         secondary = [v for v in rest if 1 <= v <= 12][:2]
-
         if len(secondary) != 2:
             continue
 
@@ -402,6 +461,52 @@ def parse_euromillones_text(rendered_text: str) -> Draw:
 
     raise ValueError(
         f"Encontré bloques de Euromillones, pero no pude extraer números válidos. Revisa: {DEBUG_EUROM_BLOCK}"
+    )
+
+
+# =========================================================
+# EL GORDO DE LA PRIMITIVA
+# =========================================================
+def parse_gordo_text(rendered_text: str) -> Draw:
+    normalized = normalize_text(rendered_text)
+    DEBUG_GORDO_TEXT.write_text(normalized, encoding="utf-8")
+    DEBUG_GORDO_BLOCK.write_text(normalized[:2000], encoding="utf-8")
+
+    m_date = re.search(
+        r"resultados del (\d{2}) de ([a-záéíóú]+) de (\d{4})",
+        normalized,
+        flags=re.IGNORECASE,
+    )
+    if not m_date:
+        raise ValueError("No pude extraer la fecha del detalle de Gordo.")
+
+    day = m_date.group(1)
+    month_name = m_date.group(2).lower()
+    year = m_date.group(3)
+
+    month = MONTHS_ES.get(month_name)
+    if not month:
+        raise ValueError(f"Mes no reconocido en Gordo: {month_name}")
+
+    date_str = f"{year}-{month}-{day}"
+
+    m_nums = re.search(
+        r"(\d{1,2})\s*-\s*(\d{1,2})\s*-\s*(\d{1,2})\s*-\s*(\d{1,2})\s*-\s*(\d{1,2}).*?R\((\d)\)",
+        normalized,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not m_nums:
+        raise ValueError("No pude extraer combinación y clave de Gordo.")
+
+    main = [int(m_nums.group(i)) for i in range(1, 6)]
+    reintegro = int(m_nums.group(6))
+
+    return Draw(
+        gameId="gordo",
+        date=date_str,
+        main=main,
+        reintegro=reintegro,
+        source="selae-real-chrome-detail",
     )
 
 
@@ -433,7 +538,6 @@ def main() -> None:
 
     errors: list[str] = []
 
-    # 1) Eurojackpot
     try:
         once_text = fetch_text(EUROJACKPOT_URL)
         euro = parse_eurojackpot_once(once_text)
@@ -443,7 +547,6 @@ def main() -> None:
         errors.append(f"Eurojackpot: {e}")
         print(f"Eurojackpot ERROR: {e}")
 
-    # 2) Primitiva
     try:
         primitiva_text = fetch_selae_text_with_real_chrome(
             PRIMITIVA_URL,
@@ -462,7 +565,6 @@ def main() -> None:
         errors.append(f"Primitiva: {e}")
         print(f"Primitiva ERROR: {e}")
 
-    # 3) Euromillones
     try:
         euromillones_text = fetch_selae_text_with_real_chrome(
             EUROMILLONES_URL,
@@ -480,7 +582,15 @@ def main() -> None:
         errors.append(f"Euromillones: {e}")
         print(f"Euromillones ERROR: {e}")
 
-    # 4) Bonoloto
+    try:
+        gordo_text = fetch_gordo_detail_text_with_real_chrome()
+        gordo = parse_gordo_text(gordo_text)
+        draws_by_game[gordo.gameId] = draw_to_dict(gordo)
+        print(f"Gordo OK: {gordo.date} {gordo.main} R({gordo.reintegro})")
+    except Exception as e:
+        errors.append(f"Gordo: {e}")
+        print(f"Gordo ERROR: {e}")
+
     try:
         bonoloto_text = fetch_selae_text_with_real_chrome(
             BONOLOTO_URL,
