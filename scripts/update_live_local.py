@@ -17,7 +17,8 @@ DEBUG_TEXT = ROOT / "live" / "_bonoloto_debug.txt"
 DEBUG_BLOCK = ROOT / "live" / "_bonoloto_block_debug.txt"
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
-ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot-"
+# Eurojackpot: URL oficial actual, SIN guion final
+ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot"
 BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 
 TIMEOUT = 30
@@ -118,7 +119,7 @@ def parse_eurojackpot_once(text: str) -> Draw:
         date=date_str,
         main=main,
         secondary=secondary,
-        source="once-html",
+        source="once-html-current",
     )
 
 
@@ -200,11 +201,6 @@ def normalize_text(text: str) -> str:
 
 
 def extract_first_bonoloto_result_block(text: str) -> tuple[str, str]:
-    """
-    Busca el PRIMER bloque real de resultados:
-    BONOLOTO + <día semana - dd/mm/yyyy> + números + C + R
-    y evita coger 'Próximo sorteo'.
-    """
     normalized = normalize_text(text)
 
     pattern = re.compile(
@@ -222,14 +218,11 @@ def extract_first_bonoloto_result_block(text: str) -> tuple[str, str]:
         date_es = m.group(2)
         body = m.group(3)
 
-        # Nos quedamos con una ventana razonable del bloque
         block = body[:1500]
 
-        # Tiene que contener la frase del bloque real de resultados
         if "ver por orden de aparición" not in block.lower() and "ver por orden de aparicion" not in block.lower():
             continue
 
-        # Extraemos números del bloque
         values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
 
         if len(values) >= 8:
@@ -254,7 +247,6 @@ def parse_bonoloto_text(rendered_text: str) -> Draw:
             f"No pude extraer 8 valores (6 principales + C + R). Detectados: {values}. Revisa: {DEBUG_BLOCK}"
         )
 
-    # Primeros 6 = números principales, luego C y R
     main = values[:6]
     complementario = values[6]
     reintegro = values[7]
