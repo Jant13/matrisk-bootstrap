@@ -12,16 +12,24 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
-DEBUG_HTML = ROOT / "live" / "_bonoloto_debug.html"
-DEBUG_TEXT = ROOT / "live" / "_bonoloto_debug.txt"
-DEBUG_BLOCK = ROOT / "live" / "_bonoloto_block_debug.txt"
+
+DEBUG_BONO_HTML = ROOT / "live" / "_bonoloto_debug.html"
+DEBUG_BONO_TEXT = ROOT / "live" / "_bonoloto_debug.txt"
+DEBUG_BONO_BLOCK = ROOT / "live" / "_bonoloto_block_debug.txt"
+
+DEBUG_PRIMI_HTML = ROOT / "live" / "_primitiva_debug.html"
+DEBUG_PRIMI_TEXT = ROOT / "live" / "_primitiva_debug.txt"
+DEBUG_PRIMI_BLOCK = ROOT / "live" / "_primitiva_block_debug.txt"
+
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
-# Eurojackpot: URL oficial actual, SIN guion final
-ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot"
+# Fuentes
+EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
 BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
+PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
 
 TIMEOUT = 30
+WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
 
 MONTHS_ES = {
     "enero": "01",
@@ -39,8 +47,6 @@ MONTHS_ES = {
     "diciembre": "12",
 }
 
-WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
-
 
 @dataclass
 class Draw:
@@ -50,6 +56,7 @@ class Draw:
     secondary: list[int] | None = None
     complementario: int | None = None
     reintegro: int | None = None
+    joker: str | None = None
     source: str = "local-test"
 
 
@@ -75,6 +82,16 @@ def fetch_text(url: str) -> str:
     return r.text
 
 
+def normalize_text(text: str) -> str:
+    text = text.replace("\xa0", " ")
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\r\n?", "\n", text)
+    return text
+
+
+# =========================================================
+# EUROJACKPOT (ONCE, por requests)
+# =========================================================
 def parse_date_es_once(text: str) -> str:
     m = re.search(
         r"Último sorteo celebrado el [^,]+,\s*(\d{1,2}) de ([a-záéíóú]+) de (\d{4})",
@@ -123,6 +140,9 @@ def parse_eurojackpot_once(text: str) -> Draw:
     )
 
 
+# =========================================================
+# SELAE con Chrome real
+# =========================================================
 def dismiss_cookie_banner(page) -> None:
     labels = [
         "Solo usar cookies necesarias",
@@ -149,7 +169,12 @@ def dismiss_cookie_banner(page) -> None:
             pass
 
 
-def fetch_bonoloto_text_with_real_chrome() -> str:
+def fetch_selae_text_with_real_chrome(
+    url: str,
+    game_name: str,
+    debug_html_path: Path,
+    debug_text_path: Path,
+) -> str:
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
             user_data_dir=str(CHROME_PROFILE),
@@ -163,7 +188,7 @@ def fetch_bonoloto_text_with_real_chrome() -> str:
 
         try:
             page = context.pages[0] if context.pages else context.new_page()
-            page.goto(BONOLOTO_URL, wait_until="domcontentloaded", timeout=90000)
+            page.goto(url, wait_until="domcontentloaded", timeout=90000)
 
             try:
                 dismiss_cookie_banner(page)
@@ -177,74 +202,72 @@ def fetch_bonoloto_text_with_real_chrome() -> str:
 
             page.wait_for_timeout(2500)
 
-            print("\nSe ha abierto Chrome real en Bonoloto.")
+            print(f"\nSe ha abierto Chrome real en {game_name}.")
             print("Si aparece el banner de cookies, pulsa manualmente 'Solo usar cookies necesarias'.")
             print("Si ves los resultados cargados, vuelve a esta consola.")
-            input("Cuando la página esté visible y correcta, pulsa Enter aquí... ")
+            input(f"Cuando la página de {game_name} esté visible y correcta, pulsa Enter aquí... ")
 
             html = page.content()
-            DEBUG_HTML.write_text(html, encoding="utf-8")
+            debug_html_path.write_text(html, encoding="utf-8")
 
             visible_text = page.locator("body").inner_text()
-            DEBUG_TEXT.write_text(visible_text, encoding="utf-8")
+            debug_text_path.write_text(visible_text, encoding="utf-8")
 
             return visible_text
         finally:
             context.close()
 
 
-def normalize_text(text: str) -> str:
-    text = text.replace("\xa0", " ")
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\r\n?", "\n", text)
-    return text
-
-
-def extract_first_bonoloto_result_block(text: str) -> tuple[str, str]:
+def extract_first_selae_result_block(
+    text: str,
+    title: str,
+    debug_block_path: Path,
+) -> tuple[str, str]:
     normalized = normalize_text(text)
+    escaped_title = re.escape(title)
 
     pattern = re.compile(
-        rf"BONOLOTO\s+{WEEKDAYS_RE}\s*-\s*(\d{{2}}/\d{{2}}/\d{{4}})(.*?)(?=BONOLOTO\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}|BUSCAR SORTEOS|$)",
+        rf"{escaped_title}\s+{WEEKDAYS_RE}\s*-\s*(\d{{2}}/\d{{2}}/\d{{4}})(.*?)(?={escaped_title}\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}|BUSCAR SORTEOS|$)",
         flags=re.IGNORECASE | re.DOTALL,
     )
 
     matches = list(pattern.finditer(normalized))
     if not matches:
-        raise ValueError(
-            f"No pude localizar el primer bloque real de resultados de Bonoloto. Revisa: {DEBUG_TEXT}"
-        )
+        raise ValueError(f"No pude localizar el primer bloque real de resultados de {title}.")
 
     for m in matches:
         date_es = m.group(2)
         body = m.group(3)
 
-        block = body[:1500]
-
-        if "ver por orden de aparición" not in block.lower() and "ver por orden de aparicion" not in block.lower():
-            continue
+        block = body[:2200]
+        debug_block_path.write_text(
+            f"DATE={date_es}\n\nBLOCK:\n{block}\n",
+            encoding="utf-8",
+        )
 
         values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
 
         if len(values) >= 8:
-            DEBUG_BLOCK.write_text(
-                f"DATE={date_es}\n\nBLOCK:\n{block}\n\nVALUES:\n{values}\n",
-                encoding="utf-8",
-            )
             return date_es, block
 
-    raise ValueError(
-        f"Encontré bloques BONOLOTO, pero ninguno contenía un bloque válido con números. Revisa: {DEBUG_BLOCK}"
-    )
+    raise ValueError(f"Encontré bloques de {title}, pero no pude extraer valores válidos.")
 
 
+# =========================================================
+# BONOLOTO
+# =========================================================
 def parse_bonoloto_text(rendered_text: str) -> Draw:
-    date_es, block = extract_first_bonoloto_result_block(rendered_text)
+    date_es, block = extract_first_selae_result_block(
+        rendered_text,
+        "BONOLOTO",
+        DEBUG_BONO_BLOCK,
+    )
 
     values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
 
     if len(values) < 8:
         raise ValueError(
-            f"No pude extraer 8 valores (6 principales + C + R). Detectados: {values}. Revisa: {DEBUG_BLOCK}"
+            f"No pude extraer 8 valores (6 principales + C + R) de Bonoloto. Detectados: {values}"
         )
 
     main = values[:6]
@@ -264,6 +287,65 @@ def parse_bonoloto_text(rendered_text: str) -> Draw:
     )
 
 
+# =========================================================
+# PRIMITIVA
+# =========================================================
+def parse_primitiva_text(rendered_text: str) -> Draw:
+    normalized = normalize_text(rendered_text)
+    DEBUG_PRIMI_TEXT.write_text(normalized, encoding="utf-8")
+
+    date_es, block = extract_first_selae_result_block(
+        normalized,
+        "LA PRIMITIVA",
+        DEBUG_PRIMI_BLOCK,
+    )
+
+    values = [int(x) for x in re.findall(r"\b\d{1,2}\b", block)]
+
+    if len(values) < 8:
+        raise ValueError(
+            f"No pude extraer 8 valores (6 principales + C + R) de Primitiva. Detectados: {values}"
+        )
+
+    main = values[:6]
+    complementario = values[6]
+    reintegro = values[7]
+
+    joker = None
+
+    # Intento 1: "Joker 1234567" o "JOKER 1234567"
+    joker_match = re.search(r"Joker\s*([0-9 ]{5,})", block, flags=re.IGNORECASE)
+    if joker_match:
+        joker_digits = "".join(re.findall(r"\d", joker_match.group(1)))
+        if joker_digits:
+            joker = joker_digits
+
+    # Intento 2: si no salió, mirar "J" aislada cerca del final
+    if not joker:
+        tail = block[-400:]
+        joker_match2 = re.search(r"\bJ\b\s*([0-9 ]{5,})", tail, flags=re.IGNORECASE)
+        if joker_match2:
+            joker_digits = "".join(re.findall(r"\d", joker_match2.group(1)))
+            if joker_digits:
+                joker = joker_digits
+
+    day, month, year = date_es.split("/")
+    date_str = f"{year}-{month}-{day}"
+
+    return Draw(
+        gameId="primitiva",
+        date=date_str,
+        main=main,
+        complementario=complementario,
+        reintegro=reintegro,
+        joker=joker,
+        source="selae-real-chrome",
+    )
+
+
+# =========================================================
+# JSON
+# =========================================================
 def load_existing() -> dict:
     if LIVE_FILE.exists():
         return json.loads(LIVE_FILE.read_text(encoding="utf-8"))
@@ -289,8 +371,9 @@ def main() -> None:
 
     errors: list[str] = []
 
+    # 1) Eurojackpot
     try:
-        once_text = fetch_text(ONCE_URL)
+        once_text = fetch_text(EUROJACKPOT_URL)
         euro = parse_eurojackpot_once(once_text)
         draws_by_game[euro.gameId] = draw_to_dict(euro)
         print(f"Eurojackpot OK: {euro.date} {euro.main} + {euro.secondary}")
@@ -298,8 +381,33 @@ def main() -> None:
         errors.append(f"Eurojackpot: {e}")
         print(f"Eurojackpot ERROR: {e}")
 
+    # 2) Primitiva
     try:
-        bonoloto_text = fetch_bonoloto_text_with_real_chrome()
+        primitiva_text = fetch_selae_text_with_real_chrome(
+            PRIMITIVA_URL,
+            "Primitiva",
+            DEBUG_PRIMI_HTML,
+            DEBUG_PRIMI_TEXT,
+        )
+        primitiva = parse_primitiva_text(primitiva_text)
+        draws_by_game[primitiva.gameId] = draw_to_dict(primitiva)
+        joker_txt = f" J({primitiva.joker})" if primitiva.joker else ""
+        print(
+            f"Primitiva OK: {primitiva.date} {primitiva.main} "
+            f"C({primitiva.complementario}) R({primitiva.reintegro}){joker_txt}"
+        )
+    except Exception as e:
+        errors.append(f"Primitiva: {e}")
+        print(f"Primitiva ERROR: {e}")
+
+    # 3) Bonoloto
+    try:
+        bonoloto_text = fetch_selae_text_with_real_chrome(
+            BONOLOTO_URL,
+            "Bonoloto",
+            DEBUG_BONO_HTML,
+            DEBUG_BONO_TEXT,
+        )
         bonoloto = parse_bonoloto_text(bonoloto_text)
         draws_by_game[bonoloto.gameId] = draw_to_dict(bonoloto)
         print(
