@@ -21,12 +21,16 @@ DEBUG_PRIMI_HTML = ROOT / "live" / "_primitiva_debug.html"
 DEBUG_PRIMI_TEXT = ROOT / "live" / "_primitiva_debug.txt"
 DEBUG_PRIMI_BLOCK = ROOT / "live" / "_primitiva_block_debug.txt"
 
+DEBUG_EUROM_HTML = ROOT / "live" / "_euromillones_debug.html"
+DEBUG_EUROM_TEXT = ROOT / "live" / "_euromillones_debug.txt"
+DEBUG_EUROM_BLOCK = ROOT / "live" / "_euromillones_block_debug.txt"
+
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
-# Fuentes
 EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
 BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
+EUROMILLONES_URL = "https://www.loteriasyapuestas.es/es/resultados/euromillones"
 
 TIMEOUT = 30
 WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
@@ -239,7 +243,7 @@ def extract_first_selae_result_block(
         date_es = m.group(2)
         body = m.group(3)
 
-        block = body[:2200]
+        block = body[:2600]
         debug_block_path.write_text(
             f"DATE={date_es}\n\nBLOCK:\n{block}\n",
             encoding="utf-8",
@@ -312,18 +316,15 @@ def parse_primitiva_text(rendered_text: str) -> Draw:
     reintegro = values[7]
 
     joker = None
-
-    # Intento 1: "Joker 1234567" o "JOKER 1234567"
     joker_match = re.search(r"Joker\s*([0-9 ]{5,})", block, flags=re.IGNORECASE)
     if joker_match:
         joker_digits = "".join(re.findall(r"\d", joker_match.group(1)))
         if joker_digits:
             joker = joker_digits
 
-    # Intento 2: si no salió, mirar "J" aislada cerca del final
     if not joker:
-        tail = block[-400:]
-        joker_match2 = re.search(r"\bJ\b\s*([0-9 ]{5,})", tail, flags=re.IGNORECASE)
+        tail = block[-500:]
+        joker_match2 = re.search(r"\bJoker\b.*?([0-9 ]{5,})", tail, flags=re.IGNORECASE | re.DOTALL)
         if joker_match2:
             joker_digits = "".join(re.findall(r"\d", joker_match2.group(1)))
             if joker_digits:
@@ -340,6 +341,67 @@ def parse_primitiva_text(rendered_text: str) -> Draw:
         reintegro=reintegro,
         joker=joker,
         source="selae-real-chrome",
+    )
+
+
+# =========================================================
+# EUROMILLONES
+# =========================================================
+def parse_euromillones_text(rendered_text: str) -> Draw:
+    normalized = normalize_text(rendered_text)
+    DEBUG_EUROM_TEXT.write_text(normalized, encoding="utf-8")
+
+    pattern = re.compile(
+        rf"EUROMILLONES\s+{WEEKDAYS_RE}\s*-\s*(\d{{2}}/\d{{2}}/\d{{4}})(.*?)(?=EUROMILLONES\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}|BUSCAR SORTEOS|$)",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+    matches = list(pattern.finditer(normalized))
+    if not matches:
+        raise ValueError(f"No pude localizar el primer bloque real de resultados de EUROMILLONES.")
+
+    for m in matches:
+        date_es = m.group(2)
+        body = m.group(3)
+
+        # Solo la parte alta del bloque, donde están números + estrellas
+        block = body[:1200]
+        DEBUG_EUROM_BLOCK.write_text(
+            f"DATE={date_es}\n\nBLOCK:\n{block}\n",
+            encoding="utf-8",
+        )
+
+        # Cortamos antes de EL MILLÓN para no tragarnos su código
+        top = re.split(r"EL MILL[ÓO]N", block, maxsplit=1, flags=re.IGNORECASE)[0]
+
+        values = [int(x) for x in re.findall(r"\b\d{1,2}\b", top)]
+
+        # 5 números principales (1..50)
+        main = [v for v in values if 1 <= v <= 50][:5]
+
+        if len(main) != 5:
+            continue
+
+        # Después de los 5 principales, las 2 estrellas deben estar en 1..12
+        rest = values[5:]
+        secondary = [v for v in rest if 1 <= v <= 12][:2]
+
+        if len(secondary) != 2:
+            continue
+
+        day, month, year = date_es.split("/")
+        date_str = f"{year}-{month}-{day}"
+
+        return Draw(
+            gameId="euromillones",
+            date=date_str,
+            main=main,
+            secondary=secondary,
+            source="selae-real-chrome",
+        )
+
+    raise ValueError(
+        f"Encontré bloques de Euromillones, pero no pude extraer números válidos. Revisa: {DEBUG_EUROM_BLOCK}"
     )
 
 
@@ -400,7 +462,25 @@ def main() -> None:
         errors.append(f"Primitiva: {e}")
         print(f"Primitiva ERROR: {e}")
 
-    # 3) Bonoloto
+    # 3) Euromillones
+    try:
+        euromillones_text = fetch_selae_text_with_real_chrome(
+            EUROMILLONES_URL,
+            "Euromillones",
+            DEBUG_EUROM_HTML,
+            DEBUG_EUROM_TEXT,
+        )
+        euromillones = parse_euromillones_text(euromillones_text)
+        draws_by_game[euromillones.gameId] = draw_to_dict(euromillones)
+        print(
+            f"Euromillones OK: {euromillones.date} {euromillones.main} "
+            f"+ {euromillones.secondary}"
+        )
+    except Exception as e:
+        errors.append(f"Euromillones: {e}")
+        print(f"Euromillones ERROR: {e}")
+
+    # 4) Bonoloto
     try:
         bonoloto_text = fetch_selae_text_with_real_chrome(
             BONOLOTO_URL,

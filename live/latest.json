@@ -1,6 +1,6 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-03-12T17:27:39Z",
+  "generatedAt": "2026-03-12T18:02:34Z",
   "draws": [
     {
       "gameId": "bonoloto",
@@ -32,6 +32,22 @@
         10
       ],
       "source": "once-html-current"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-03-10",
+      "main": [
+        12,
+        14,
+        27,
+        44,
+        50
+      ],
+      "secondary": [
+        4,
+        12
+      ],
+      "source": "selae-real-chrome"
     },
     {
       "gameId": "primitiva",
