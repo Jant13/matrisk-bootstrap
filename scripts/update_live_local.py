@@ -255,8 +255,6 @@ def fetch_gordo_detail_text_with_real_chrome() -> str:
 
             page.wait_for_timeout(2500)
 
-            # En esta URL aparece un listado de noticias.
-            # Entramos en la primera noticia de resultados.
             first_link = page.locator("text=/El Gordo de la Primitiva: resultados del/i").first
             first_link.click(timeout=10000)
 
@@ -499,13 +497,13 @@ def parse_gordo_text(rendered_text: str) -> Draw:
         raise ValueError("No pude extraer combinación y clave de Gordo.")
 
     main = [int(m_nums.group(i)) for i in range(1, 6)]
-    reintegro = int(m_nums.group(6))
+    clave = int(m_nums.group(6))
 
     return Draw(
         gameId="gordo",
         date=date_str,
         main=main,
-        reintegro=reintegro,
+        secondary=[clave],
         source="selae-real-chrome-detail",
     )
 
@@ -586,7 +584,7 @@ def main() -> None:
         gordo_text = fetch_gordo_detail_text_with_real_chrome()
         gordo = parse_gordo_text(gordo_text)
         draws_by_game[gordo.gameId] = draw_to_dict(gordo)
-        print(f"Gordo OK: {gordo.date} {gordo.main} R({gordo.reintegro})")
+        print(f"Gordo OK: {gordo.date} {gordo.main} + {gordo.secondary}")
     except Exception as e:
         errors.append(f"Gordo: {e}")
         print(f"Gordo ERROR: {e}")
