@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -39,6 +40,11 @@ BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 
 TIMEOUT = 30
 WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
+
+BONOLOTO_READY_RE = rf"BONOLOTO\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
+PRIMITIVA_READY_RE = rf"LA PRIMITIVA\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
+EUROMILLONES_READY_RE = rf"EUROMILLONES\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
+GORDO_DETAIL_READY_RE = r"resultados del \d{2} de [a-záéíóú]+ de \d{4}"
 
 MONTHS_ES = {
     "enero": "01",
@@ -150,7 +156,7 @@ def parse_eurojackpot_once(text: str) -> Draw:
 
 
 # =========================================================
-# SELAE con Chrome real
+# SELAE con Chrome real automático
 # =========================================================
 def dismiss_cookie_banner(page) -> None:
     labels = [
@@ -163,7 +169,10 @@ def dismiss_cookie_banner(page) -> None:
 
     for label in labels:
         try:
-            page.get_by_role("button", name=re.compile(label, re.IGNORECASE)).click(timeout=2500)
+            page.get_by_role(
+                "button",
+                name=re.compile(label, re.IGNORECASE),
+            ).click(timeout=2500)
             page.wait_for_timeout(1200)
             return
         except Exception:
@@ -178,11 +187,60 @@ def dismiss_cookie_banner(page) -> None:
             pass
 
 
+def get_body_text(page) -> str:
+    try:
+        return page.locator("body").inner_text(timeout=3000)
+    except Exception:
+        return ""
+
+
+def wait_for_ready_text(
+    page,
+    ready_pattern: str,
+    timeout_ms: int = 45000,
+    refresh_every_ms: int = 12000,
+    max_refreshes: int = 2,
+) -> str:
+    compiled = re.compile(ready_pattern, flags=re.IGNORECASE | re.DOTALL)
+    deadline = time.monotonic() + (timeout_ms / 1000.0)
+    last_refresh = time.monotonic()
+    refreshes = 0
+    last_text = ""
+
+    while time.monotonic() < deadline:
+        text = get_body_text(page)
+        if text:
+            last_text = text
+            if compiled.search(normalize_text(text)):
+                return text
+
+        now = time.monotonic()
+        if refreshes < max_refreshes and (now - last_refresh) * 1000 >= refresh_every_ms:
+            try:
+                page.reload(wait_until="domcontentloaded", timeout=90000)
+                dismiss_cookie_banner(page)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=8000)
+                except PlaywrightTimeoutError:
+                    pass
+                page.wait_for_timeout(1500)
+            except Exception:
+                pass
+
+            refreshes += 1
+            last_refresh = time.monotonic()
+
+        page.wait_for_timeout(1000)
+
+    return last_text
+
+
 def fetch_selae_text_with_real_chrome(
     url: str,
     game_name: str,
     debug_html_path: Path,
     debug_text_path: Path,
+    ready_pattern: str,
 ) -> str:
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
@@ -205,22 +263,27 @@ def fetch_selae_text_with_real_chrome(
                 pass
 
             try:
-                page.wait_for_load_state("networkidle", timeout=15000)
+                page.wait_for_load_state("networkidle", timeout=12000)
             except PlaywrightTimeoutError:
                 pass
 
-            page.wait_for_timeout(2500)
+            page.wait_for_timeout(2000)
 
-            print(f"\nSe ha abierto Chrome real en {game_name}.")
-            print("Si aparece el banner de cookies, pulsa manualmente 'Solo usar cookies necesarias'.")
-            print("Si ves los resultados cargados, vuelve a esta consola.")
-            input(f"Cuando la página de {game_name} esté visible y correcta, pulsa Enter aquí... ")
+            print(f"\nChrome real en {game_name}...")
+            visible_text = wait_for_ready_text(
+                page,
+                ready_pattern=ready_pattern,
+                timeout_ms=45000,
+                refresh_every_ms=12000,
+                max_refreshes=2,
+            )
 
             html = page.content()
             debug_html_path.write_text(html, encoding="utf-8")
+            debug_text_path.write_text(visible_text or "", encoding="utf-8")
 
-            visible_text = page.locator("body").inner_text()
-            debug_text_path.write_text(visible_text, encoding="utf-8")
+            if not visible_text or not re.search(ready_pattern, normalize_text(visible_text), flags=re.IGNORECASE | re.DOTALL):
+                raise ValueError(f"No apareció el bloque válido de {game_name}. Revisa: {debug_text_path}")
 
             return visible_text
         finally:
@@ -249,32 +312,39 @@ def fetch_gordo_detail_text_with_real_chrome() -> str:
                 pass
 
             try:
-                page.wait_for_load_state("networkidle", timeout=15000)
+                page.wait_for_load_state("networkidle", timeout=12000)
             except PlaywrightTimeoutError:
                 pass
 
-            page.wait_for_timeout(2500)
+            page.wait_for_timeout(2000)
 
+            # Entrar solo en la primera noticia del último resultado
             first_link = page.locator("text=/El Gordo de la Primitiva: resultados del/i").first
+            first_link.wait_for(state="visible", timeout=15000)
             first_link.click(timeout=10000)
 
             try:
-                page.wait_for_load_state("networkidle", timeout=15000)
+                page.wait_for_load_state("networkidle", timeout=12000)
             except PlaywrightTimeoutError:
                 pass
 
-            page.wait_for_timeout(2500)
+            page.wait_for_timeout(2000)
 
-            print("\nSe ha abierto Chrome real en Gordo (detalle del último resultado).")
-            print("Si aparece el banner de cookies, pulsa manualmente 'Solo usar cookies necesarias'.")
-            print("Si ves los resultados cargados, vuelve a esta consola.")
-            input("Cuando la página de Gordo esté visible y correcta, pulsa Enter aquí... ")
+            print("\nChrome real en Gordo (detalle automático)...")
+            visible_text = wait_for_ready_text(
+                page,
+                ready_pattern=GORDO_DETAIL_READY_RE,
+                timeout_ms=45000,
+                refresh_every_ms=12000,
+                max_refreshes=1,
+            )
 
             html = page.content()
             DEBUG_GORDO_HTML.write_text(html, encoding="utf-8")
+            DEBUG_GORDO_TEXT.write_text(visible_text or "", encoding="utf-8")
 
-            visible_text = page.locator("body").inner_text()
-            DEBUG_GORDO_TEXT.write_text(visible_text, encoding="utf-8")
+            if not visible_text or not re.search(GORDO_DETAIL_READY_RE, normalize_text(visible_text), flags=re.IGNORECASE | re.DOTALL):
+                raise ValueError(f"No apareció el detalle válido de Gordo. Revisa: {DEBUG_GORDO_TEXT}")
 
             return visible_text
         finally:
@@ -388,7 +458,11 @@ def parse_primitiva_text(rendered_text: str) -> Draw:
 
     if not joker:
         tail = block[-500:]
-        joker_match2 = re.search(r"\bJoker\b.*?([0-9 ]{5,})", tail, flags=re.IGNORECASE | re.DOTALL)
+        joker_match2 = re.search(
+            r"\bJoker\b.*?([0-9 ]{5,})",
+            tail,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
         if joker_match2:
             joker_digits = "".join(re.findall(r"\d", joker_match2.group(1)))
             if joker_digits:
@@ -551,6 +625,7 @@ def main() -> None:
             "Primitiva",
             DEBUG_PRIMI_HTML,
             DEBUG_PRIMI_TEXT,
+            PRIMITIVA_READY_RE,
         )
         primitiva = parse_primitiva_text(primitiva_text)
         draws_by_game[primitiva.gameId] = draw_to_dict(primitiva)
@@ -569,6 +644,7 @@ def main() -> None:
             "Euromillones",
             DEBUG_EUROM_HTML,
             DEBUG_EUROM_TEXT,
+            EUROMILLONES_READY_RE,
         )
         euromillones = parse_euromillones_text(euromillones_text)
         draws_by_game[euromillones.gameId] = draw_to_dict(euromillones)
@@ -595,6 +671,7 @@ def main() -> None:
             "Bonoloto",
             DEBUG_BONO_HTML,
             DEBUG_BONO_TEXT,
+            BONOLOTO_READY_RE,
         )
         bonoloto = parse_bonoloto_text(bonoloto_text)
         draws_by_game[bonoloto.gameId] = draw_to_dict(bonoloto)
