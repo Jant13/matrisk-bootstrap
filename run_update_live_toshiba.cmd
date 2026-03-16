@@ -19,7 +19,6 @@ git diff --cached --quiet
 if %errorlevel%==0 (
     echo.
     echo No hay cambios en live\latest.json.
-    pause
     exit /b 0
 )
 
@@ -33,4 +32,4 @@ git push origin main
 
 echo.
 echo Proceso finalizado.
-pause
+exit /b 0
