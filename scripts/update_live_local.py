@@ -32,7 +32,7 @@ DEBUG_GORDO_BLOCK = ROOT / "live" / "_gordo_block_debug.txt"
 
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
-EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
+EUROJACKPOT_URL = "https://www.juegosonce.es/historico-resultados-eurojackpot"
 PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
 EUROMILLONES_URL = "https://www.loteriasyapuestas.es/es/resultados/euromillones"
 GORDO_URL = "https://www.loteriasyapuestas.es/es/gordo-primitiva/resultados"
