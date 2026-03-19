@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
 
-ONCE_URL = "https://www.juegosonce.es/resultados-eurojackpot-"
+ONCE_URL = "https://www.juegosonce.es/historico-resultados-eurojackpot"
 SELAE_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados"
 BONOLOTO_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 TIMEOUT = 25
