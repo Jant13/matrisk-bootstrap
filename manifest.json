@@ -1,11 +1,13 @@
 {
   "schema": "matrisk-bootstrap-manifest",
-  "manifestVersion": 1,
-  "generatedAt": "2026-03-06T16:13:00Z",
-  "sourceBackupCreatedAt": "2026-03-06T15:56:02.343Z",
+  "manifestVersion": 2,
+  "bootstrapMode": "modular",
+  "generatedAt": "2026-03-19T16:39:20Z",
+  "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
+  "sourceOfTruth": "backup-json",
   "overall": {
     "dateMin": "1996-01-01",
-    "dateMax": "2026-03-05",
+    "dateMax": "2026-03-18",
     "games": [
       "bonoloto",
       "primitiva",
@@ -13,60 +15,185 @@
       "gordo",
       "eurojackpot"
     ],
-    "drawsTotal": 14830
+    "drawsTotal": 14858
+  },
+  "games": {
+    "bonoloto": {
+      "draws": 7572,
+      "dateMin": "1996-01-01",
+      "dateMax": "2026-03-18",
+      "matrixDraws": 7572,
+      "oracleCounts": 49,
+      "metaEntries": 8,
+      "path": "bootstrap/bonoloto.json.gz",
+      "altPath": "bootstrap/bonoloto.json"
+    },
+    "primitiva": {
+      "draws": 3327,
+      "dateMin": "1996-01-04",
+      "dateMax": "2026-03-16",
+      "matrixDraws": 3327,
+      "oracleCounts": 49,
+      "metaEntries": 8,
+      "path": "bootstrap/primitiva.json.gz",
+      "altPath": "bootstrap/primitiva.json"
+    },
+    "euromillones": {
+      "draws": 1926,
+      "dateMin": "2004-02-13",
+      "dateMax": "2026-03-17",
+      "matrixDraws": 1926,
+      "oracleCounts": 50,
+      "metaEntries": 8,
+      "path": "bootstrap/euromillones.json.gz",
+      "altPath": "bootstrap/euromillones.json"
+    },
+    "gordo": {
+      "draws": 1095,
+      "dateMin": "2005-01-09",
+      "dateMax": "2026-03-15",
+      "matrixDraws": 1095,
+      "oracleCounts": 54,
+      "metaEntries": 8,
+      "path": "bootstrap/gordo.json.gz",
+      "altPath": "bootstrap/gordo.json"
+    },
+    "eurojackpot": {
+      "draws": 938,
+      "dateMin": "2012-03-23",
+      "dateMax": "2026-03-17",
+      "matrixDraws": 938,
+      "oracleCounts": 50,
+      "metaEntries": 8,
+      "path": "bootstrap/eurojackpot.json.gz",
+      "altPath": "bootstrap/eurojackpot.json"
+    }
   },
   "files": [
     {
-      "id": "bootstrap_all",
-      "path": "bootstrap/matrisk_bootstrap_all_v2026-03-05.json.gz",
+      "id": "bonoloto",
+      "gameId": "bonoloto",
+      "path": "bootstrap/bonoloto.json.gz",
       "format": "gzip+json",
+      "schema": "matrisk-bootstrap-game",
       "backupType": "matrisk_data_backup",
       "backupVersion": 2,
       "dbSchemaVersion": {
         "historico": 3,
         "matrix": 8
       },
-      "bytesCompressed": 1072151,
-      "bytesUncompressed": 10112449,
-      "sha256": "f39411acf80c9404451014cd0fc451dd0c8485f6f3b36c2d7ba8013ec7a0f942",
-      "games": {
-        "bonoloto": {
-          "draws": 7559,
-          "dateMin": "1996-01-01",
-          "dateMax": "2026-03-05"
-        },
-        "primitiva": {
-          "draws": 3322,
-          "dateMin": "1996-01-04",
-          "dateMax": "2026-03-05"
-        },
-        "euromillones": {
-          "draws": 1922,
-          "dateMin": "2004-02-13",
-          "dateMax": "2026-03-03"
-        },
-        "gordo": {
-          "draws": 1093,
-          "dateMin": "2005-01-09",
-          "dateMax": "2026-03-01"
-        },
-        "eurojackpot": {
-          "draws": 934,
-          "dateMin": "2012-03-23",
-          "dateMax": "2026-03-03"
-        }
-      },
+      "bytesCompressed": 611804,
+      "bytesUncompressed": 9540415,
+      "sha256": "ff2519841f4aa6443fe62db360e97627fd5cff08305e8362ee68678a96979c8d",
+      "draws": 7572,
+      "dateMin": "1996-01-01",
+      "dateMax": "2026-03-18",
       "alt": {
-        "path": "bootstrap/matrisk_bootstrap_all_v2026-03-05.json",
+        "path": "bootstrap/bonoloto.json",
         "format": "json",
-        "bytes": 10112449,
-        "sha256": "722192eb6d5de534faaa9992934f9f2ee99d8f40191766aa769611ae31b42f12"
+        "bytes": 9540415,
+        "sha256": "fe876ee429e1914bcdb815b70db5cf040265b39f3f49ca75e3b2b9c37e83d775"
+      }
+    },
+    {
+      "id": "primitiva",
+      "gameId": "primitiva",
+      "path": "bootstrap/primitiva.json.gz",
+      "format": "gzip+json",
+      "schema": "matrisk-bootstrap-game",
+      "backupType": "matrisk_data_backup",
+      "backupVersion": 2,
+      "dbSchemaVersion": {
+        "historico": 3,
+        "matrix": 8
+      },
+      "bytesCompressed": 282833,
+      "bytesUncompressed": 4334984,
+      "sha256": "1efd399df751e767d0f07d1e6a20a73a21e63988b2f934b9f65b1a7c278ace70",
+      "draws": 3327,
+      "dateMin": "1996-01-04",
+      "dateMax": "2026-03-16",
+      "alt": {
+        "path": "bootstrap/primitiva.json",
+        "format": "json",
+        "bytes": 4334984,
+        "sha256": "96c2b8c66e5d2450bb0ffc32f0d115c7ed1bf366d867610d4130e945158aa5f8"
+      }
+    },
+    {
+      "id": "euromillones",
+      "gameId": "euromillones",
+      "path": "bootstrap/euromillones.json.gz",
+      "format": "gzip+json",
+      "schema": "matrisk-bootstrap-game",
+      "backupType": "matrisk_data_backup",
+      "backupVersion": 2,
+      "dbSchemaVersion": {
+        "historico": 3,
+        "matrix": 8
+      },
+      "bytesCompressed": 148887,
+      "bytesUncompressed": 2481710,
+      "sha256": "22c90b8e1c851d88b121c5f7cf8914f883d398daa56374f31d7ede7bf9c22777",
+      "draws": 1926,
+      "dateMin": "2004-02-13",
+      "dateMax": "2026-03-17",
+      "alt": {
+        "path": "bootstrap/euromillones.json",
+        "format": "json",
+        "bytes": 2481710,
+        "sha256": "597fd3a5aed92b6588cfb160dc57c8031113f71c73c7fc7111849f9c7f80fb3a"
+      }
+    },
+    {
+      "id": "gordo",
+      "gameId": "gordo",
+      "path": "bootstrap/gordo.json.gz",
+      "format": "gzip+json",
+      "schema": "matrisk-bootstrap-game",
+      "backupType": "matrisk_data_backup",
+      "backupVersion": 2,
+      "dbSchemaVersion": {
+        "historico": 3,
+        "matrix": 8
+      },
+      "bytesCompressed": 89263,
+      "bytesUncompressed": 1367589,
+      "sha256": "485c3be4851cb8eff7c16df02e19bf602a8e37e84f47fbfcae8b39afac2d34b5",
+      "draws": 1095,
+      "dateMin": "2005-01-09",
+      "dateMax": "2026-03-15",
+      "alt": {
+        "path": "bootstrap/gordo.json",
+        "format": "json",
+        "bytes": 1367589,
+        "sha256": "18390dd97edba5f79317a45c88ca7bfa631cec42cb299880996c240ba61e7cbf"
+      }
+    },
+    {
+      "id": "eurojackpot",
+      "gameId": "eurojackpot",
+      "path": "bootstrap/eurojackpot.json.gz",
+      "format": "gzip+json",
+      "schema": "matrisk-bootstrap-game",
+      "backupType": "matrisk_data_backup",
+      "backupVersion": 2,
+      "dbSchemaVersion": {
+        "historico": 3,
+        "matrix": 8
+      },
+      "bytesCompressed": 76324,
+      "bytesUncompressed": 1229816,
+      "sha256": "9f4766023089aa15e53231be6e51eee4b106d6da10d1f9932a41e993cc205236",
+      "draws": 938,
+      "dateMin": "2012-03-23",
+      "dateMax": "2026-03-17",
+      "alt": {
+        "path": "bootstrap/eurojackpot.json",
+        "format": "json",
+        "bytes": 1229816,
+        "sha256": "8b987d96f79b3d741fd937c87ed3381eca9791310b4416cbc4d8dcd5b77c7687"
       }
     }
-  ],
-  "live": {
-    "file": "https://raw.githubusercontent.com/Jant13/matrisk-bootstrap/main/live/latest.json",
-    "generatedAt": "2026-03-08T17:00:00Z",
-    "dateMax": "2026-03-08"
-  }
+  ]
 }
