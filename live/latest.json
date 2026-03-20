@@ -1,6 +1,10 @@
 {
   "schema": "matrisk-official-sync-payload",
+<<<<<<< HEAD
   "generatedAt": "2026-03-19T21:32:14Z",
+=======
+  "generatedAt": "2026-03-19T22:47:00Z",
+>>>>>>> 8e7f0a3c61018daa58ad687c05328d35d3b7842b
   "draws": [
     {
       "gameId": "bonoloto",
