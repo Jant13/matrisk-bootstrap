@@ -1,6 +1,6 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-03-20T17:30:49Z",
+  "generatedAt": "2026-03-20T17:36:35Z",
   "draws": [
     {
       "gameId": "bonoloto",
@@ -21,15 +21,15 @@
       "gameId": "eurojackpot",
       "date": "2026-03-17",
       "main": [
-        2,
         12,
         13,
         16,
-        17
+        17,
+        37
       ],
       "secondary": [
-        37,
-        4
+        4,
+        11
       ],
       "source": "once-html-current"
     },
