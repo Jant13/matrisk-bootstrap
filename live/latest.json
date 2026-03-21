@@ -1,35 +1,35 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-03-21T14:56:17Z",
+  "generatedAt": "2026-03-21T20:47:05Z",
   "draws": [
     {
       "gameId": "bonoloto",
-      "date": "2026-03-20",
+      "date": "2026-03-21",
       "main": [
-        3,
-        5,
-        11,
+        9,
+        15,
         20,
-        28,
-        43
+        21,
+        26,
+        41
       ],
-      "complementario": 10,
-      "reintegro": 6,
+      "complementario": 22,
+      "reintegro": 8,
       "source": "selae-real-chrome"
     },
     {
       "gameId": "eurojackpot",
-      "date": "2026-03-17",
+      "date": "2026-03-20",
       "main": [
-        12,
-        13,
-        16,
+        2,
         17,
-        37
+        21,
+        25,
+        30
       ],
       "secondary": [
-        4,
-        11
+        2,
+        6
       ],
       "source": "once-html-current"
     },
