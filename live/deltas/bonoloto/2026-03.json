@@ -100,11 +100,9 @@
       "weekdayLetter": "D"
     },
     {
-      "id": "bonoloto::2026-03-23",
       "gameId": "bonoloto",
-      "game": "bonoloto",
       "date": "2026-03-23",
-      "numbers": [
+      "main": [
         7,
         9,
         13,
@@ -112,16 +110,9 @@
         24,
         30
       ],
-      "secondary": [],
       "complementario": 43,
-      "isoYear": 2026,
-      "isoWeek": 13,
-      "weekKey": 202613,
-      "year": 2026,
-      "week": 13,
-      "weekDay": 1,
-      "weekday": 1,
-      "weekdayLetter": "L"
+      "reintegro": 2,
+      "source": "selae-real-chrome"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-03-24T15:49:27Z",
+  "generatedAt": "2026-03-24T16:58:13Z",
   "draws": [
     {
       "id": "bonoloto::2026-03-19",
@@ -75,11 +75,9 @@
       "weekdayLetter": "V"
     },
     {
-      "id": "eurojackpot::2026-03-20",
       "gameId": "eurojackpot",
-      "game": "eurojackpot",
       "date": "2026-03-20",
-      "numbers": [
+      "main": [
         2,
         17,
         21,
@@ -90,22 +88,12 @@
         2,
         6
       ],
-      "complementario": null,
-      "isoYear": 2026,
-      "isoWeek": 12,
-      "weekKey": 202612,
-      "year": 2026,
-      "week": 12,
-      "weekDay": 5,
-      "weekday": 5,
-      "weekdayLetter": "V"
+      "source": "once-html-current"
     },
     {
-      "id": "euromillones::2026-03-20",
       "gameId": "euromillones",
-      "game": "euromillones",
       "date": "2026-03-20",
-      "numbers": [
+      "main": [
         5,
         12,
         16,
@@ -116,15 +104,7 @@
         8,
         10
       ],
-      "complementario": null,
-      "isoYear": 2026,
-      "isoWeek": 12,
-      "weekKey": 202612,
-      "year": 2026,
-      "week": 12,
-      "weekDay": 5,
-      "weekday": 5,
-      "weekdayLetter": "V"
+      "source": "selae-real-chrome"
     },
     {
       "id": "bonoloto::2026-03-21",
@@ -199,17 +179,8 @@
       "weekdayLetter": "D"
     },
     {
-      "id": "gordo::2026-03-22",
       "gameId": "gordo",
-      "game": "gordo",
       "date": "2026-03-22",
-      "numbers": [
-        11,
-        22,
-        28,
-        48,
-        51
-      ],
       "main": [
         11,
         22,
@@ -220,26 +191,12 @@
       "secondary": [
         4
       ],
-      "complementario": null,
-      "isoYear": 2026,
-      "isoWeek": 12,
-      "weekKey": 202612,
-      "year": 2026,
-      "week": 12,
-      "weekDay": 7,
-      "weekday": 7,
-      "weekdayLetter": "D",
-      "source": "selae-real-chrome-detail",
-      "clave": 4,
-      "key": 4,
-      "secondaryType": "KEY"
+      "source": "selae-real-chrome-detail"
     },
     {
-      "id": "bonoloto::2026-03-23",
       "gameId": "bonoloto",
-      "game": "bonoloto",
       "date": "2026-03-23",
-      "numbers": [
+      "main": [
         7,
         9,
         13,
@@ -247,30 +204,13 @@
         24,
         30
       ],
-      "secondary": [],
       "complementario": 43,
-      "isoYear": 2026,
-      "isoWeek": 13,
-      "weekKey": 202613,
-      "year": 2026,
-      "week": 13,
-      "weekDay": 1,
-      "weekday": 1,
-      "weekdayLetter": "L"
+      "reintegro": 2,
+      "source": "selae-real-chrome"
     },
     {
-      "id": "primitiva::2026-03-23",
       "gameId": "primitiva",
-      "game": "primitiva",
       "date": "2026-03-23",
-      "numbers": [
-        2,
-        6,
-        13,
-        17,
-        33,
-        39
-      ],
       "main": [
         2,
         6,
@@ -279,16 +219,8 @@
         33,
         39
       ],
-      "secondary": [],
       "complementario": 46,
-      "isoYear": 2026,
-      "isoWeek": 13,
-      "weekKey": 202613,
-      "year": 2026,
-      "week": 13,
-      "weekDay": 1,
-      "weekday": 1,
-      "weekdayLetter": "L",
+      "reintegro": 5,
       "source": "selae-real-chrome"
     }
   ]

@@ -4,11 +4,9 @@
   "month": "2026-03",
   "draws": [
     {
-      "id": "eurojackpot::2026-03-20",
       "gameId": "eurojackpot",
-      "game": "eurojackpot",
       "date": "2026-03-20",
-      "numbers": [
+      "main": [
         2,
         17,
         21,
@@ -19,15 +17,7 @@
         2,
         6
       ],
-      "complementario": null,
-      "isoYear": 2026,
-      "isoWeek": 12,
-      "weekKey": 202612,
-      "year": 2026,
-      "week": 12,
-      "weekDay": 5,
-      "weekday": 5,
-      "weekdayLetter": "V"
+      "source": "once-html-current"
     }
   ]
 }

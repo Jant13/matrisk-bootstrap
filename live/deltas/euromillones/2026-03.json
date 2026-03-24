@@ -4,11 +4,9 @@
   "month": "2026-03",
   "draws": [
     {
-      "id": "euromillones::2026-03-20",
       "gameId": "euromillones",
-      "game": "euromillones",
       "date": "2026-03-20",
-      "numbers": [
+      "main": [
         5,
         12,
         16,
@@ -19,15 +17,7 @@
         8,
         10
       ],
-      "complementario": null,
-      "isoYear": 2026,
-      "isoWeek": 12,
-      "weekKey": 202612,
-      "year": 2026,
-      "week": 12,
-      "weekDay": 5,
-      "weekday": 5,
-      "weekdayLetter": "V"
+      "source": "selae-real-chrome"
     }
   ]
 }
