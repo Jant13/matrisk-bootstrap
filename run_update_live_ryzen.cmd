@@ -4,16 +4,16 @@ setlocal
 cd /d "%~dp0"
 
 if not exist logs mkdir logs
-set LOGFILE=%CD%\logs\run_update_live_ryzen.log
+set "LOGFILE=%CD%\logs\run_update_live_ryzen.log"
+set "PYTHON_EXE=C:\Users\jant1\AppData\Local\Programs\Python\Python313\python.exe"
 
 (
 echo =========================================
 echo MaTrisK Ryzen live update started
 echo Repo: %CD%
 echo Time: %DATE% %TIME%
+echo Python: %PYTHON_EXE%
 echo =========================================
-
-set PYTHON_CMD=python
 
 echo [1/5] git pull --rebase
 git pull --rebase
@@ -23,21 +23,21 @@ if errorlevel 1 (
 )
 
 echo [2/5] update_live_local.py
-%PYTHON_CMD% scripts\update_live_local.py
+"%PYTHON_EXE%" scripts\update_live_local.py
 if errorlevel 1 (
     echo ERROR: update_live_local.py failed
     exit /b 1
 )
 
 echo [3/5] build_live_backlog.py
-%PYTHON_CMD% scripts\build_live_backlog.py
+"%PYTHON_EXE%" scripts\build_live_backlog.py
 if errorlevel 1 (
     echo ERROR: build_live_backlog.py failed
     exit /b 1
 )
 
 echo [4/5] validate live\latest.json
-%PYTHON_CMD% -m json.tool live\latest.json > nul
+"%PYTHON_EXE%" -m json.tool live\latest.json > nul
 if errorlevel 1 (
     echo ERROR: live\latest.json is invalid
     exit /b 1
