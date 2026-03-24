@@ -1,0 +1,88 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "primitiva",
+  "month": "2026-03",
+  "draws": [
+    {
+      "id": "primitiva::2026-03-19",
+      "gameId": "primitiva",
+      "game": "primitiva",
+      "date": "2026-03-19",
+      "numbers": [
+        10,
+        17,
+        18,
+        30,
+        34,
+        45
+      ],
+      "secondary": [],
+      "complementario": 6,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 4,
+      "weekday": 4,
+      "weekdayLetter": "J"
+    },
+    {
+      "id": "primitiva::2026-03-21",
+      "gameId": "primitiva",
+      "game": "primitiva",
+      "date": "2026-03-21",
+      "numbers": [
+        18,
+        32,
+        37,
+        39,
+        42,
+        47
+      ],
+      "secondary": [],
+      "complementario": 4,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 6,
+      "weekday": 6,
+      "weekdayLetter": "S"
+    },
+    {
+      "id": "primitiva::2026-03-23",
+      "gameId": "primitiva",
+      "game": "primitiva",
+      "date": "2026-03-23",
+      "numbers": [
+        2,
+        6,
+        13,
+        17,
+        33,
+        39
+      ],
+      "main": [
+        2,
+        6,
+        13,
+        17,
+        33,
+        39
+      ],
+      "secondary": [],
+      "complementario": 46,
+      "isoYear": 2026,
+      "isoWeek": 13,
+      "weekKey": 202613,
+      "year": 2026,
+      "week": 13,
+      "weekDay": 1,
+      "weekday": 1,
+      "weekdayLetter": "L",
+      "source": "selae-real-chrome"
+    }
+  ]
+}

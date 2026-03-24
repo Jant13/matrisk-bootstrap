@@ -13,6 +13,7 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 ROOT = Path(__file__).resolve().parents[1]
 LIVE_FILE = ROOT / "live" / "latest.json"
+MANIFEST_FILE = ROOT / "manifest.json"
 
 DEBUG_BONO_HTML = ROOT / "live" / "_bonoloto_debug.html"
 DEBUG_BONO_TEXT = ROOT / "live" / "_bonoloto_debug.txt"
@@ -32,7 +33,7 @@ DEBUG_GORDO_BLOCK = ROOT / "live" / "_gordo_block_debug.txt"
 
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
-EUROJACKPOT_URL = "https://www.juegosonce.es/historico-resultados-eurojackpot"
+EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
 PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
 EUROMILLONES_URL = "https://www.loteriasyapuestas.es/es/resultados/euromillones"
 GORDO_URL = "https://www.loteriasyapuestas.es/es/gordo-primitiva/resultados"
@@ -600,20 +601,68 @@ def draw_to_dict(draw: Draw) -> dict:
     return {k: v for k, v in data.items() if v is not None}
 
 
+def load_manifest_cutoffs() -> dict[str, str]:
+    if not MANIFEST_FILE.exists():
+        return {}
+
+    data = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
+    games = data.get("games", {})
+    cutoffs: dict[str, str] = {}
+
+    for game_id, meta in games.items():
+        date_max = meta.get("dateMax")
+        if isinstance(date_max, str) and re.match(r"^\d{4}-\d{2}-\d{2}$", date_max):
+            cutoffs[game_id] = date_max
+
+    return cutoffs
+
+
+def draw_key_from_dict(d: dict) -> str:
+    return f"{d['gameId']}::{d['date']}"
+
+
+def draw_key(draw: Draw) -> str:
+    return f"{draw.gameId}::{draw.date}"
+
+
+def is_after_cutoff_dict(d: dict, cutoffs: dict[str, str]) -> bool:
+    game_id = d.get("gameId")
+    date = d.get("date")
+    if not game_id or not date:
+        return False
+
+    cutoff = cutoffs.get(game_id)
+    if not cutoff:
+        return True
+
+    return date > cutoff
+
+
+def is_after_cutoff_draw(draw: Draw, cutoffs: dict[str, str]) -> bool:
+    cutoff = cutoffs.get(draw.gameId)
+    if not cutoff:
+        return True
+    return draw.date > cutoff
+
+
 def main() -> None:
     LIVE_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     existing = load_existing()
-    draws_by_game: dict[str, dict] = {
-        d["gameId"]: d for d in existing.get("draws", []) if "gameId" in d
-    }
+    cutoffs = load_manifest_cutoffs()
+
+    draws_by_key: dict[str, dict] = {}
+    for d in existing.get("draws", []):
+        if is_after_cutoff_dict(d, cutoffs):
+            draws_by_key[draw_key_from_dict(d)] = d
 
     errors: list[str] = []
 
     try:
         once_text = fetch_text(EUROJACKPOT_URL)
         euro = parse_eurojackpot_once(once_text)
-        draws_by_game[euro.gameId] = draw_to_dict(euro)
+        if is_after_cutoff_draw(euro, cutoffs):
+            draws_by_key[draw_key(euro)] = draw_to_dict(euro)
         print(f"Eurojackpot OK: {euro.date} {euro.main} + {euro.secondary}")
     except Exception as e:
         errors.append(f"Eurojackpot: {e}")
@@ -628,7 +677,8 @@ def main() -> None:
             PRIMITIVA_READY_RE,
         )
         primitiva = parse_primitiva_text(primitiva_text)
-        draws_by_game[primitiva.gameId] = draw_to_dict(primitiva)
+        if is_after_cutoff_draw(primitiva, cutoffs):
+            draws_by_key[draw_key(primitiva)] = draw_to_dict(primitiva)
         joker_txt = f" J({primitiva.joker})" if primitiva.joker else ""
         print(
             f"Primitiva OK: {primitiva.date} {primitiva.main} "
@@ -647,7 +697,8 @@ def main() -> None:
             EUROMILLONES_READY_RE,
         )
         euromillones = parse_euromillones_text(euromillones_text)
-        draws_by_game[euromillones.gameId] = draw_to_dict(euromillones)
+        if is_after_cutoff_draw(euromillones, cutoffs):
+            draws_by_key[draw_key(euromillones)] = draw_to_dict(euromillones)
         print(
             f"Euromillones OK: {euromillones.date} {euromillones.main} "
             f"+ {euromillones.secondary}"
@@ -659,7 +710,8 @@ def main() -> None:
     try:
         gordo_text = fetch_gordo_detail_text_with_real_chrome()
         gordo = parse_gordo_text(gordo_text)
-        draws_by_game[gordo.gameId] = draw_to_dict(gordo)
+        if is_after_cutoff_draw(gordo, cutoffs):
+            draws_by_key[draw_key(gordo)] = draw_to_dict(gordo)
         print(f"Gordo OK: {gordo.date} {gordo.main} + {gordo.secondary}")
     except Exception as e:
         errors.append(f"Gordo: {e}")
@@ -674,7 +726,8 @@ def main() -> None:
             BONOLOTO_READY_RE,
         )
         bonoloto = parse_bonoloto_text(bonoloto_text)
-        draws_by_game[bonoloto.gameId] = draw_to_dict(bonoloto)
+        if is_after_cutoff_draw(bonoloto, cutoffs):
+            draws_by_key[draw_key(bonoloto)] = draw_to_dict(bonoloto)
         print(
             f"Bonoloto OK: {bonoloto.date} {bonoloto.main} "
             f"C({bonoloto.complementario}) R({bonoloto.reintegro})"
@@ -683,13 +736,16 @@ def main() -> None:
         errors.append(f"Bonoloto: {e}")
         print(f"Bonoloto ERROR: {e}")
 
-    if not draws_by_game:
+    if not draws_by_key:
         raise RuntimeError("No se pudo actualizar ningún juego. " + " | ".join(errors))
 
     payload = {
         "schema": "matrisk-official-sync-payload",
         "generatedAt": now_iso(),
-        "draws": sorted(draws_by_game.values(), key=lambda d: d["gameId"]),
+        "draws": sorted(
+            draws_by_key.values(),
+            key=lambda d: (d["date"], d["gameId"]),
+        ),
     }
 
     LIVE_FILE.write_text(

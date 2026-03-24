@@ -1,0 +1,127 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "bonoloto",
+  "month": "2026-03",
+  "draws": [
+    {
+      "id": "bonoloto::2026-03-19",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-19",
+      "numbers": [
+        3,
+        6,
+        16,
+        17,
+        48,
+        49
+      ],
+      "secondary": [],
+      "complementario": 43,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 4,
+      "weekday": 4,
+      "weekdayLetter": "J"
+    },
+    {
+      "id": "bonoloto::2026-03-20",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-20",
+      "numbers": [
+        3,
+        5,
+        11,
+        20,
+        28,
+        43
+      ],
+      "secondary": [],
+      "complementario": 10,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 5,
+      "weekday": 5,
+      "weekdayLetter": "V"
+    },
+    {
+      "id": "bonoloto::2026-03-21",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-21",
+      "numbers": [
+        9,
+        15,
+        20,
+        21,
+        26,
+        41
+      ],
+      "secondary": [],
+      "complementario": 22,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 6,
+      "weekday": 6,
+      "weekdayLetter": "S"
+    },
+    {
+      "id": "bonoloto::2026-03-22",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-22",
+      "numbers": [
+        6,
+        15,
+        25,
+        26,
+        28,
+        30
+      ],
+      "secondary": [],
+      "complementario": 23,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 7,
+      "weekday": 7,
+      "weekdayLetter": "D"
+    },
+    {
+      "id": "bonoloto::2026-03-23",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-23",
+      "numbers": [
+        7,
+        9,
+        13,
+        18,
+        24,
+        30
+      ],
+      "secondary": [],
+      "complementario": 43,
+      "isoYear": 2026,
+      "isoWeek": 13,
+      "weekKey": 202613,
+      "year": 2026,
+      "week": 13,
+      "weekDay": 1,
+      "weekday": 1,
+      "weekdayLetter": "L"
+    }
+  ]
+}

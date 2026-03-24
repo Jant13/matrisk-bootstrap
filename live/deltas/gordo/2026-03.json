@@ -1,0 +1,43 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "gordo",
+  "month": "2026-03",
+  "draws": [
+    {
+      "id": "gordo::2026-03-22",
+      "gameId": "gordo",
+      "game": "gordo",
+      "date": "2026-03-22",
+      "numbers": [
+        11,
+        22,
+        28,
+        48,
+        51
+      ],
+      "main": [
+        11,
+        22,
+        28,
+        48,
+        51
+      ],
+      "secondary": [
+        4
+      ],
+      "complementario": null,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 7,
+      "weekday": 7,
+      "weekdayLetter": "D",
+      "source": "selae-real-chrome-detail",
+      "clave": 4,
+      "key": 4,
+      "secondaryType": "KEY"
+    }
+  ]
+}
