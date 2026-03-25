@@ -5,3 +5,13 @@ live/_bonoloto_debug.html
 live/_bonoloto_debug.txt
 __pycache__/
 *.pyc
+# Runtime / debug local del Ryzen
+logs/
+live/_*_debug.txt
+live/_*_debug.html
+live/*_block_debug.txt
+live/eurojackpot_raw.txt
+live/eurojackpot_raw.html
+live/*.BAK.json
+scripts/*.BAK.py
+scripts/*.py.bak
