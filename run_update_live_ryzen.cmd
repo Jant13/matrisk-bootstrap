@@ -47,7 +47,9 @@ echo [5/5] git add / commit / push
 git add live\latest.json live\deltas scripts\build_live_backlog.py scripts\update_live_local.py run_update_live_ryzen.cmd
 
 git diff --cached --quiet
-if not errorlevel 1 (
+set "GIT_DIFF_EXIT=%ERRORLEVEL%"
+
+if "%GIT_DIFF_EXIT%"=="1" (
     git commit -m "Auto update live latest and monthly deltas"
     if errorlevel 1 (
         echo ERROR: git commit failed
@@ -62,7 +64,12 @@ if not errorlevel 1 (
 
     echo OK: changes pushed to GitHub
 ) else (
-    echo OK: no changes to commit
+    if "%GIT_DIFF_EXIT%"=="0" (
+        echo OK: no changes to commit
+    ) else (
+        echo ERROR: git diff --cached failed
+        exit /b 1
+    )
 )
 
 echo =========================================
