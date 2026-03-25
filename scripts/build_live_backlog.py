@@ -161,7 +161,7 @@ def rebuild_live_latest(cutoffs: dict[str, str]) -> None:
         LIVE_FILE,
         {
             "schema": "matrisk-official-sync-payload",
-            "generatedAt": __import__("datetime").datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "generatedAt": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "draws": ordered,
         },
     )
