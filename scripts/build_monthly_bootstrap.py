@@ -71,7 +71,6 @@ def build_monthly_payload(game_id: str, month_key: str, draws: list[dict]) -> di
     return {
         "schema": "matrisk-bootstrap-monthly",
         "manifestVersion": 1,
-        "generatedAt": now_iso(),
         "gameId": game_id,
         "month": month_key,
         "drawsCount": len(draws),
@@ -83,9 +82,9 @@ def build_monthly_payload(game_id: str, month_key: str, draws: list[dict]) -> di
 
 def write_gzip_json(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    raw = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
-    with gzip.open(path, "wt", encoding="utf-8", newline="\n") as f:
-        f.write(raw)
+    raw = (json.dumps(payload, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    gz = gzip.compress(raw, compresslevel=9, mtime=0)
+    path.write_bytes(gz)
 
 
 def process_monthly_file(src_path: Path) -> tuple[str, str, int, Path]:
