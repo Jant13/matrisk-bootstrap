@@ -65,7 +65,55 @@ if errorlevel 1 (
 )
 
 
-echo [8/8] git add live\latest.json live\deltas bootstrap-monthly manifest.json scripts\build_live_backlog.py scripts\build_monthly_bootstrap.py scripts\update_monthly_manifest.py run_update_live_ryzen.cmd
+echo [8/8] git add / commit / push
+
+git add live\latest.json
+if errorlevel 1 (
+    echo ERROR: git add live\latest.json failed
+    exit /b 1
+)
+
+git add manifest.json
+if errorlevel 1 (
+    echo ERROR: git add manifest.json failed
+    exit /b 1
+)
+
+git add live\deltas
+if errorlevel 1 (
+    echo ERROR: git add live\deltas failed
+    exit /b 1
+)
+
+git add bootstrap-monthly
+if errorlevel 1 (
+    echo ERROR: git add bootstrap-monthly failed
+    exit /b 1
+)
+
+git add scripts\build_live_backlog.py
+if errorlevel 1 (
+    echo ERROR: git add scripts\build_live_backlog.py failed
+    exit /b 1
+)
+
+git add scripts\build_monthly_bootstrap.py
+if errorlevel 1 (
+    echo ERROR: git add scripts\build_monthly_bootstrap.py failed
+    exit /b 1
+)
+
+git add scripts\update_monthly_manifest.py
+if errorlevel 1 (
+    echo ERROR: git add scripts\update_monthly_manifest.py failed
+    exit /b 1
+)
+
+git add run_update_live_ryzen.cmd
+if errorlevel 1 (
+    echo ERROR: git add run_update_live_ryzen.cmd failed
+    exit /b 1
+)
 
 git diff --cached --quiet
 if errorlevel 1 (
