@@ -2,7 +2,7 @@
   "schema": "matrisk-bootstrap-manifest",
   "manifestVersion": 2,
   "bootstrapMode": "modular",
-  "generatedAt": "2026-03-19T16:39:20Z",
+  "generatedAt": "2026-03-31T08:51:28Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "sourceOfTruth": "backup-json",
   "overall": {
@@ -216,17 +216,17 @@
         "dateMax": "2026-03-25"
       },
       {
-        "id": "primitiva-2026-03",
-        "gameId": "primitiva",
+        "id": "eurojackpot-2026-03",
+        "gameId": "eurojackpot",
         "month": "2026-03",
-        "path": "bootstrap-monthly/primitiva/2026-03.json.gz",
+        "path": "bootstrap-monthly/eurojackpot/2026-03.json.gz",
         "format": "gzip+json",
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 3,
-        "dateMin": "2026-03-19",
-        "dateMax": "2026-03-23"
+        "draws": 2,
+        "dateMin": "2026-03-20",
+        "dateMax": "2026-03-24"
       },
       {
         "id": "euromillones-2026-03",
@@ -255,17 +255,17 @@
         "dateMax": "2026-03-22"
       },
       {
-        "id": "eurojackpot-2026-03",
-        "gameId": "eurojackpot",
+        "id": "primitiva-2026-03",
+        "gameId": "primitiva",
         "month": "2026-03",
-        "path": "bootstrap-monthly/eurojackpot/2026-03.json.gz",
+        "path": "bootstrap-monthly/primitiva/2026-03.json.gz",
         "format": "gzip+json",
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 2,
-        "dateMin": "2026-03-20",
-        "dateMax": "2026-03-24"
+        "draws": 3,
+        "dateMin": "2026-03-19",
+        "dateMax": "2026-03-23"
       }
     ]
   }
