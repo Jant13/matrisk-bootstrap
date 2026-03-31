@@ -22,7 +22,7 @@ def load_json(path: Path) -> dict:
 
 def save_json(path: Path, payload: dict) -> None:
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
-    path.write_text(text, encoding="utf-8", newline="\n")
+    path.write_text(text, encoding="utf-8", newline="\r\n")
 
 
 def load_gzip_json(path: Path) -> dict:

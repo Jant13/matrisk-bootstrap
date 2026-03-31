@@ -28,9 +28,9 @@ def load_gzip_json(path: Path) -> dict:
 
 def save_json(path: Path, payload: dict) -> bytes:
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
-    data = text.encode("utf-8")
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(data)
+    path.write_text(text, encoding="utf-8", newline="\r\n")
+    data = path.read_bytes()
     return data
 
 
