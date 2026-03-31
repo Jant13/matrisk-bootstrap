@@ -111,7 +111,7 @@ def main() -> None:
         "files": monthly_entries,
     }
 
-    manifest["generatedAt"] = utc_now_z()
+    
     save_json(MANIFEST_PATH, manifest)
 
     print("Monthly manifest OK")
