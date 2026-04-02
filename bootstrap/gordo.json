@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-03-19T16:39:20Z",
+  "generatedAt": "2026-04-02T14:01:26Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "gordo",
   "dateMin": "2005-01-09",
-  "dateMax": "2026-03-15",
+  "dateMax": "2026-03-29",
   "draws": 1095,
   "historico": [
     {
@@ -27410,6 +27410,36 @@
       "clave": 5,
       "key": 5,
       "secondaryType": "KEY"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-03-22",
+      "main": [
+        11,
+        22,
+        28,
+        48,
+        51
+      ],
+      "secondary": [
+        4
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-03-29",
+      "main": [
+        9,
+        13,
+        34,
+        35,
+        47
+      ],
+      "secondary": [
+        0
+      ],
+      "source": "selae-real-chrome-detail"
     }
   ],
   "matrix": {
@@ -54716,9 +54746,16 @@
       },
       {
         "id": "gordo::2026-03-01",
-        "gameId": "gordo",
         "game": "gordo",
         "date": "2026-03-01",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 7,
+        "weekday": 7,
+        "weekdayLetter": "D",
         "numbers": [
           3,
           13,
@@ -54726,18 +54763,13 @@
           45,
           52
         ],
+        "complementario": "🔑0",
         "secondary": [
           0
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 7,
-        "weekday": 7,
-        "weekdayLetter": "D"
+        "createdAt": "2026-03-01T21:05:49.281Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "gordo"
       },
       {
         "id": "gordo::2026-03-08",
@@ -54745,6 +54777,13 @@
         "game": "gordo",
         "date": "2026-03-08",
         "numbers": [
+          14,
+          26,
+          46,
+          48,
+          49
+        ],
+        "main": [
           14,
           26,
           46,
@@ -54762,7 +54801,8 @@
         "week": 10,
         "weekDay": 7,
         "weekday": 7,
-        "weekdayLetter": "D"
+        "weekdayLetter": "D",
+        "source": "selae-real-chrome-detail"
       },
       {
         "id": "gordo::2026-03-15",
@@ -54770,6 +54810,13 @@
         "game": "gordo",
         "date": "2026-03-15",
         "numbers": [
+          11,
+          13,
+          21,
+          26,
+          30
+        ],
+        "main": [
           11,
           13,
           21,
@@ -54787,7 +54834,41 @@
         "week": 11,
         "weekDay": 7,
         "weekday": 7,
-        "weekdayLetter": "D"
+        "weekdayLetter": "D",
+        "source": "selae-real-chrome-detail",
+        "clave": 5,
+        "key": 5,
+        "secondaryType": "KEY"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-03-22",
+        "main": [
+          11,
+          22,
+          28,
+          48,
+          51
+        ],
+        "secondary": [
+          4
+        ],
+        "source": "selae-real-chrome-detail"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-03-29",
+        "main": [
+          9,
+          13,
+          34,
+          35,
+          47
+        ],
+        "secondary": [
+          0
+        ],
+        "source": "selae-real-chrome-detail"
       }
     ],
     "oracle_counts": [

@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-03-19T16:39:20Z",
+  "generatedAt": "2026-04-02T14:01:26Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "euromillones",
   "dateMin": "2004-02-13",
-  "dateMax": "2026-03-17",
+  "dateMax": "2026-03-31",
   "draws": 1926,
   "historico": [
     {
@@ -50134,6 +50134,70 @@
         9
       ],
       "secondaryType": "STAR"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-03-20",
+      "main": [
+        5,
+        12,
+        16,
+        37,
+        46
+      ],
+      "secondary": [
+        8,
+        10
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-03-24",
+      "main": [
+        12,
+        16,
+        17,
+        18,
+        27
+      ],
+      "secondary": [
+        1,
+        3
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-03-27",
+      "main": [
+        4,
+        10,
+        43,
+        44,
+        48
+      ],
+      "secondary": [
+        2,
+        4
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-03-31",
+      "main": [
+        5,
+        8,
+        10,
+        33,
+        38
+      ],
+      "secondary": [
+        2,
+        7
+      ],
+      "source": "selae-real-chrome"
     }
   ],
   "matrix": {
@@ -100034,9 +100098,16 @@
       },
       {
         "id": "euromillones::2026-02-24",
-        "gameId": "euromillones",
         "game": "euromillones",
         "date": "2026-02-24",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 2,
+        "weekday": 2,
+        "weekdayLetter": "M",
         "numbers": [
           10,
           27,
@@ -100044,25 +100115,27 @@
           43,
           47
         ],
+        "complementario": null,
         "secondary": [
           6,
           10
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 2,
-        "weekday": 2,
-        "weekdayLetter": "M"
+        "createdAt": "2026-02-24T22:23:20.869Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "euromillones"
       },
       {
         "id": "euromillones::2026-02-27",
-        "gameId": "euromillones",
         "game": "euromillones",
         "date": "2026-02-27",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V",
         "numbers": [
           14,
           24,
@@ -100070,25 +100143,27 @@
           39,
           42
         ],
+        "complementario": "⭐6 ⭐10",
         "secondary": [
           6,
           10
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 5,
-        "weekday": 5,
-        "weekdayLetter": "V"
+        "createdAt": "2026-02-28T12:17:24.147Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "euromillones"
       },
       {
         "id": "euromillones::2026-03-03",
-        "gameId": "euromillones",
         "game": "euromillones",
         "date": "2026-03-03",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 2,
+        "weekday": 2,
+        "weekdayLetter": "M",
         "numbers": [
           6,
           7,
@@ -100096,25 +100171,27 @@
           34,
           50
         ],
+        "complementario": "⭐5 ⭐7",
         "secondary": [
           5,
           7
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 2,
-        "weekday": 2,
-        "weekdayLetter": "M"
+        "createdAt": "2026-03-03T22:00:32.362Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "euromillones"
       },
       {
         "id": "euromillones::2026-03-06",
-        "gameId": "euromillones",
         "game": "euromillones",
         "date": "2026-03-06",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V",
         "numbers": [
           15,
           16,
@@ -100122,25 +100199,27 @@
           28,
           37
         ],
+        "complementario": null,
         "secondary": [
           6,
           9
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 5,
-        "weekday": 5,
-        "weekdayLetter": "V"
+        "createdAt": "2026-03-06T22:00:25.839Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "euromillones"
       },
       {
         "id": "euromillones::2026-03-10",
-        "gameId": "euromillones",
         "game": "euromillones",
         "date": "2026-03-10",
+        "year": 2026,
+        "week": 11,
+        "isoYear": 2026,
+        "isoWeek": 11,
+        "weekKey": 202611,
+        "weekDay": 2,
+        "weekday": 2,
+        "weekdayLetter": "M",
         "numbers": [
           12,
           14,
@@ -100148,19 +100227,14 @@
           44,
           50
         ],
+        "complementario": "⭐4 ⭐12",
         "secondary": [
           4,
           12
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 11,
-        "weekKey": 202611,
-        "year": 2026,
-        "week": 11,
-        "weekDay": 2,
-        "weekday": 2,
-        "weekdayLetter": "M"
+        "createdAt": "2026-03-10T21:55:32.771Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "euromillones"
       },
       {
         "id": "euromillones::2026-03-13",
@@ -100168,6 +100242,13 @@
         "game": "euromillones",
         "date": "2026-03-13",
         "numbers": [
+          13,
+          17,
+          26,
+          41,
+          48
+        ],
+        "main": [
           13,
           17,
           26,
@@ -100186,7 +100267,17 @@
         "week": 11,
         "weekDay": 5,
         "weekday": 5,
-        "weekdayLetter": "V"
+        "weekdayLetter": "V",
+        "source": "selae-real-chrome",
+        "estrellas": [
+          4,
+          10
+        ],
+        "stars": [
+          4,
+          10
+        ],
+        "secondaryType": "STAR"
       },
       {
         "id": "euromillones::2026-03-17",
@@ -100194,6 +100285,13 @@
         "game": "euromillones",
         "date": "2026-03-17",
         "numbers": [
+          5,
+          17,
+          28,
+          33,
+          41
+        ],
+        "main": [
           5,
           17,
           28,
@@ -100212,7 +100310,81 @@
         "week": 12,
         "weekDay": 2,
         "weekday": 2,
-        "weekdayLetter": "M"
+        "weekdayLetter": "M",
+        "source": "selae-real-chrome",
+        "estrellas": [
+          3,
+          9
+        ],
+        "stars": [
+          3,
+          9
+        ],
+        "secondaryType": "STAR"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-03-20",
+        "main": [
+          5,
+          12,
+          16,
+          37,
+          46
+        ],
+        "secondary": [
+          8,
+          10
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-03-24",
+        "main": [
+          12,
+          16,
+          17,
+          18,
+          27
+        ],
+        "secondary": [
+          1,
+          3
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-03-27",
+        "main": [
+          4,
+          10,
+          43,
+          44,
+          48
+        ],
+        "secondary": [
+          2,
+          4
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-03-31",
+        "main": [
+          5,
+          8,
+          10,
+          33,
+          38
+        ],
+        "secondary": [
+          2,
+          7
+        ],
+        "source": "selae-real-chrome"
       }
     ],
     "oracle_counts": [

@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = ROOT / "manifest.json"
+BOOTSTRAP_MONTHLY_DIR = ROOT / "bootstrap-monthly"
 
 
 def utc_now_z() -> str:
@@ -47,17 +48,45 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def detect_draws_key(payload: dict) -> str:
+def detect_draws_list(payload: dict) -> list:
     if isinstance(payload.get("draws"), list):
-        return "draws"
+        return payload["draws"]
+
     if isinstance(payload.get("items"), list):
-        return "items"
+        return payload["items"]
+
+    if isinstance(payload.get("historico"), list):
+        return payload["historico"]
+
+    matrix = payload.get("matrix")
+    if isinstance(matrix, dict) and isinstance(matrix.get("draws"), list):
+        return matrix["draws"]
+
     raise RuntimeError("No se encontró lista de sorteos en el payload.")
 
 
-def detect_draws_list(payload: dict) -> list:
-    key = detect_draws_key(payload)
-    return payload[key]
+def set_draws_list(payload: dict, draws: list) -> None:
+    updated = False
+
+    if isinstance(payload.get("draws"), list):
+        payload["draws"] = draws
+        updated = True
+
+    if isinstance(payload.get("items"), list):
+        payload["items"] = draws
+        updated = True
+
+    if isinstance(payload.get("historico"), list):
+        payload["historico"] = draws
+        updated = True
+
+    matrix = payload.get("matrix")
+    if isinstance(matrix, dict) and isinstance(matrix.get("draws"), list):
+        payload["matrix"]["draws"] = draws
+        updated = True
+
+    if not updated:
+        raise RuntimeError("No se pudo escribir la lista de sorteos en el payload.")
 
 
 def extract_date(draw: dict) -> str:
@@ -78,6 +107,29 @@ def month_is_closed(month_str: str, today_month: str) -> bool:
     # "2026-03" < "2026-04" funciona bien en formato YYYY-MM
     return month_str < today_month
 
+
+def discover_closed_monthly_entries(today_month: str) -> list[dict]:
+    entries = []
+
+    if not BOOTSTRAP_MONTHLY_DIR.exists():
+        return entries
+
+    for gz_path in sorted(BOOTSTRAP_MONTHLY_DIR.glob("*/*.json.gz")):
+        game_id = gz_path.parent.name
+        month_str = gz_path.name.removesuffix(".json.gz")
+
+        if not month_is_closed(month_str, today_month):
+            continue
+
+        entries.append(
+            {
+                "gameId": game_id,
+                "month": month_str,
+                "path": gz_path.relative_to(ROOT).as_posix(),
+            }
+        )
+
+    return entries
 
 def update_common_payload_metadata(payload: dict, draws: list) -> None:
     if not draws:
@@ -111,10 +163,7 @@ def main() -> None:
     manifest = load_json(MANIFEST_PATH)
     today_month = date.today().strftime("%Y-%m")
 
-    monthly = manifest.get("monthly", {})
-    monthly_files = monthly.get("files", [])
-
-    closed_entries = [m for m in monthly_files if month_is_closed(m["month"], today_month)]
+    closed_entries = discover_closed_monthly_entries(today_month)
 
     if not closed_entries:
         print("No hay meses cerrados para promocionar.")
@@ -142,7 +191,6 @@ def main() -> None:
 
         base_gz_path = ROOT / base_entry["path"]
         base_payload = load_gzip_json(base_gz_path)
-        base_key = detect_draws_key(base_payload)
         base_draws = detect_draws_list(base_payload)
 
         existing = {draw_key(d): d for d in base_draws}
@@ -160,7 +208,7 @@ def main() -> None:
                     added_here += 1
 
         merged_draws = sorted(existing.values(), key=extract_date)
-        base_payload[base_key] = merged_draws
+        set_draws_list(base_payload, merged_draws)
         update_common_payload_metadata(base_payload, merged_draws)
 
         # Guardar base .json.gz y alt .json

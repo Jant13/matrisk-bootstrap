@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-03-19T16:39:20Z",
+  "generatedAt": "2026-04-02T14:01:26Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "primitiva",
   "dateMin": "1996-01-04",
-  "dateMax": "2026-03-16",
+  "dateMax": "2026-03-30",
   "draws": 3327,
   "historico": [
     {
@@ -79913,6 +79913,114 @@
       "weekday": 1,
       "weekdayLetter": "L",
       "source": "selae-real-chrome"
+    },
+    {
+      "id": "primitiva::2026-03-19",
+      "gameId": "primitiva",
+      "game": "primitiva",
+      "date": "2026-03-19",
+      "numbers": [
+        10,
+        17,
+        18,
+        30,
+        34,
+        45
+      ],
+      "secondary": [],
+      "complementario": 6,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 4,
+      "weekday": 4,
+      "weekdayLetter": "J"
+    },
+    {
+      "id": "primitiva::2026-03-21",
+      "gameId": "primitiva",
+      "game": "primitiva",
+      "date": "2026-03-21",
+      "numbers": [
+        18,
+        32,
+        37,
+        39,
+        42,
+        47
+      ],
+      "secondary": [],
+      "complementario": 4,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 6,
+      "weekday": 6,
+      "weekdayLetter": "S"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-03-23",
+      "main": [
+        2,
+        6,
+        13,
+        17,
+        33,
+        39
+      ],
+      "complementario": 46,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-03-26",
+      "main": [
+        3,
+        15,
+        25,
+        38,
+        44,
+        46
+      ],
+      "complementario": 21,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-03-28",
+      "main": [
+        6,
+        10,
+        32,
+        33,
+        36,
+        48
+      ],
+      "complementario": 29,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-03-30",
+      "main": [
+        3,
+        12,
+        16,
+        23,
+        28,
+        36
+      ],
+      "complementario": 37,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
     }
   ],
   "matrix": {
@@ -159551,9 +159659,16 @@
       },
       {
         "id": "primitiva::2026-02-26",
-        "gameId": "primitiva",
         "game": "primitiva",
         "date": "2026-02-26",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 4,
+        "weekday": 4,
+        "weekdayLetter": "J",
         "numbers": [
           3,
           9,
@@ -159562,22 +159677,26 @@
           25,
           39
         ],
-        "secondary": [],
         "complementario": 29,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 4,
-        "weekday": 4,
-        "weekdayLetter": "J"
+        "secondary": [
+          29
+        ],
+        "createdAt": "2026-02-26T20:50:52.158Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "primitiva"
       },
       {
         "id": "primitiva::2026-02-28",
-        "gameId": "primitiva",
         "game": "primitiva",
         "date": "2026-02-28",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 6,
+        "weekday": 6,
+        "weekdayLetter": "S",
         "numbers": [
           4,
           5,
@@ -159586,22 +159705,26 @@
           24,
           47
         ],
-        "secondary": [],
         "complementario": 1,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 6,
-        "weekday": 6,
-        "weekdayLetter": "S"
+        "secondary": [
+          1
+        ],
+        "createdAt": "2026-02-28T20:54:42.189Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "primitiva"
       },
       {
         "id": "primitiva::2026-03-02",
-        "gameId": "primitiva",
         "game": "primitiva",
         "date": "2026-03-02",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 1,
+        "weekday": 1,
+        "weekdayLetter": "L",
         "numbers": [
           11,
           15,
@@ -159610,22 +159733,26 @@
           30,
           46
         ],
-        "secondary": [],
         "complementario": 6,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 1,
-        "weekday": 1,
-        "weekdayLetter": "L"
+        "secondary": [
+          6
+        ],
+        "createdAt": "2026-03-02T21:28:32.187Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "primitiva"
       },
       {
         "id": "primitiva::2026-03-05",
-        "gameId": "primitiva",
         "game": "primitiva",
         "date": "2026-03-05",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 4,
+        "weekday": 4,
+        "weekdayLetter": "J",
         "numbers": [
           5,
           8,
@@ -159634,22 +159761,26 @@
           45,
           48
         ],
-        "secondary": [],
         "complementario": 7,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 4,
-        "weekday": 4,
-        "weekdayLetter": "J"
+        "secondary": [
+          7
+        ],
+        "createdAt": "2026-03-05T21:45:16.279Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "primitiva"
       },
       {
         "id": "primitiva::2026-03-07",
-        "gameId": "primitiva",
         "game": "primitiva",
         "date": "2026-03-07",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 6,
+        "weekday": 6,
+        "weekdayLetter": "S",
         "numbers": [
           4,
           13,
@@ -159658,22 +159789,26 @@
           42,
           49
         ],
-        "secondary": [],
         "complementario": 5,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 6,
-        "weekday": 6,
-        "weekdayLetter": "S"
+        "secondary": [
+          5
+        ],
+        "createdAt": "2026-03-08T17:14:19.344Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "primitiva"
       },
       {
         "id": "primitiva::2026-03-09",
-        "gameId": "primitiva",
         "game": "primitiva",
         "date": "2026-03-09",
+        "year": 2026,
+        "week": 11,
+        "isoYear": 2026,
+        "isoWeek": 11,
+        "weekKey": 202611,
+        "weekDay": 1,
+        "weekday": 1,
+        "weekdayLetter": "L",
         "numbers": [
           3,
           7,
@@ -159682,16 +159817,13 @@
           42,
           44
         ],
-        "secondary": [],
         "complementario": 32,
-        "isoYear": 2026,
-        "isoWeek": 11,
-        "weekKey": 202611,
-        "year": 2026,
-        "week": 11,
-        "weekDay": 1,
-        "weekday": 1,
-        "weekdayLetter": "L"
+        "secondary": [
+          32
+        ],
+        "createdAt": "2026-03-09T21:01:27.940Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "primitiva"
       },
       {
         "id": "primitiva::2026-03-12",
@@ -159699,6 +159831,14 @@
         "game": "primitiva",
         "date": "2026-03-12",
         "numbers": [
+          5,
+          12,
+          16,
+          22,
+          29,
+          36
+        ],
+        "main": [
           5,
           12,
           16,
@@ -159715,7 +159855,8 @@
         "week": 11,
         "weekDay": 4,
         "weekday": 4,
-        "weekdayLetter": "J"
+        "weekdayLetter": "J",
+        "source": "selae-real-chrome"
       },
       {
         "id": "primitiva::2026-03-14",
@@ -159723,6 +159864,14 @@
         "game": "primitiva",
         "date": "2026-03-14",
         "numbers": [
+          1,
+          7,
+          12,
+          16,
+          24,
+          45
+        ],
+        "main": [
           1,
           7,
           12,
@@ -159739,7 +159888,8 @@
         "week": 11,
         "weekDay": 6,
         "weekday": 6,
-        "weekdayLetter": "S"
+        "weekdayLetter": "S",
+        "source": "selae-real-chrome"
       },
       {
         "id": "primitiva::2026-03-16",
@@ -159747,6 +159897,14 @@
         "game": "primitiva",
         "date": "2026-03-16",
         "numbers": [
+          5,
+          8,
+          23,
+          28,
+          40,
+          44
+        ],
+        "main": [
           5,
           8,
           23,
@@ -159763,7 +159921,116 @@
         "week": 12,
         "weekDay": 1,
         "weekday": 1,
-        "weekdayLetter": "L"
+        "weekdayLetter": "L",
+        "source": "selae-real-chrome"
+      },
+      {
+        "id": "primitiva::2026-03-19",
+        "gameId": "primitiva",
+        "game": "primitiva",
+        "date": "2026-03-19",
+        "numbers": [
+          10,
+          17,
+          18,
+          30,
+          34,
+          45
+        ],
+        "secondary": [],
+        "complementario": 6,
+        "isoYear": 2026,
+        "isoWeek": 12,
+        "weekKey": 202612,
+        "year": 2026,
+        "week": 12,
+        "weekDay": 4,
+        "weekday": 4,
+        "weekdayLetter": "J"
+      },
+      {
+        "id": "primitiva::2026-03-21",
+        "gameId": "primitiva",
+        "game": "primitiva",
+        "date": "2026-03-21",
+        "numbers": [
+          18,
+          32,
+          37,
+          39,
+          42,
+          47
+        ],
+        "secondary": [],
+        "complementario": 4,
+        "isoYear": 2026,
+        "isoWeek": 12,
+        "weekKey": 202612,
+        "year": 2026,
+        "week": 12,
+        "weekDay": 6,
+        "weekday": 6,
+        "weekdayLetter": "S"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-03-23",
+        "main": [
+          2,
+          6,
+          13,
+          17,
+          33,
+          39
+        ],
+        "complementario": 46,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-03-26",
+        "main": [
+          3,
+          15,
+          25,
+          38,
+          44,
+          46
+        ],
+        "complementario": 21,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-03-28",
+        "main": [
+          6,
+          10,
+          32,
+          33,
+          36,
+          48
+        ],
+        "complementario": 29,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-03-30",
+        "main": [
+          3,
+          12,
+          16,
+          23,
+          28,
+          36
+        ],
+        "complementario": 37,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
       }
     ],
     "oracle_counts": [

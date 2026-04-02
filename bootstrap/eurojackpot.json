@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-03-19T16:39:20Z",
+  "generatedAt": "2026-04-02T14:01:25Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "eurojackpot",
   "dateMin": "2012-03-23",
-  "dateMax": "2026-03-17",
+  "dateMax": "2026-03-31",
   "draws": 938,
   "historico": [
     {
@@ -24450,6 +24450,70 @@
         11
       ],
       "secondaryType": "SUN"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-03-20",
+      "main": [
+        2,
+        17,
+        21,
+        25,
+        30
+      ],
+      "secondary": [
+        2,
+        6
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-03-24",
+      "main": [
+        9,
+        15,
+        23,
+        43,
+        48
+      ],
+      "secondary": [
+        3,
+        5
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-03-27",
+      "main": [
+        21,
+        23,
+        25,
+        38,
+        40
+      ],
+      "secondary": [
+        7,
+        11
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-03-31",
+      "main": [
+        5,
+        15,
+        18,
+        20,
+        35
+      ],
+      "secondary": [
+        7,
+        8
+      ],
+      "source": "once-html-current"
     }
   ],
   "matrix": {
@@ -48688,9 +48752,16 @@
       },
       {
         "id": "eurojackpot::2026-02-27",
-        "gameId": "eurojackpot",
         "game": "eurojackpot",
         "date": "2026-02-27",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V",
         "numbers": [
           7,
           17,
@@ -48698,25 +48769,27 @@
           28,
           47
         ],
+        "complementario": "☀️2 ☀️7",
         "secondary": [
           2,
           7
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 5,
-        "weekday": 5,
-        "weekdayLetter": "V"
+        "createdAt": "2026-02-27T22:14:17.491Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "eurojackpot"
       },
       {
         "id": "eurojackpot::2026-03-03",
-        "gameId": "eurojackpot",
         "game": "eurojackpot",
         "date": "2026-03-03",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 2,
+        "weekday": 2,
+        "weekdayLetter": "M",
         "numbers": [
           1,
           9,
@@ -48724,19 +48797,14 @@
           35,
           49
         ],
+        "complementario": "☀️2 ☀️10",
         "secondary": [
           2,
           10
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 2,
-        "weekday": 2,
-        "weekdayLetter": "M"
+        "createdAt": "2026-03-03T20:16:43.071Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "eurojackpot"
       },
       {
         "id": "eurojackpot::2026-03-06",
@@ -48744,6 +48812,13 @@
         "game": "eurojackpot",
         "date": "2026-03-06",
         "numbers": [
+          8,
+          17,
+          26,
+          31,
+          47
+        ],
+        "main": [
           8,
           17,
           26,
@@ -48762,13 +48837,21 @@
         "week": 10,
         "weekDay": 5,
         "weekday": 5,
-        "weekdayLetter": "V"
+        "weekdayLetter": "V",
+        "source": "remote-manifest"
       },
       {
         "id": "eurojackpot::2026-03-10",
-        "gameId": "eurojackpot",
         "game": "eurojackpot",
         "date": "2026-03-10",
+        "year": 2026,
+        "week": 11,
+        "isoYear": 2026,
+        "isoWeek": 11,
+        "weekKey": 202611,
+        "weekDay": 2,
+        "weekday": 2,
+        "weekdayLetter": "M",
         "numbers": [
           2,
           3,
@@ -48776,19 +48859,14 @@
           18,
           28
         ],
+        "complementario": "☀️4 ☀️10",
         "secondary": [
           4,
           10
         ],
-        "complementario": null,
-        "isoYear": 2026,
-        "isoWeek": 11,
-        "weekKey": 202611,
-        "year": 2026,
-        "week": 11,
-        "weekDay": 2,
-        "weekday": 2,
-        "weekdayLetter": "M"
+        "createdAt": "2026-03-10T21:54:05.126Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "eurojackpot"
       },
       {
         "id": "eurojackpot::2026-03-13",
@@ -48796,6 +48874,13 @@
         "game": "eurojackpot",
         "date": "2026-03-13",
         "numbers": [
+          7,
+          23,
+          37,
+          44,
+          47
+        ],
+        "main": [
           7,
           23,
           37,
@@ -48814,7 +48899,17 @@
         "week": 11,
         "weekDay": 5,
         "weekday": 5,
-        "weekdayLetter": "V"
+        "weekdayLetter": "V",
+        "source": "once-html-current",
+        "soles": [
+          2,
+          6
+        ],
+        "suns": [
+          2,
+          6
+        ],
+        "secondaryType": "SUN"
       },
       {
         "id": "eurojackpot::2026-03-17",
@@ -48822,6 +48917,13 @@
         "game": "eurojackpot",
         "date": "2026-03-17",
         "numbers": [
+          12,
+          13,
+          16,
+          17,
+          37
+        ],
+        "main": [
           12,
           13,
           16,
@@ -48840,7 +48942,81 @@
         "week": 12,
         "weekDay": 2,
         "weekday": 2,
-        "weekdayLetter": "M"
+        "weekdayLetter": "M",
+        "source": "once-html-current",
+        "soles": [
+          4,
+          11
+        ],
+        "suns": [
+          4,
+          11
+        ],
+        "secondaryType": "SUN"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-03-20",
+        "main": [
+          2,
+          17,
+          21,
+          25,
+          30
+        ],
+        "secondary": [
+          2,
+          6
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-03-24",
+        "main": [
+          9,
+          15,
+          23,
+          43,
+          48
+        ],
+        "secondary": [
+          3,
+          5
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-03-27",
+        "main": [
+          21,
+          23,
+          25,
+          38,
+          40
+        ],
+        "secondary": [
+          7,
+          11
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-03-31",
+        "main": [
+          5,
+          15,
+          18,
+          20,
+          35
+        ],
+        "secondary": [
+          7,
+          8
+        ],
+        "source": "once-html-current"
       }
     ],
     "oracle_counts": [

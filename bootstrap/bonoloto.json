@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-03-19T16:39:20Z",
+  "generatedAt": "2026-04-02T14:01:25Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "bonoloto",
   "dateMin": "1996-01-01",
-  "dateMax": "2026-03-18",
+  "dateMax": "2026-03-31",
   "draws": 7572,
   "historico": [
     {
@@ -181866,6 +181866,237 @@
       "weekday": 3,
       "weekdayLetter": "X",
       "source": "selae-real-chrome"
+    },
+    {
+      "id": "bonoloto::2026-03-19",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-19",
+      "numbers": [
+        3,
+        6,
+        16,
+        17,
+        48,
+        49
+      ],
+      "secondary": [],
+      "complementario": 43,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 4,
+      "weekday": 4,
+      "weekdayLetter": "J"
+    },
+    {
+      "id": "bonoloto::2026-03-20",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-20",
+      "numbers": [
+        3,
+        5,
+        11,
+        20,
+        28,
+        43
+      ],
+      "secondary": [],
+      "complementario": 10,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 5,
+      "weekday": 5,
+      "weekdayLetter": "V"
+    },
+    {
+      "id": "bonoloto::2026-03-21",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-21",
+      "numbers": [
+        9,
+        15,
+        20,
+        21,
+        26,
+        41
+      ],
+      "secondary": [],
+      "complementario": 22,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 6,
+      "weekday": 6,
+      "weekdayLetter": "S"
+    },
+    {
+      "id": "bonoloto::2026-03-22",
+      "gameId": "bonoloto",
+      "game": "bonoloto",
+      "date": "2026-03-22",
+      "numbers": [
+        6,
+        15,
+        25,
+        26,
+        28,
+        30
+      ],
+      "secondary": [],
+      "complementario": 23,
+      "isoYear": 2026,
+      "isoWeek": 12,
+      "weekKey": 202612,
+      "year": 2026,
+      "week": 12,
+      "weekDay": 7,
+      "weekday": 7,
+      "weekdayLetter": "D"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-23",
+      "main": [
+        7,
+        9,
+        13,
+        18,
+        24,
+        30
+      ],
+      "complementario": 43,
+      "reintegro": 2,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-24",
+      "main": [
+        6,
+        10,
+        22,
+        30,
+        39,
+        41
+      ],
+      "complementario": 4,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-25",
+      "main": [
+        3,
+        6,
+        7,
+        10,
+        26,
+        44
+      ],
+      "complementario": 33,
+      "reintegro": 0,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-26",
+      "main": [
+        2,
+        12,
+        31,
+        40,
+        41,
+        46
+      ],
+      "complementario": 49,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-27",
+      "main": [
+        1,
+        6,
+        26,
+        35,
+        42,
+        45
+      ],
+      "complementario": 14,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-28",
+      "main": [
+        6,
+        7,
+        10,
+        14,
+        18,
+        44
+      ],
+      "complementario": 32,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-29",
+      "main": [
+        3,
+        14,
+        15,
+        36,
+        47,
+        48
+      ],
+      "complementario": 26,
+      "reintegro": 2,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-30",
+      "main": [
+        5,
+        28,
+        33,
+        41,
+        43,
+        47
+      ],
+      "complementario": 18,
+      "reintegro": 4,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-03-31",
+      "main": [
+        8,
+        12,
+        15,
+        21,
+        26,
+        40
+      ],
+      "complementario": 39,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
     }
   ],
   "matrix": {
@@ -363096,9 +363327,16 @@
       },
       {
         "id": "bonoloto::2026-02-26",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-02-26",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 4,
+        "weekday": 4,
+        "weekdayLetter": "J",
         "numbers": [
           4,
           11,
@@ -363107,22 +363345,26 @@
           26,
           41
         ],
-        "secondary": [],
         "complementario": 35,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 4,
-        "weekday": 4,
-        "weekdayLetter": "J"
+        "secondary": [
+          35
+        ],
+        "createdAt": "2026-02-26T20:41:39.279Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-02-27",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-02-27",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V",
         "numbers": [
           5,
           6,
@@ -363131,22 +363373,26 @@
           43,
           44
         ],
-        "secondary": [],
         "complementario": 31,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 5,
-        "weekday": 5,
-        "weekdayLetter": "V"
+        "secondary": [
+          31
+        ],
+        "createdAt": "2026-02-27T20:52:02.291Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-02-28",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-02-28",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 6,
+        "weekday": 6,
+        "weekdayLetter": "S",
         "numbers": [
           1,
           2,
@@ -363155,22 +363401,26 @@
           29,
           31
         ],
-        "secondary": [],
         "complementario": 47,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 6,
-        "weekday": 6,
-        "weekdayLetter": "S"
+        "secondary": [
+          47
+        ],
+        "createdAt": "2026-02-28T20:45:27.076Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-01",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-01",
+        "year": 2026,
+        "week": 9,
+        "isoYear": 2026,
+        "isoWeek": 9,
+        "weekKey": 202609,
+        "weekDay": 7,
+        "weekday": 7,
+        "weekdayLetter": "D",
         "numbers": [
           9,
           21,
@@ -363179,22 +363429,26 @@
           45,
           46
         ],
-        "secondary": [],
         "complementario": 27,
-        "isoYear": 2026,
-        "isoWeek": 9,
-        "weekKey": 202609,
-        "year": 2026,
-        "week": 9,
-        "weekDay": 7,
-        "weekday": 7,
-        "weekdayLetter": "D"
+        "secondary": [
+          27
+        ],
+        "createdAt": "2026-03-02T19:22:49.236Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-02",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-02",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 1,
+        "weekday": 1,
+        "weekdayLetter": "L",
         "numbers": [
           3,
           12,
@@ -363203,22 +363457,26 @@
           42,
           44
         ],
-        "secondary": [],
         "complementario": 49,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 1,
-        "weekday": 1,
-        "weekdayLetter": "L"
+        "secondary": [
+          49
+        ],
+        "createdAt": "2026-03-02T21:22:23.176Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-03",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-03",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 2,
+        "weekday": 2,
+        "weekdayLetter": "M",
         "numbers": [
           4,
           29,
@@ -363227,22 +363485,26 @@
           43,
           49
         ],
-        "secondary": [],
         "complementario": 11,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 2,
-        "weekday": 2,
-        "weekdayLetter": "M"
+        "secondary": [
+          11
+        ],
+        "createdAt": "2026-03-03T20:41:34.780Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-04",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-04",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 3,
+        "weekday": 3,
+        "weekdayLetter": "X",
         "numbers": [
           16,
           19,
@@ -363251,22 +363513,26 @@
           29,
           47
         ],
-        "secondary": [],
         "complementario": 41,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 3,
-        "weekday": 3,
-        "weekdayLetter": "X"
+        "secondary": [
+          41
+        ],
+        "createdAt": "2026-03-04T20:41:23.934Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-05",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-05",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 4,
+        "weekday": 4,
+        "weekdayLetter": "J",
         "numbers": [
           1,
           11,
@@ -363275,22 +363541,26 @@
           41,
           43
         ],
-        "secondary": [],
         "complementario": 18,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 4,
-        "weekday": 4,
-        "weekdayLetter": "J"
+        "secondary": [
+          18
+        ],
+        "createdAt": "2026-03-05T21:42:03.541Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-06",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-06",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V",
         "numbers": [
           1,
           15,
@@ -363299,22 +363569,26 @@
           41,
           47
         ],
-        "secondary": [],
         "complementario": 9,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 5,
-        "weekday": 5,
-        "weekdayLetter": "V"
+        "secondary": [
+          9
+        ],
+        "createdAt": "2026-03-06T21:49:14.949Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-07",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-07",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 6,
+        "weekday": 6,
+        "weekdayLetter": "S",
         "numbers": [
           16,
           30,
@@ -363323,22 +363597,26 @@
           46,
           48
         ],
-        "secondary": [],
         "complementario": 42,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 6,
-        "weekday": 6,
-        "weekdayLetter": "S"
+        "secondary": [
+          42
+        ],
+        "createdAt": "2026-03-08T17:16:26.000Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-08",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-08",
+        "year": 2026,
+        "week": 10,
+        "isoYear": 2026,
+        "isoWeek": 10,
+        "weekKey": 202610,
+        "weekDay": 7,
+        "weekday": 7,
+        "weekdayLetter": "D",
         "numbers": [
           14,
           15,
@@ -363347,16 +363625,13 @@
           44,
           46
         ],
-        "secondary": [],
         "complementario": 11,
-        "isoYear": 2026,
-        "isoWeek": 10,
-        "weekKey": 202610,
-        "year": 2026,
-        "week": 10,
-        "weekDay": 7,
-        "weekday": 7,
-        "weekdayLetter": "D"
+        "secondary": [
+          11
+        ],
+        "createdAt": "2026-03-08T21:36:55.083Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-09",
@@ -363364,6 +363639,14 @@
         "game": "bonoloto",
         "date": "2026-03-09",
         "numbers": [
+          7,
+          9,
+          31,
+          36,
+          41,
+          48
+        ],
+        "main": [
           7,
           9,
           31,
@@ -363380,7 +363663,8 @@
         "week": 11,
         "weekDay": 1,
         "weekday": 1,
-        "weekdayLetter": "L"
+        "weekdayLetter": "L",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-10",
@@ -363388,6 +363672,14 @@
         "game": "bonoloto",
         "date": "2026-03-10",
         "numbers": [
+          3,
+          26,
+          31,
+          35,
+          37,
+          48
+        ],
+        "main": [
           3,
           26,
           31,
@@ -363404,13 +363696,21 @@
         "week": 11,
         "weekDay": 2,
         "weekday": 2,
-        "weekdayLetter": "M"
+        "weekdayLetter": "M",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-11",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-11",
+        "year": 2026,
+        "week": 11,
+        "isoYear": 2026,
+        "isoWeek": 11,
+        "weekKey": 202611,
+        "weekDay": 3,
+        "weekday": 3,
+        "weekdayLetter": "X",
         "numbers": [
           9,
           20,
@@ -363419,16 +363719,13 @@
           33,
           34
         ],
-        "secondary": [],
         "complementario": 49,
-        "isoYear": 2026,
-        "isoWeek": 11,
-        "weekKey": 202611,
-        "year": 2026,
-        "week": 11,
-        "weekDay": 3,
-        "weekday": 3,
-        "weekdayLetter": "X"
+        "secondary": [
+          49
+        ],
+        "createdAt": "2026-03-11T20:49:59.406Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-12",
@@ -363436,6 +363733,14 @@
         "game": "bonoloto",
         "date": "2026-03-12",
         "numbers": [
+          11,
+          14,
+          15,
+          30,
+          33,
+          41
+        ],
+        "main": [
           11,
           14,
           15,
@@ -363452,13 +363757,21 @@
         "week": 11,
         "weekDay": 4,
         "weekday": 4,
-        "weekdayLetter": "J"
+        "weekdayLetter": "J",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-13",
-        "gameId": "bonoloto",
         "game": "bonoloto",
         "date": "2026-03-13",
+        "year": 2026,
+        "week": 11,
+        "isoYear": 2026,
+        "isoWeek": 11,
+        "weekKey": 202611,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V",
         "numbers": [
           11,
           12,
@@ -363467,16 +363780,13 @@
           46,
           49
         ],
-        "secondary": [],
         "complementario": 42,
-        "isoYear": 2026,
-        "isoWeek": 11,
-        "weekKey": 202611,
-        "year": 2026,
-        "week": 11,
-        "weekDay": 5,
-        "weekday": 5,
-        "weekdayLetter": "V"
+        "secondary": [
+          42
+        ],
+        "createdAt": "2026-03-13T21:36:35.173Z",
+        "source": "entrada-manual@phase1",
+        "gameId": "bonoloto"
       },
       {
         "id": "bonoloto::2026-03-14",
@@ -363484,6 +363794,14 @@
         "game": "bonoloto",
         "date": "2026-03-14",
         "numbers": [
+          4,
+          16,
+          22,
+          32,
+          36,
+          42
+        ],
+        "main": [
           4,
           16,
           22,
@@ -363500,7 +363818,8 @@
         "week": 11,
         "weekDay": 6,
         "weekday": 6,
-        "weekdayLetter": "S"
+        "weekdayLetter": "S",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-15",
@@ -363508,6 +363827,14 @@
         "game": "bonoloto",
         "date": "2026-03-15",
         "numbers": [
+          2,
+          20,
+          24,
+          30,
+          36,
+          47
+        ],
+        "main": [
           2,
           20,
           24,
@@ -363524,7 +363851,8 @@
         "week": 11,
         "weekDay": 7,
         "weekday": 7,
-        "weekdayLetter": "D"
+        "weekdayLetter": "D",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-16",
@@ -363532,6 +363860,14 @@
         "game": "bonoloto",
         "date": "2026-03-16",
         "numbers": [
+          8,
+          12,
+          21,
+          32,
+          35,
+          48
+        ],
+        "main": [
           8,
           12,
           21,
@@ -363548,7 +363884,8 @@
         "week": 12,
         "weekDay": 1,
         "weekday": 1,
-        "weekdayLetter": "L"
+        "weekdayLetter": "L",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-17",
@@ -363556,6 +363893,14 @@
         "game": "bonoloto",
         "date": "2026-03-17",
         "numbers": [
+          4,
+          11,
+          13,
+          22,
+          39,
+          43
+        ],
+        "main": [
           4,
           11,
           13,
@@ -363572,7 +363917,8 @@
         "week": 12,
         "weekDay": 2,
         "weekday": 2,
-        "weekdayLetter": "M"
+        "weekdayLetter": "M",
+        "source": "selae-real-chrome"
       },
       {
         "id": "bonoloto::2026-03-18",
@@ -363580,6 +363926,14 @@
         "game": "bonoloto",
         "date": "2026-03-18",
         "numbers": [
+          4,
+          23,
+          29,
+          34,
+          42,
+          46
+        ],
+        "main": [
           4,
           23,
           29,
@@ -363596,7 +363950,239 @@
         "week": 12,
         "weekDay": 3,
         "weekday": 3,
-        "weekdayLetter": "X"
+        "weekdayLetter": "X",
+        "source": "selae-real-chrome"
+      },
+      {
+        "id": "bonoloto::2026-03-19",
+        "gameId": "bonoloto",
+        "game": "bonoloto",
+        "date": "2026-03-19",
+        "numbers": [
+          3,
+          6,
+          16,
+          17,
+          48,
+          49
+        ],
+        "secondary": [],
+        "complementario": 43,
+        "isoYear": 2026,
+        "isoWeek": 12,
+        "weekKey": 202612,
+        "year": 2026,
+        "week": 12,
+        "weekDay": 4,
+        "weekday": 4,
+        "weekdayLetter": "J"
+      },
+      {
+        "id": "bonoloto::2026-03-20",
+        "gameId": "bonoloto",
+        "game": "bonoloto",
+        "date": "2026-03-20",
+        "numbers": [
+          3,
+          5,
+          11,
+          20,
+          28,
+          43
+        ],
+        "secondary": [],
+        "complementario": 10,
+        "isoYear": 2026,
+        "isoWeek": 12,
+        "weekKey": 202612,
+        "year": 2026,
+        "week": 12,
+        "weekDay": 5,
+        "weekday": 5,
+        "weekdayLetter": "V"
+      },
+      {
+        "id": "bonoloto::2026-03-21",
+        "gameId": "bonoloto",
+        "game": "bonoloto",
+        "date": "2026-03-21",
+        "numbers": [
+          9,
+          15,
+          20,
+          21,
+          26,
+          41
+        ],
+        "secondary": [],
+        "complementario": 22,
+        "isoYear": 2026,
+        "isoWeek": 12,
+        "weekKey": 202612,
+        "year": 2026,
+        "week": 12,
+        "weekDay": 6,
+        "weekday": 6,
+        "weekdayLetter": "S"
+      },
+      {
+        "id": "bonoloto::2026-03-22",
+        "gameId": "bonoloto",
+        "game": "bonoloto",
+        "date": "2026-03-22",
+        "numbers": [
+          6,
+          15,
+          25,
+          26,
+          28,
+          30
+        ],
+        "secondary": [],
+        "complementario": 23,
+        "isoYear": 2026,
+        "isoWeek": 12,
+        "weekKey": 202612,
+        "year": 2026,
+        "week": 12,
+        "weekDay": 7,
+        "weekday": 7,
+        "weekdayLetter": "D"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-23",
+        "main": [
+          7,
+          9,
+          13,
+          18,
+          24,
+          30
+        ],
+        "complementario": 43,
+        "reintegro": 2,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-24",
+        "main": [
+          6,
+          10,
+          22,
+          30,
+          39,
+          41
+        ],
+        "complementario": 4,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-25",
+        "main": [
+          3,
+          6,
+          7,
+          10,
+          26,
+          44
+        ],
+        "complementario": 33,
+        "reintegro": 0,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-26",
+        "main": [
+          2,
+          12,
+          31,
+          40,
+          41,
+          46
+        ],
+        "complementario": 49,
+        "reintegro": 9,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-27",
+        "main": [
+          1,
+          6,
+          26,
+          35,
+          42,
+          45
+        ],
+        "complementario": 14,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-28",
+        "main": [
+          6,
+          7,
+          10,
+          14,
+          18,
+          44
+        ],
+        "complementario": 32,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-29",
+        "main": [
+          3,
+          14,
+          15,
+          36,
+          47,
+          48
+        ],
+        "complementario": 26,
+        "reintegro": 2,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-30",
+        "main": [
+          5,
+          28,
+          33,
+          41,
+          43,
+          47
+        ],
+        "complementario": 18,
+        "reintegro": 4,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-03-31",
+        "main": [
+          8,
+          12,
+          15,
+          21,
+          26,
+          40
+        ],
+        "complementario": 39,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
       }
     ],
     "oracle_counts": [
