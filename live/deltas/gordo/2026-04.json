@@ -1,0 +1,22 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "gordo",
+  "month": "2026-04",
+  "draws": [
+    {
+      "gameId": "gordo",
+      "date": "2026-04-05",
+      "main": [
+        6,
+        18,
+        23,
+        39,
+        42
+      ],
+      "secondary": [
+        3
+      ],
+      "source": "selae-real-chrome-detail"
+    }
+  ]
+}
