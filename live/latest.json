@@ -1,6 +1,6 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-04-07T01:32:01Z",
+  "generatedAt": "2026-04-07T19:32:04Z",
   "draws": [
     {
       "gameId": "bonoloto",
@@ -182,6 +182,22 @@
       ],
       "complementario": 28,
       "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-04-07",
+      "main": [
+        11,
+        14,
+        19,
+        36,
+        49
+      ],
+      "secondary": [
+        6,
+        7
+      ],
       "source": "selae-real-chrome"
     }
   ]
