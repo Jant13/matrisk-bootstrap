@@ -199,8 +199,8 @@
   "monthly": {
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-03-31",
-    "combinedDateMax": "2026-04-13",
-    "drawsTotal": 27,
+    "combinedDateMax": "2026-04-14",
+    "drawsTotal": 28,
     "files": [
       {
         "id": "bonoloto-2026-04",
@@ -237,9 +237,9 @@
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 3,
+        "draws": 4,
         "dateMin": "2026-04-03",
-        "dateMax": "2026-04-10"
+        "dateMax": "2026-04-14"
       },
       {
         "id": "gordo-2026-04",
