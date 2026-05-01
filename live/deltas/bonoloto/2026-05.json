@@ -1,0 +1,22 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "bonoloto",
+  "month": "2026-05",
+  "draws": [
+    {
+      "gameId": "bonoloto",
+      "date": "2026-05-01",
+      "main": [
+        13,
+        24,
+        26,
+        37,
+        45,
+        47
+      ],
+      "complementario": 7,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    }
+  ]
+}
