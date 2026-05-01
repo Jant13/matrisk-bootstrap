@@ -1,6 +1,7 @@
 {
-  "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-05-01T19:32:11Z",
+  "schema": "matrisk-live-delta",
+  "gameId": "euromillones",
+  "month": "2026-05",
   "draws": [
     {
       "gameId": "euromillones",
