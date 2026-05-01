@@ -1,0 +1,23 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "eurojackpot",
+  "month": "2026-05",
+  "draws": [
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-05-01",
+      "main": [
+        10,
+        11,
+        13,
+        16,
+        27
+      ],
+      "secondary": [
+        5,
+        7
+      ],
+      "source": "once-html-current"
+    }
+  ]
+}
