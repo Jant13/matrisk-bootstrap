@@ -18,6 +18,22 @@
         7
       ],
       "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-05-05",
+      "main": [
+        1,
+        30,
+        33,
+        34,
+        43
+      ],
+      "secondary": [
+        5,
+        10
+      ],
+      "source": "once-html-current"
     }
   ]
 }
