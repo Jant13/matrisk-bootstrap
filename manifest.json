@@ -199,8 +199,8 @@
   "monthly": {
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-04-30",
-    "combinedDateMax": "2026-05-18",
-    "drawsTotal": 39,
+    "combinedDateMax": "2026-05-19",
+    "drawsTotal": 41,
     "files": [
       {
         "id": "bonoloto-2026-05",
@@ -211,9 +211,9 @@
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 18,
+        "draws": 19,
         "dateMin": "2026-05-01",
-        "dateMax": "2026-05-18"
+        "dateMax": "2026-05-19"
       },
       {
         "id": "eurojackpot-2026-05",
@@ -237,9 +237,9 @@
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 5,
+        "draws": 6,
         "dateMin": "2026-05-01",
-        "dateMax": "2026-05-15"
+        "dateMax": "2026-05-19"
       },
       {
         "id": "gordo-2026-05",
