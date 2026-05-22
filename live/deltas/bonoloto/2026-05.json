@@ -317,6 +317,21 @@
       "complementario": 16,
       "reintegro": 9,
       "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-05-22",
+      "main": [
+        1,
+        10,
+        16,
+        20,
+        29,
+        47
+      ],
+      "complementario": 19,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
     }
   ]
 }
