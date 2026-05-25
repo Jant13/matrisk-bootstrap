@@ -1,6 +1,6 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-05-25T19:47:01Z",
+  "generatedAt": "2026-05-25T20:02:01Z",
   "draws": [
     {
       "gameId": "bonoloto",
@@ -795,6 +795,36 @@
         8
       ],
       "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-05-25",
+      "main": [
+        1,
+        13,
+        19,
+        21,
+        39,
+        48
+      ],
+      "complementario": 6,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-05-25",
+      "main": [
+        5,
+        7,
+        22,
+        36,
+        42,
+        43
+      ],
+      "complementario": 27,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
     }
   ]
 }
