@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-05-01T02:10:02Z",
+  "generatedAt": "2026-06-01T02:10:02Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "euromillones",
   "dateMin": "2004-02-13",
-  "dateMax": "2026-04-28",
+  "dateMax": "2026-05-29",
   "draws": 1926,
   "historico": [
     {
@@ -50324,6 +50324,150 @@
       "secondary": [
         8,
         9
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-01",
+      "main": [
+        3,
+        9,
+        42,
+        46,
+        47
+      ],
+      "secondary": [
+        1,
+        11
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-05",
+      "main": [
+        3,
+        4,
+        8,
+        20,
+        31
+      ],
+      "secondary": [
+        6,
+        8
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-08",
+      "main": [
+        2,
+        17,
+        19,
+        34,
+        37
+      ],
+      "secondary": [
+        8,
+        11
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-12",
+      "main": [
+        4,
+        26,
+        32,
+        35,
+        36
+      ],
+      "secondary": [
+        5,
+        7
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-15",
+      "main": [
+        3,
+        10,
+        38,
+        41,
+        43
+      ],
+      "secondary": [
+        2,
+        9
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-19",
+      "main": [
+        2,
+        12,
+        20,
+        38,
+        45
+      ],
+      "secondary": [
+        2,
+        5
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-22",
+      "main": [
+        6,
+        22,
+        26,
+        31,
+        37
+      ],
+      "secondary": [
+        5,
+        8
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-26",
+      "main": [
+        6,
+        23,
+        25,
+        35,
+        37
+      ],
+      "secondary": [
+        6,
+        12
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-05-29",
+      "main": [
+        5,
+        14,
+        18,
+        31,
+        35
+      ],
+      "secondary": [
+        2,
+        12
       ],
       "source": "selae-real-chrome"
     }
@@ -100639,6 +100783,150 @@
         "secondary": [
           8,
           9
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-01",
+        "main": [
+          3,
+          9,
+          42,
+          46,
+          47
+        ],
+        "secondary": [
+          1,
+          11
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-05",
+        "main": [
+          3,
+          4,
+          8,
+          20,
+          31
+        ],
+        "secondary": [
+          6,
+          8
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-08",
+        "main": [
+          2,
+          17,
+          19,
+          34,
+          37
+        ],
+        "secondary": [
+          8,
+          11
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-12",
+        "main": [
+          4,
+          26,
+          32,
+          35,
+          36
+        ],
+        "secondary": [
+          5,
+          7
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-15",
+        "main": [
+          3,
+          10,
+          38,
+          41,
+          43
+        ],
+        "secondary": [
+          2,
+          9
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-19",
+        "main": [
+          2,
+          12,
+          20,
+          38,
+          45
+        ],
+        "secondary": [
+          2,
+          5
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-22",
+        "main": [
+          6,
+          22,
+          26,
+          31,
+          37
+        ],
+        "secondary": [
+          5,
+          8
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-26",
+        "main": [
+          6,
+          23,
+          25,
+          35,
+          37
+        ],
+        "secondary": [
+          6,
+          12
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "euromillones",
+        "date": "2026-05-29",
+        "main": [
+          5,
+          14,
+          18,
+          31,
+          35
+        ],
+        "secondary": [
+          2,
+          12
         ],
         "source": "selae-real-chrome"
       }

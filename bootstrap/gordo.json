@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-05-01T02:10:02Z",
+  "generatedAt": "2026-06-01T02:10:02Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "gordo",
   "dateMin": "2005-01-09",
-  "dateMax": "2026-04-26",
+  "dateMax": "2026-05-31",
   "draws": 1095,
   "historico": [
     {
@@ -27495,6 +27495,81 @@
         24,
         40,
         54
+      ],
+      "secondary": [
+        4
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-05-03",
+      "main": [
+        6,
+        30,
+        39,
+        49,
+        50
+      ],
+      "secondary": [
+        2
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-05-10",
+      "main": [
+        17,
+        34,
+        42,
+        43,
+        53
+      ],
+      "secondary": [
+        7
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-05-17",
+      "main": [
+        2,
+        4,
+        10,
+        27,
+        50
+      ],
+      "secondary": [
+        9
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-05-24",
+      "main": [
+        4,
+        17,
+        38,
+        41,
+        52
+      ],
+      "secondary": [
+        8
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-05-31",
+      "main": [
+        28,
+        29,
+        41,
+        45,
+        52
       ],
       "secondary": [
         4
@@ -54984,6 +55059,81 @@
           24,
           40,
           54
+        ],
+        "secondary": [
+          4
+        ],
+        "source": "selae-real-chrome-detail"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-05-03",
+        "main": [
+          6,
+          30,
+          39,
+          49,
+          50
+        ],
+        "secondary": [
+          2
+        ],
+        "source": "selae-real-chrome-detail"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-05-10",
+        "main": [
+          17,
+          34,
+          42,
+          43,
+          53
+        ],
+        "secondary": [
+          7
+        ],
+        "source": "selae-real-chrome-detail"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-05-17",
+        "main": [
+          2,
+          4,
+          10,
+          27,
+          50
+        ],
+        "secondary": [
+          9
+        ],
+        "source": "selae-real-chrome-detail"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-05-24",
+        "main": [
+          4,
+          17,
+          38,
+          41,
+          52
+        ],
+        "secondary": [
+          8
+        ],
+        "source": "selae-real-chrome-detail"
+      },
+      {
+        "gameId": "gordo",
+        "date": "2026-05-31",
+        "main": [
+          28,
+          29,
+          41,
+          45,
+          52
         ],
         "secondary": [
           4

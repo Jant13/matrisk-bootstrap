@@ -2,12 +2,12 @@
   "schema": "matrisk-bootstrap-manifest",
   "manifestVersion": 2,
   "bootstrapMode": "modular",
-  "generatedAt": "2026-05-01T02:10:03Z",
+  "generatedAt": "2026-06-01T02:10:03Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "sourceOfTruth": "backup-json",
   "overall": {
     "dateMin": "1996-01-01",
-    "dateMax": "2026-04-30",
+    "dateMax": "2026-05-31",
     "games": [
       "bonoloto",
       "primitiva",
@@ -15,54 +15,54 @@
       "gordo",
       "eurojackpot"
     ],
-    "drawsTotal": 14950
+    "drawsTotal": 15017
   },
   "games": {
     "bonoloto": {
-      "draws": 7615,
+      "draws": 7646,
       "dateMin": "1996-01-01",
-      "dateMax": "2026-04-30",
-      "matrixDraws": 7615,
+      "dateMax": "2026-05-31",
+      "matrixDraws": 7646,
       "oracleCounts": 49,
       "metaEntries": 8,
       "path": "bootstrap/bonoloto.json.gz",
       "altPath": "bootstrap/bonoloto.json"
     },
     "primitiva": {
-      "draws": 3346,
+      "draws": 3359,
       "dateMin": "1996-01-04",
-      "dateMax": "2026-04-30",
-      "matrixDraws": 3346,
+      "dateMax": "2026-05-30",
+      "matrixDraws": 3359,
       "oracleCounts": 49,
       "metaEntries": 8,
       "path": "bootstrap/primitiva.json.gz",
       "altPath": "bootstrap/primitiva.json"
     },
     "euromillones": {
-      "draws": 1938,
+      "draws": 1947,
       "dateMin": "2004-02-13",
-      "dateMax": "2026-04-28",
-      "matrixDraws": 1938,
+      "dateMax": "2026-05-29",
+      "matrixDraws": 1947,
       "oracleCounts": 50,
       "metaEntries": 8,
       "path": "bootstrap/euromillones.json.gz",
       "altPath": "bootstrap/euromillones.json"
     },
     "gordo": {
-      "draws": 1101,
+      "draws": 1106,
       "dateMin": "2005-01-09",
-      "dateMax": "2026-04-26",
-      "matrixDraws": 1101,
+      "dateMax": "2026-05-31",
+      "matrixDraws": 1106,
       "oracleCounts": 54,
       "metaEntries": 8,
       "path": "bootstrap/gordo.json.gz",
       "altPath": "bootstrap/gordo.json"
     },
     "eurojackpot": {
-      "draws": 950,
+      "draws": 959,
       "dateMin": "2012-03-23",
-      "dateMax": "2026-04-28",
-      "matrixDraws": 950,
+      "dateMax": "2026-05-29",
+      "matrixDraws": 959,
       "oracleCounts": 50,
       "metaEntries": 8,
       "path": "bootstrap/eurojackpot.json.gz",
@@ -82,17 +82,17 @@
         "historico": 3,
         "matrix": 8
       },
-      "bytesCompressed": 613788,
-      "bytesUncompressed": 10028989,
-      "sha256": "91930aa02c891a7879ced6bd4362a2d33edcea6236cffdfaa9d8c73f1de83e94",
-      "draws": 7615,
+      "bytesCompressed": 614767,
+      "bytesUncompressed": 10046333,
+      "sha256": "f44d60283d2031767bfda19bd220c98a11b23ac9d8676b682fe11f50dd5a4d1f",
+      "draws": 7646,
       "dateMin": "1996-01-01",
-      "dateMax": "2026-04-30",
+      "dateMax": "2026-05-31",
       "alt": {
         "path": "bootstrap/bonoloto.json",
         "format": "json",
-        "bytes": 10028989,
-        "sha256": "c0e7b1686614309be19f9fcb021b3c62e13d1d12c907fcdb66535412bd3ef443"
+        "bytes": 10046333,
+        "sha256": "f63bd120ce0aa27e52ea113cc43e0bb38665657e6e232d76dfb06b3443bba54b"
       }
     },
     {
@@ -107,17 +107,17 @@
         "historico": 3,
         "matrix": 8
       },
-      "bytesCompressed": 283909,
-      "bytesUncompressed": 4555545,
-      "sha256": "9244d6c91530d17fb5861a73fbf9c3dc329aae6ec4f094dbf400eaa15205acaf",
-      "draws": 3346,
+      "bytesCompressed": 284350,
+      "bytesUncompressed": 4562843,
+      "sha256": "aefcbf1cea943e417c883ed6c63fdb6d96e31a974ffcc31532256e2cc784a7e2",
+      "draws": 3359,
       "dateMin": "1996-01-04",
-      "dateMax": "2026-04-30",
+      "dateMax": "2026-05-30",
       "alt": {
         "path": "bootstrap/primitiva.json",
         "format": "json",
-        "bytes": 4555545,
-        "sha256": "2897cb5159ce5c5307d687a7d79be6338da305bd1fb066c9bf3393b8426fc18c"
+        "bytes": 4562843,
+        "sha256": "5f4807a0cbdd63b5573639ae312b1231d187ed72b33463f01b5302f723a2367d"
       }
     },
     {
@@ -132,17 +132,17 @@
         "historico": 3,
         "matrix": 8
       },
-      "bytesCompressed": 149616,
-      "bytesUncompressed": 2611874,
-      "sha256": "4b6204178a3515f34e9ecaa32905034315201a0c744cce48a8a315853522cf28",
-      "draws": 1938,
+      "bytesCompressed": 149910,
+      "bytesUncompressed": 2616826,
+      "sha256": "b28e01bc5bb4516268ff17d1aebadf7c52f4ca1db6936799bf566bd0a8129d6d",
+      "draws": 1947,
       "dateMin": "2004-02-13",
-      "dateMax": "2026-04-28",
+      "dateMax": "2026-05-29",
       "alt": {
         "path": "bootstrap/euromillones.json",
         "format": "json",
-        "bytes": 2611874,
-        "sha256": "07f83ede49cc5985f54415ca96ac776395a9a63620badac5d6a43010399703a8"
+        "bytes": 2616826,
+        "sha256": "5f95bfac0e30e1e1e04cb8f03d53b8f918e07f5becdc4bec15591d981d67146d"
       }
     },
     {
@@ -157,17 +157,17 @@
         "historico": 3,
         "matrix": 8
       },
-      "bytesCompressed": 89630,
-      "bytesUncompressed": 1440222,
-      "sha256": "576441899f440ef2e8ef849f424d9d8ed588aaee8a60cee86d1950754b39126e",
-      "draws": 1101,
+      "bytesCompressed": 89789,
+      "bytesUncompressed": 1442844,
+      "sha256": "d007751d677dcc2a95016af85a0dc5a744321e0fd378ba741f4f05e1c53c75fa",
+      "draws": 1106,
       "dateMin": "2005-01-09",
-      "dateMax": "2026-04-26",
+      "dateMax": "2026-05-31",
       "alt": {
         "path": "bootstrap/gordo.json",
         "format": "json",
-        "bytes": 1440222,
-        "sha256": "a3c7f1694799650811919d5e00b3c0945f1d8bd5164e999d926b46835563b499"
+        "bytes": 1442844,
+        "sha256": "4a2fe9e70389713d1864ee8fd043ec4d6e06dd4f1a6c6517cf7fcc4e7c5d9aa4"
       }
     },
     {
@@ -182,24 +182,24 @@
         "historico": 3,
         "matrix": 8
       },
-      "bytesCompressed": 77011,
-      "bytesUncompressed": 1298565,
-      "sha256": "31f6f37e0586240db855d721624b103b8ae143256184b2814ba031811c8a861f",
-      "draws": 950,
+      "bytesCompressed": 77263,
+      "bytesUncompressed": 1303513,
+      "sha256": "04f9acd8d7c321046c54e7c38ac8275e68fe92080f600ffc8b2b32724ff23867",
+      "draws": 959,
       "dateMin": "2012-03-23",
-      "dateMax": "2026-04-28",
+      "dateMax": "2026-05-29",
       "alt": {
         "path": "bootstrap/eurojackpot.json",
         "format": "json",
-        "bytes": 1298565,
-        "sha256": "ac3b95b1c4d5e469fa1e69fa70463149e8556ba9b587ab3b3344cb4665512df4"
+        "bytes": 1303513,
+        "sha256": "97c5825cc54cf23a0f8efc9508bc651afc08f7d70538831713d7ccc84f2e4519"
       }
     }
   ],
   "monthly": {
     "mode": "per-game-per-month",
-    "baseHistoricalDateMax": "2026-04-30",
-    "combinedDateMax": "2026-04-30",
+    "baseHistoricalDateMax": "2026-05-31",
+    "combinedDateMax": "2026-05-31",
     "drawsTotal": 0,
     "files": []
   }
