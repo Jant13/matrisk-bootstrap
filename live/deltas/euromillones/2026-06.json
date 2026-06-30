@@ -130,6 +130,22 @@
         12
       ],
       "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "euromillones",
+      "date": "2026-06-30",
+      "main": [
+        1,
+        8,
+        37,
+        44,
+        48
+      ],
+      "secondary": [
+        2,
+        6
+      ],
+      "source": "selae-real-chrome"
     }
   ]
 }
