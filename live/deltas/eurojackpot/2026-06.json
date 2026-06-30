@@ -130,6 +130,22 @@
         9
       ],
       "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-06-30",
+      "main": [
+        12,
+        19,
+        34,
+        44,
+        50
+      ],
+      "secondary": [
+        3,
+        8
+      ],
+      "source": "once-html-current"
     }
   ]
 }
