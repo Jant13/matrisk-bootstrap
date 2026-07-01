@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-06-01T02:10:01Z",
+  "generatedAt": "2026-07-01T02:10:02Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "bonoloto",
   "dateMin": "1996-01-01",
-  "dateMax": "2026-05-31",
+  "dateMax": "2026-06-30",
   "draws": 7572,
   "historico": [
     {
@@ -183011,6 +183011,456 @@
       ],
       "complementario": 9,
       "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-01",
+      "main": [
+        6,
+        10,
+        23,
+        30,
+        46,
+        48
+      ],
+      "complementario": 29,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-02",
+      "main": [
+        1,
+        22,
+        33,
+        36,
+        40,
+        41
+      ],
+      "complementario": 49,
+      "reintegro": 7,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-03",
+      "main": [
+        15,
+        18,
+        23,
+        30,
+        34,
+        42
+      ],
+      "complementario": 8,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-04",
+      "main": [
+        1,
+        13,
+        18,
+        28,
+        32,
+        44
+      ],
+      "complementario": 35,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-05",
+      "main": [
+        4,
+        12,
+        17,
+        25,
+        27,
+        32
+      ],
+      "complementario": 28,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-06",
+      "main": [
+        10,
+        12,
+        13,
+        15,
+        20,
+        28
+      ],
+      "complementario": 44,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-07",
+      "main": [
+        2,
+        32,
+        37,
+        40,
+        43,
+        49
+      ],
+      "complementario": 4,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-08",
+      "main": [
+        6,
+        11,
+        18,
+        38,
+        39,
+        48
+      ],
+      "complementario": 42,
+      "reintegro": 0,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-09",
+      "main": [
+        16,
+        29,
+        33,
+        35,
+        41,
+        49
+      ],
+      "complementario": 14,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-10",
+      "main": [
+        2,
+        3,
+        26,
+        35,
+        43,
+        49
+      ],
+      "complementario": 39,
+      "reintegro": 2,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-11",
+      "main": [
+        4,
+        10,
+        17,
+        20,
+        30,
+        40
+      ],
+      "complementario": 37,
+      "reintegro": 7,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-12",
+      "main": [
+        1,
+        4,
+        21,
+        31,
+        47,
+        48
+      ],
+      "complementario": 26,
+      "reintegro": 7,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-13",
+      "main": [
+        5,
+        7,
+        31,
+        35,
+        37,
+        39
+      ],
+      "complementario": 8,
+      "reintegro": 4,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-14",
+      "main": [
+        10,
+        19,
+        31,
+        36,
+        42,
+        47
+      ],
+      "complementario": 8,
+      "reintegro": 8,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-15",
+      "main": [
+        3,
+        5,
+        12,
+        31,
+        45,
+        46
+      ],
+      "complementario": 34,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-16",
+      "main": [
+        7,
+        11,
+        14,
+        24,
+        28,
+        40
+      ],
+      "complementario": 1,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-17",
+      "main": [
+        16,
+        19,
+        21,
+        23,
+        40,
+        47
+      ],
+      "complementario": 38,
+      "reintegro": 1,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-18",
+      "main": [
+        2,
+        14,
+        18,
+        29,
+        37,
+        43
+      ],
+      "complementario": 11,
+      "reintegro": 2,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-19",
+      "main": [
+        19,
+        24,
+        26,
+        28,
+        32,
+        40
+      ],
+      "complementario": 12,
+      "reintegro": 7,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-20",
+      "main": [
+        6,
+        29,
+        31,
+        32,
+        39,
+        45
+      ],
+      "complementario": 26,
+      "reintegro": 4,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-21",
+      "main": [
+        13,
+        14,
+        22,
+        25,
+        27,
+        32
+      ],
+      "complementario": 16,
+      "reintegro": 0,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-22",
+      "main": [
+        3,
+        5,
+        9,
+        41,
+        43,
+        44
+      ],
+      "complementario": 47,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-23",
+      "main": [
+        8,
+        16,
+        18,
+        24,
+        41,
+        49
+      ],
+      "complementario": 31,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-24",
+      "main": [
+        1,
+        15,
+        22,
+        31,
+        39,
+        45
+      ],
+      "complementario": 6,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-25",
+      "main": [
+        2,
+        9,
+        26,
+        34,
+        37,
+        47
+      ],
+      "complementario": 21,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-26",
+      "main": [
+        5,
+        6,
+        10,
+        12,
+        35,
+        47
+      ],
+      "complementario": 45,
+      "reintegro": 8,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-27",
+      "main": [
+        11,
+        12,
+        23,
+        27,
+        34,
+        48
+      ],
+      "complementario": 18,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-28",
+      "main": [
+        15,
+        25,
+        27,
+        32,
+        40,
+        43
+      ],
+      "complementario": 42,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-29",
+      "main": [
+        11,
+        12,
+        21,
+        22,
+        42,
+        46
+      ],
+      "complementario": 18,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-06-30",
+      "main": [
+        6,
+        17,
+        33,
+        39,
+        43,
+        47
+      ],
+      "complementario": 29,
+      "reintegro": 2,
       "source": "selae-real-chrome"
     }
   ],
@@ -366012,6 +366462,456 @@
         ],
         "complementario": 9,
         "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-01",
+        "main": [
+          6,
+          10,
+          23,
+          30,
+          46,
+          48
+        ],
+        "complementario": 29,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-02",
+        "main": [
+          1,
+          22,
+          33,
+          36,
+          40,
+          41
+        ],
+        "complementario": 49,
+        "reintegro": 7,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-03",
+        "main": [
+          15,
+          18,
+          23,
+          30,
+          34,
+          42
+        ],
+        "complementario": 8,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-04",
+        "main": [
+          1,
+          13,
+          18,
+          28,
+          32,
+          44
+        ],
+        "complementario": 35,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-05",
+        "main": [
+          4,
+          12,
+          17,
+          25,
+          27,
+          32
+        ],
+        "complementario": 28,
+        "reintegro": 9,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-06",
+        "main": [
+          10,
+          12,
+          13,
+          15,
+          20,
+          28
+        ],
+        "complementario": 44,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-07",
+        "main": [
+          2,
+          32,
+          37,
+          40,
+          43,
+          49
+        ],
+        "complementario": 4,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-08",
+        "main": [
+          6,
+          11,
+          18,
+          38,
+          39,
+          48
+        ],
+        "complementario": 42,
+        "reintegro": 0,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-09",
+        "main": [
+          16,
+          29,
+          33,
+          35,
+          41,
+          49
+        ],
+        "complementario": 14,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-10",
+        "main": [
+          2,
+          3,
+          26,
+          35,
+          43,
+          49
+        ],
+        "complementario": 39,
+        "reintegro": 2,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-11",
+        "main": [
+          4,
+          10,
+          17,
+          20,
+          30,
+          40
+        ],
+        "complementario": 37,
+        "reintegro": 7,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-12",
+        "main": [
+          1,
+          4,
+          21,
+          31,
+          47,
+          48
+        ],
+        "complementario": 26,
+        "reintegro": 7,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-13",
+        "main": [
+          5,
+          7,
+          31,
+          35,
+          37,
+          39
+        ],
+        "complementario": 8,
+        "reintegro": 4,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-14",
+        "main": [
+          10,
+          19,
+          31,
+          36,
+          42,
+          47
+        ],
+        "complementario": 8,
+        "reintegro": 8,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-15",
+        "main": [
+          3,
+          5,
+          12,
+          31,
+          45,
+          46
+        ],
+        "complementario": 34,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-16",
+        "main": [
+          7,
+          11,
+          14,
+          24,
+          28,
+          40
+        ],
+        "complementario": 1,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-17",
+        "main": [
+          16,
+          19,
+          21,
+          23,
+          40,
+          47
+        ],
+        "complementario": 38,
+        "reintegro": 1,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-18",
+        "main": [
+          2,
+          14,
+          18,
+          29,
+          37,
+          43
+        ],
+        "complementario": 11,
+        "reintegro": 2,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-19",
+        "main": [
+          19,
+          24,
+          26,
+          28,
+          32,
+          40
+        ],
+        "complementario": 12,
+        "reintegro": 7,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-20",
+        "main": [
+          6,
+          29,
+          31,
+          32,
+          39,
+          45
+        ],
+        "complementario": 26,
+        "reintegro": 4,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-21",
+        "main": [
+          13,
+          14,
+          22,
+          25,
+          27,
+          32
+        ],
+        "complementario": 16,
+        "reintegro": 0,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-22",
+        "main": [
+          3,
+          5,
+          9,
+          41,
+          43,
+          44
+        ],
+        "complementario": 47,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-23",
+        "main": [
+          8,
+          16,
+          18,
+          24,
+          41,
+          49
+        ],
+        "complementario": 31,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-24",
+        "main": [
+          1,
+          15,
+          22,
+          31,
+          39,
+          45
+        ],
+        "complementario": 6,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-25",
+        "main": [
+          2,
+          9,
+          26,
+          34,
+          37,
+          47
+        ],
+        "complementario": 21,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-26",
+        "main": [
+          5,
+          6,
+          10,
+          12,
+          35,
+          47
+        ],
+        "complementario": 45,
+        "reintegro": 8,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-27",
+        "main": [
+          11,
+          12,
+          23,
+          27,
+          34,
+          48
+        ],
+        "complementario": 18,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-28",
+        "main": [
+          15,
+          25,
+          27,
+          32,
+          40,
+          43
+        ],
+        "complementario": 42,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-29",
+        "main": [
+          11,
+          12,
+          21,
+          22,
+          42,
+          46
+        ],
+        "complementario": 18,
+        "reintegro": 9,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "bonoloto",
+        "date": "2026-06-30",
+        "main": [
+          6,
+          17,
+          33,
+          39,
+          43,
+          47
+        ],
+        "complementario": 29,
+        "reintegro": 2,
         "source": "selae-real-chrome"
       }
     ],

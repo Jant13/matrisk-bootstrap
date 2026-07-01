@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-06-01T02:10:02Z",
+  "generatedAt": "2026-07-01T02:10:03Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,7 +12,7 @@
   "appBuild": "Phase61",
   "gameId": "primitiva",
   "dateMin": "1996-01-04",
-  "dateMax": "2026-05-30",
+  "dateMax": "2026-06-29",
   "draws": 3327,
   "historico": [
     {
@@ -80410,6 +80410,201 @@
       ],
       "complementario": 41,
       "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-01",
+      "main": [
+        1,
+        4,
+        11,
+        12,
+        23,
+        39
+      ],
+      "complementario": 27,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-04",
+      "main": [
+        16,
+        25,
+        32,
+        35,
+        38,
+        40
+      ],
+      "complementario": 18,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-06",
+      "main": [
+        1,
+        6,
+        16,
+        17,
+        37,
+        43
+      ],
+      "complementario": 5,
+      "reintegro": 7,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-08",
+      "main": [
+        2,
+        11,
+        13,
+        21,
+        33,
+        48
+      ],
+      "complementario": 46,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-11",
+      "main": [
+        12,
+        15,
+        22,
+        30,
+        32,
+        49
+      ],
+      "complementario": 33,
+      "reintegro": 8,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-13",
+      "main": [
+        18,
+        20,
+        21,
+        23,
+        33,
+        41
+      ],
+      "complementario": 15,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-15",
+      "main": [
+        25,
+        28,
+        29,
+        35,
+        40,
+        41
+      ],
+      "complementario": 24,
+      "reintegro": 1,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-18",
+      "main": [
+        1,
+        10,
+        13,
+        25,
+        27,
+        38
+      ],
+      "complementario": 33,
+      "reintegro": 6,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-20",
+      "main": [
+        7,
+        10,
+        14,
+        33,
+        36,
+        38
+      ],
+      "complementario": 18,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-22",
+      "main": [
+        11,
+        12,
+        14,
+        30,
+        39,
+        43
+      ],
+      "complementario": 42,
+      "reintegro": 0,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-25",
+      "main": [
+        3,
+        10,
+        15,
+        33,
+        37,
+        40
+      ],
+      "complementario": 23,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-27",
+      "main": [
+        1,
+        5,
+        18,
+        36,
+        37,
+        42
+      ],
+      "complementario": 17,
+      "reintegro": 2,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-06-29",
+      "main": [
+        17,
+        18,
+        24,
+        25,
+        43,
+        47
+      ],
+      "complementario": 7,
+      "reintegro": 2,
       "source": "selae-real-chrome"
     }
   ],
@@ -160810,6 +161005,201 @@
         ],
         "complementario": 41,
         "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-01",
+        "main": [
+          1,
+          4,
+          11,
+          12,
+          23,
+          39
+        ],
+        "complementario": 27,
+        "reintegro": 9,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-04",
+        "main": [
+          16,
+          25,
+          32,
+          35,
+          38,
+          40
+        ],
+        "complementario": 18,
+        "reintegro": 9,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-06",
+        "main": [
+          1,
+          6,
+          16,
+          17,
+          37,
+          43
+        ],
+        "complementario": 5,
+        "reintegro": 7,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-08",
+        "main": [
+          2,
+          11,
+          13,
+          21,
+          33,
+          48
+        ],
+        "complementario": 46,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-11",
+        "main": [
+          12,
+          15,
+          22,
+          30,
+          32,
+          49
+        ],
+        "complementario": 33,
+        "reintegro": 8,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-13",
+        "main": [
+          18,
+          20,
+          21,
+          23,
+          33,
+          41
+        ],
+        "complementario": 15,
+        "reintegro": 9,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-15",
+        "main": [
+          25,
+          28,
+          29,
+          35,
+          40,
+          41
+        ],
+        "complementario": 24,
+        "reintegro": 1,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-18",
+        "main": [
+          1,
+          10,
+          13,
+          25,
+          27,
+          38
+        ],
+        "complementario": 33,
+        "reintegro": 6,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-20",
+        "main": [
+          7,
+          10,
+          14,
+          33,
+          36,
+          38
+        ],
+        "complementario": 18,
+        "reintegro": 3,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-22",
+        "main": [
+          11,
+          12,
+          14,
+          30,
+          39,
+          43
+        ],
+        "complementario": 42,
+        "reintegro": 0,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-25",
+        "main": [
+          3,
+          10,
+          15,
+          33,
+          37,
+          40
+        ],
+        "complementario": 23,
+        "reintegro": 5,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-27",
+        "main": [
+          1,
+          5,
+          18,
+          36,
+          37,
+          42
+        ],
+        "complementario": 17,
+        "reintegro": 2,
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "primitiva",
+        "date": "2026-06-29",
+        "main": [
+          17,
+          18,
+          24,
+          25,
+          43,
+          47
+        ],
+        "complementario": 7,
+        "reintegro": 2,
         "source": "selae-real-chrome"
       }
     ],
