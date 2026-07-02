@@ -199,8 +199,8 @@
   "monthly": {
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-06-30",
-    "combinedDateMax": "2026-07-01",
-    "drawsTotal": 1,
+    "combinedDateMax": "2026-07-02",
+    "drawsTotal": 2,
     "files": [
       {
         "id": "bonoloto-2026-07",
@@ -211,9 +211,9 @@
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 1,
+        "draws": 2,
         "dateMin": "2026-07-01",
-        "dateMax": "2026-07-01"
+        "dateMax": "2026-07-02"
       }
     ]
   }
