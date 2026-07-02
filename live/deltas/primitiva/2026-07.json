@@ -1,0 +1,22 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "primitiva",
+  "month": "2026-07",
+  "draws": [
+    {
+      "gameId": "primitiva",
+      "date": "2026-07-02",
+      "main": [
+        5,
+        12,
+        14,
+        33,
+        35,
+        40
+      ],
+      "complementario": 9,
+      "reintegro": 5,
+      "source": "selae-real-chrome"
+    }
+  ]
+}
