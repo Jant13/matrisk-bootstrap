@@ -200,7 +200,7 @@
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-06-30",
     "combinedDateMax": "2026-07-05",
-    "drawsTotal": 9,
+    "drawsTotal": 10,
     "files": [
       {
         "id": "bonoloto-2026-07",
@@ -240,6 +240,19 @@
         "draws": 1,
         "dateMin": "2026-07-03",
         "dateMax": "2026-07-03"
+      },
+      {
+        "id": "gordo-2026-07",
+        "gameId": "gordo",
+        "month": "2026-07",
+        "path": "bootstrap-monthly/gordo/2026-07.json.gz",
+        "format": "gzip+json",
+        "schema": "matrisk-bootstrap-monthly",
+        "backupType": "matrisk_monthly_bootstrap",
+        "backupVersion": 1,
+        "draws": 1,
+        "dateMin": "2026-07-05",
+        "dateMax": "2026-07-05"
       },
       {
         "id": "primitiva-2026-07",
