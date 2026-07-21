@@ -82,6 +82,22 @@
         9
       ],
       "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-07-21",
+      "main": [
+        4,
+        8,
+        10,
+        17,
+        37
+      ],
+      "secondary": [
+        5,
+        7
+      ],
+      "source": "once-html-current"
     }
   ]
 }
