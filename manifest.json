@@ -199,74 +199,8 @@
   "monthly": {
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-06-30",
-    "combinedDateMax": "2026-07-31",
-    "drawsTotal": 65,
-    "files": [
-      {
-        "id": "bonoloto-2026-07",
-        "gameId": "bonoloto",
-        "month": "2026-07",
-        "path": "bootstrap-monthly/bonoloto/2026-07.json.gz",
-        "format": "gzip+json",
-        "schema": "matrisk-bootstrap-monthly",
-        "backupType": "matrisk_monthly_bootstrap",
-        "backupVersion": 1,
-        "draws": 31,
-        "dateMin": "2026-07-01",
-        "dateMax": "2026-07-31"
-      },
-      {
-        "id": "eurojackpot-2026-07",
-        "gameId": "eurojackpot",
-        "month": "2026-07",
-        "path": "bootstrap-monthly/eurojackpot/2026-07.json.gz",
-        "format": "gzip+json",
-        "schema": "matrisk-bootstrap-monthly",
-        "backupType": "matrisk_monthly_bootstrap",
-        "backupVersion": 1,
-        "draws": 8,
-        "dateMin": "2026-07-03",
-        "dateMax": "2026-07-28"
-      },
-      {
-        "id": "euromillones-2026-07",
-        "gameId": "euromillones",
-        "month": "2026-07",
-        "path": "bootstrap-monthly/euromillones/2026-07.json.gz",
-        "format": "gzip+json",
-        "schema": "matrisk-bootstrap-monthly",
-        "backupType": "matrisk_monthly_bootstrap",
-        "backupVersion": 1,
-        "draws": 9,
-        "dateMin": "2026-07-03",
-        "dateMax": "2026-07-31"
-      },
-      {
-        "id": "gordo-2026-07",
-        "gameId": "gordo",
-        "month": "2026-07",
-        "path": "bootstrap-monthly/gordo/2026-07.json.gz",
-        "format": "gzip+json",
-        "schema": "matrisk-bootstrap-monthly",
-        "backupType": "matrisk_monthly_bootstrap",
-        "backupVersion": 1,
-        "draws": 4,
-        "dateMin": "2026-07-05",
-        "dateMax": "2026-07-26"
-      },
-      {
-        "id": "primitiva-2026-07",
-        "gameId": "primitiva",
-        "month": "2026-07",
-        "path": "bootstrap-monthly/primitiva/2026-07.json.gz",
-        "format": "gzip+json",
-        "schema": "matrisk-bootstrap-monthly",
-        "backupType": "matrisk_monthly_bootstrap",
-        "backupVersion": 1,
-        "draws": 13,
-        "dateMin": "2026-07-02",
-        "dateMax": "2026-07-30"
-      }
-    ]
+    "combinedDateMax": "2026-06-30",
+    "drawsTotal": 0,
+    "files": []
   }
 }
