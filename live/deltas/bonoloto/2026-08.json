@@ -1,6 +1,7 @@
 {
-  "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-08-01T19:47:11Z",
+  "schema": "matrisk-live-delta",
+  "gameId": "bonoloto",
+  "month": "2026-08",
   "draws": [
     {
       "gameId": "bonoloto",
