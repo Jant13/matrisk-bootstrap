@@ -1,0 +1,23 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "euromillones",
+  "month": "2026-08",
+  "draws": [
+    {
+      "gameId": "euromillones",
+      "date": "2026-08-04",
+      "main": [
+        25,
+        30,
+        34,
+        46,
+        50
+      ],
+      "secondary": [
+        1,
+        12
+      ],
+      "source": "selae-real-chrome"
+    }
+  ]
+}
