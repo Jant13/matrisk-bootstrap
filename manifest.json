@@ -13,9 +13,10 @@
       "primitiva",
       "euromillones",
       "gordo",
-      "eurojackpot"
+      "eurojackpot",
+      "eurodreams"
     ],
-    "drawsTotal": 15214
+    "drawsTotal": 15509
   },
   "games": {
     "bonoloto": {
@@ -67,6 +68,16 @@
       "metaEntries": 8,
       "path": "bootstrap/eurojackpot.json.gz",
       "altPath": "bootstrap/eurojackpot.json"
+    },
+    "eurodreams": {
+      "draws": 295,
+      "dateMin": "2023-11-06",
+      "dateMax": "2026-08-31",
+      "matrixDraws": 295,
+      "oracleCounts": 40,
+      "metaEntries": 8,
+      "path": "bootstrap/eurodreams.json.gz",
+      "altPath": "bootstrap/eurodreams.json"
     }
   },
   "files": [
@@ -194,13 +205,38 @@
         "bytes": 1317777,
         "sha256": "9fadc1fccc9dd125a7c99a075d91946a7161cff6a3fa690cc6d7a3e08ee7c8b9"
       }
+    },
+    {
+      "id": "eurodreams",
+      "gameId": "eurodreams",
+      "path": "bootstrap/eurodreams.json.gz",
+      "format": "gzip+json",
+      "schema": "matrisk-bootstrap-game",
+      "backupType": "matrisk_data_backup",
+      "backupVersion": 2,
+      "dbSchemaVersion": {
+        "historico": 3,
+        "matrix": 8
+      },
+      "bytesCompressed": 26821,
+      "bytesUncompressed": 519470,
+      "sha256": "1775f6cd17ce02af81bd4c0b99c002e316bac40753a2595daa3d17eba61e2ee4",
+      "draws": 295,
+      "dateMin": "2023-11-06",
+      "dateMax": "2026-08-31",
+      "alt": {
+        "path": "bootstrap/eurodreams.json",
+        "format": "json",
+        "bytes": 519470,
+        "sha256": "d9993f192cb0b050ba5ab210dac86a2e183af7110a23af813c950c798ff08c12"
+      }
     }
   ],
   "monthly": {
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-08-31",
     "combinedDateMax": "2026-09-26",
-    "drawsTotal": 56,
+    "drawsTotal": 63,
     "files": [
       {
         "id": "bonoloto-2026-09",
@@ -214,6 +250,19 @@
         "draws": 26,
         "dateMin": "2026-09-01",
         "dateMax": "2026-09-26"
+      },
+      {
+        "id": "eurodreams-2026-09",
+        "gameId": "eurodreams",
+        "month": "2026-09",
+        "path": "bootstrap-monthly/eurodreams/2026-09.json.gz",
+        "format": "gzip+json",
+        "schema": "matrisk-bootstrap-monthly",
+        "backupType": "matrisk_monthly_bootstrap",
+        "backupVersion": 1,
+        "draws": 7,
+        "dateMin": "2026-09-03",
+        "dateMax": "2026-09-24"
       },
       {
         "id": "eurojackpot-2026-09",
