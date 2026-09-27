@@ -31,6 +31,10 @@ DEBUG_GORDO_HTML = ROOT / "live" / "_gordo_debug.html"
 DEBUG_GORDO_TEXT = ROOT / "live" / "_gordo_debug.txt"
 DEBUG_GORDO_BLOCK = ROOT / "live" / "_gordo_block_debug.txt"
 
+DEBUG_EDREAMS_HTML = ROOT / "live" / "_eurodreams_debug.html"
+DEBUG_EDREAMS_TEXT = ROOT / "live" / "_eurodreams_debug.txt"
+DEBUG_EDREAMS_BLOCK = ROOT / "live" / "_eurodreams_block_debug.txt"
+
 CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 
 EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
@@ -38,6 +42,7 @@ PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
 EUROMILLONES_URL = "https://www.loteriasyapuestas.es/es/resultados/euromillones"
 GORDO_URL = "https://www.loteriasyapuestas.es/es/gordo-primitiva/resultados"
 BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
+EURODREAMS_URL = "https://www.loteriasyapuestas.es/es/resultados/eurodreams"
 
 TIMEOUT = 30
 WEEKDAYS_RE = r"(lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo)"
@@ -46,6 +51,7 @@ BONOLOTO_READY_RE = rf"BONOLOTO\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
 PRIMITIVA_READY_RE = rf"LA PRIMITIVA\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
 EUROMILLONES_READY_RE = rf"EUROMILLONES\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
 GORDO_DETAIL_READY_RE = r"resultados del \d{2} de [a-záéíóú]+ de \d{4}"
+EURODREAMS_READY_RE = rf"EURODREAMS\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}"
 
 MONTHS_ES = {
     "enero": "01",
@@ -538,6 +544,60 @@ def parse_euromillones_text(rendered_text: str) -> Draw:
 
 
 # =========================================================
+# EURODREAMS
+# =========================================================
+def parse_eurodreams_text(rendered_text: str) -> Draw:
+    normalized = normalize_text(rendered_text)
+    DEBUG_EDREAMS_TEXT.write_text(normalized, encoding="utf-8")
+
+    pattern = re.compile(
+        rf"EURODREAMS\s+{WEEKDAYS_RE}\s*-\s*(\d{{2}}/\d{{2}}/\d{{4}})(.*?)(?=EURODREAMS\s+{WEEKDAYS_RE}\s*-\s*\d{{2}}/\d{{2}}/\d{{4}}|BUSCAR SORTEOS|$)",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+    matches = list(pattern.finditer(normalized))
+    if not matches:
+        raise ValueError("No pude localizar el primer bloque real de resultados de EURODREAMS.")
+
+    for m in matches:
+        date_es = m.group(2)
+        body = m.group(3)
+        block = body[:1800]
+        DEBUG_EDREAMS_BLOCK.write_text(
+            f"DATE={date_es}\n\nBLOCK:\n{block}\n",
+            encoding="utf-8",
+        )
+
+        # En SELAE aparecen dos órdenes de los 6 números antes de SUEÑO.
+        # Tomamos los primeros 6 valores válidos (1..40), que forman la misma combinación.
+        before_sueno = re.split(r"SUE[NÑ]O", block, maxsplit=1, flags=re.IGNORECASE)[0]
+        values = [int(x) for x in re.findall(r"\b\d{1,2}\b", before_sueno)]
+        main = [v for v in values if 1 <= v <= 40][:6]
+        if len(main) != 6:
+            continue
+
+        sueno_match = re.search(r"SUE[NÑ]O\s*([1-5])\b", block, flags=re.IGNORECASE)
+        if not sueno_match:
+            continue
+        sueno = int(sueno_match.group(1))
+
+        day, month, year = date_es.split("/")
+        date_str = f"{year}-{month}-{day}"
+
+        return Draw(
+            gameId="eurodreams",
+            date=date_str,
+            main=main,
+            secondary=[sueno],
+            source="selae-real-chrome",
+        )
+
+    raise ValueError(
+        f"Encontré bloques de EuroDreams, pero no pude extraer 6 números + Sueño válidos. Revisa: {DEBUG_EDREAMS_BLOCK}"
+    )
+
+
+# =========================================================
 # EL GORDO DE LA PRIMITIVA
 # =========================================================
 def parse_gordo_text(rendered_text: str) -> Draw:
@@ -667,6 +727,25 @@ def main() -> None:
     except Exception as e:
         errors.append(f"Eurojackpot: {e}")
         print(f"Eurojackpot ERROR: {e}")
+
+    try:
+        eurodreams_text = fetch_selae_text_with_real_chrome(
+            EURODREAMS_URL,
+            "EuroDreams",
+            DEBUG_EDREAMS_HTML,
+            DEBUG_EDREAMS_TEXT,
+            EURODREAMS_READY_RE,
+        )
+        eurodreams = parse_eurodreams_text(eurodreams_text)
+        if is_after_cutoff_draw(eurodreams, cutoffs):
+            draws_by_key[draw_key(eurodreams)] = draw_to_dict(eurodreams)
+        print(
+            f"EuroDreams OK: {eurodreams.date} {eurodreams.main} "
+            f"+ {eurodreams.secondary}"
+        )
+    except Exception as e:
+        errors.append(f"EuroDreams: {e}")
+        print(f"EuroDreams ERROR: {e}")
 
     try:
         primitiva_text = fetch_selae_text_with_real_chrome(
