@@ -17,6 +17,7 @@ VALID_GAMES = {
     "euromillones",
     "gordo",
     "eurojackpot",
+    "eurodreams",
 }
 
 
