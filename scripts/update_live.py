@@ -113,63 +113,63 @@ def parse_eurodreams_selae(html: str) -> Draw:
     text = BeautifulSoup(html, "html.parser").get_text("\n")
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     
-        date_es = None
-        for line in lines:
-            m = re.search(r"(\d{2}/\d{2}/\d{4})", line)
-            if m:
-                date_es = m.group(1)
-                break
+    date_es = None
+    for line in lines:
+        m = re.search(r"(\d{2}/\d{2}/\d{4})", line)
+        if m:
+            date_es = m.group(1)
+            break
     
-        if not date_es:
-            raise ValueError("No pude extraer la fecha del último sorteo de EuroDreams.")
+    if not date_es:
+        raise ValueError("No pude extraer la fecha del último sorteo de EuroDreams.")
     
-        day, month, year = date_es.split("/")
-        date_str = f"{year}-{month}-{day}"
+    day, month, year = date_es.split("/")
+    date_str = f"{year}-{month}-{day}"
     
-        main = []
+    main = []
     
-        for i, line in enumerate(lines):
-            if "Ver por orden de aparición" in line:
-                j = i + 1
-                while j < len(lines) and len(main) < 6:
-                    if re.fullmatch(r"\d{1,2}", lines[j]):
-                        value = int(lines[j])
+    for i, line in enumerate(lines):
+        if "Ver por orden de aparición" in line:
+            j = i + 1
+            while j < len(lines) and len(main) < 6:
+                if re.fullmatch(r"\d{1,2}", lines[j]):
+                    value = int(lines[j])
     
-                        if 1 <= value <= 40:
-                            main.append(value)
+                    if 1 <= value <= 40:
+                        main.append(value)
     
-                    j += 1
+                j += 1
     
-                break
+            break
     
-        if len(main) != 6:
-            raise ValueError(
-                f"No pude extraer los 6 números principales de EuroDreams. Detectados: {main}"
-            )
+    if len(main) != 6:
+        raise ValueError(
+            f"No pude extraer los 6 números principales de EuroDreams. Detectados: {main}"
+        )
     
-        sueno = None
+    sueno = None
     
-        for i, line in enumerate(lines):
-            if re.search(r"SUE[NÑ]O", line, flags=re.IGNORECASE):
-                for candidate in lines[i:i + 4]:
-                    m = re.fullmatch(r"[1-5]", candidate)
+    for i, line in enumerate(lines):
+        if re.search(r"SUE[NÑ]O", line, flags=re.IGNORECASE):
+            for candidate in lines[i:i + 4]:
+                m = re.fullmatch(r"[1-5]", candidate)
     
-                    if m:
-                        sueno = int(candidate)
-                        break
+                if m:
+                    sueno = int(candidate)
+                    break
     
             if sueno is not None:
                 break
     
-        if sueno is None:
-            raise ValueError("No pude extraer el Sueño de EuroDreams.")
+    if sueno is None:
+        raise ValueError("No pude extraer el Sueño de EuroDreams.")
     
-        return Draw(
-            gameId="eurodreams",
-            date=date_str,
-            main=main,
-            secondary=[sueno],
-        )
+    return Draw(
+        gameId="eurodreams",
+        date=date_str,
+        main=main,
+        secondary=[sueno],
+    )
 
 
 def parse_bonoloto_selae(html: str) -> Draw:
