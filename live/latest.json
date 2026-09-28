@@ -1,20 +1,36 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-09-28T02:56:59Z",
+  "generatedAt": "2026-09-28T14:07:31Z",
   "draws": [
     {
-      "gameId": "bonoloto",
-      "date": "2026-09-26",
+      "gameId": "gordo",
+      "date": "2026-09-20",
       "main": [
-        16,
-        17,
-        34,
-        45,
-        46,
-        49
+        1,
+        21,
+        23,
+        28,
+        45
       ],
-      "complementario": 37,
-      "reintegro": 1,
+      "secondary": [
+        6
+      ],
+      "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-09-24",
+      "main": [
+        6,
+        13,
+        14,
+        18,
+        20,
+        32
+      ],
+      "secondary": [
+        4
+      ],
       "source": "selae-real-chrome"
     },
     {
@@ -50,19 +66,19 @@
       "source": "selae-real-chrome"
     },
     {
-      "gameId": "gordo",
-      "date": "2026-09-20",
+      "gameId": "bonoloto",
+      "date": "2026-09-26",
       "main": [
-        1,
-        21,
-        23,
-        28,
-        45
+        16,
+        17,
+        34,
+        45,
+        46,
+        49
       ],
-      "secondary": [
-        6
-      ],
-      "source": "selae-real-chrome-detail"
+      "complementario": 37,
+      "reintegro": 1,
+      "source": "selae-real-chrome"
     },
     {
       "gameId": "primitiva",
@@ -78,6 +94,36 @@
       "complementario": 26,
       "reintegro": 4,
       "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-09-27",
+      "main": [
+        15,
+        23,
+        25,
+        33,
+        34,
+        43
+      ],
+      "complementario": 5,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-09-27",
+      "main": [
+        12,
+        21,
+        33,
+        35,
+        51
+      ],
+      "secondary": [
+        2
+      ],
+      "source": "selae-real-chrome-detail"
     }
   ]
 }
