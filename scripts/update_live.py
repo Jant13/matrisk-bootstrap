@@ -16,6 +16,7 @@ LIVE_FILE = ROOT / "live" / "latest.json"
 ONCE_URL = "https://www.juegosonce.es/historico-resultados-eurojackpot"
 SELAE_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados"
 BONOLOTO_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
+EURODREAMS_RESULTS_URL = "https://www.loteriasyapuestas.es/es/resultados/eurodreams"
 TIMEOUT = 25
 
 MONTHS_ES = {
@@ -106,6 +107,68 @@ def parse_eurojackpot_once(text: str) -> Draw:
         date=date_str,
         main=main,
         secondary=secondary,
+    )
+    def parse_eurodreams_selae(html: str) -> Draw:
+    text = BeautifulSoup(html, "html.parser").get_text("\n")
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+
+    date_es = None
+    for line in lines:
+        m = re.search(r"(\d{2}/\d{2}/\d{4})", line)
+        if m:
+            date_es = m.group(1)
+            break
+
+    if not date_es:
+        raise ValueError("No pude extraer la fecha del último sorteo de EuroDreams.")
+
+    day, month, year = date_es.split("/")
+    date_str = f"{year}-{month}-{day}"
+
+    main = []
+
+    for i, line in enumerate(lines):
+        if "Ver por orden de aparición" in line:
+            j = i + 1
+
+            while j < len(lines) and len(main) < 6:
+                if re.fullmatch(r"\d{1,2}", lines[j]):
+                    value = int(lines[j])
+
+                    if 1 <= value <= 40:
+                        main.append(value)
+
+                j += 1
+
+            break
+
+    if len(main) != 6:
+        raise ValueError(
+            f"No pude extraer los 6 números principales de EuroDreams. Detectados: {main}"
+        )
+
+    sueno = None
+
+    for i, line in enumerate(lines):
+        if re.search(r"SUE[NÑ]O", line, flags=re.IGNORECASE):
+            for candidate in lines[i:i + 4]:
+                m = re.fullmatch(r"[1-5]", candidate)
+
+                if m:
+                    sueno = int(candidate)
+                    break
+
+        if sueno is not None:
+            break
+
+    if sueno is None:
+        raise ValueError("No pude extraer el Sueño de EuroDreams.")
+
+    return Draw(
+        gameId="eurodreams",
+        date=date_str,
+        main=main,
+        secondary=[sueno],
     )
 
 
@@ -214,6 +277,19 @@ def main() -> None:
     except Exception as e:
         errors.append(f"Bonoloto: {e}")
         print(f"Bonoloto ERROR: {e}")
+
+    # EuroDreams / SELAE
+    try:
+        eurodreams_html = fetch_text(EURODREAMS_RESULTS_URL)
+        eurodreams = parse_eurodreams_selae(eurodreams_html)
+        draws_by_game[eurodreams.gameId] = draw_to_dict(eurodreams)
+        print(
+            f"EuroDreams OK: {eurodreams.date} {eurodreams.main} "
+            f"+ {eurodreams.secondary}"
+        )
+    except Exception as e:
+        errors.append(f"EuroDreams: {e}")
+        print(f"EuroDreams ERROR: {e}")
 
     if not draws_by_game:
         raise RuntimeError("No se pudo actualizar ningún juego. " + " | ".join(errors))
