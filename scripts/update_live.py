@@ -111,7 +111,7 @@ def parse_eurojackpot_once(text: str) -> Draw:
 def parse_eurodreams_selae(html: str) -> Draw:
     
     text = BeautifulSoup(html, "html.parser").get_text("\n")
-        lines = [line.strip() for line in text.splitlines() if line.strip()]
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
     
         date_es = None
         for line in lines:
