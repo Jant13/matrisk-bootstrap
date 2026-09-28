@@ -152,6 +152,11 @@ def update_common_payload_metadata(payload: dict, draws: list) -> None:
         if key in payload and isinstance(payload[key], int):
             payload[key] = count
 
+    # En matrisk-bootstrap-game, "draws" es un contador entero histórico.
+    # Mantenerlo sincronizado con historico/matrix.draws al promocionar meses cerrados.
+    if "draws" in payload and isinstance(payload["draws"], int):
+        payload["draws"] = count
+
     if "generatedAt" in payload:
         payload["generatedAt"] = utc_now_z()
 
