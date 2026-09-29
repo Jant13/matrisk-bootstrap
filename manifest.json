@@ -236,7 +236,7 @@
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-08-31",
     "combinedDateMax": "2026-09-28",
-    "drawsTotal": 62,
+    "drawsTotal": 68,
     "files": [
       {
         "id": "bonoloto-2026-09",
@@ -260,8 +260,8 @@
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 2,
-        "dateMin": "2026-09-24",
+        "draws": 8,
+        "dateMin": "2026-09-03",
         "dateMax": "2026-09-28"
       },
       {
