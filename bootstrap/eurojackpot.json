@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-09-01T02:10:03Z",
+  "generatedAt": "2026-10-01T02:10:02Z",
   "sourceBackupCreatedAt": "2026-03-19T11:10:46.562Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,8 +12,8 @@
   "appBuild": "Phase61",
   "gameId": "eurojackpot",
   "dateMin": "2012-03-23",
-  "dateMax": "2026-08-28",
-  "draws": 938,
+  "dateMax": "2026-09-29",
+  "draws": 994,
   "historico": [
     {
       "id": "eurojackpot::2012-03-23",
@@ -25200,6 +25200,150 @@
       "secondary": [
         1,
         4
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-01",
+      "main": [
+        9,
+        14,
+        35,
+        43,
+        50
+      ],
+      "secondary": [
+        3,
+        7
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-04",
+      "main": [
+        5,
+        14,
+        31,
+        33,
+        43
+      ],
+      "secondary": [
+        3,
+        4
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-08",
+      "main": [
+        14,
+        27,
+        34,
+        36,
+        47
+      ],
+      "secondary": [
+        3,
+        4
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-11",
+      "main": [
+        14,
+        21,
+        35,
+        37,
+        49
+      ],
+      "secondary": [
+        1,
+        12
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-15",
+      "main": [
+        5,
+        6,
+        10,
+        27,
+        42
+      ],
+      "secondary": [
+        1,
+        8
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-18",
+      "main": [
+        4,
+        25,
+        30,
+        32,
+        33
+      ],
+      "secondary": [
+        4,
+        5
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-22",
+      "main": [
+        17,
+        23,
+        33,
+        46,
+        47
+      ],
+      "secondary": [
+        4,
+        5
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-25",
+      "main": [
+        2,
+        7,
+        10,
+        29,
+        30
+      ],
+      "secondary": [
+        5,
+        10
+      ],
+      "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-09-29",
+      "main": [
+        21,
+        30,
+        36,
+        43,
+        48
+      ],
+      "secondary": [
+        1,
+        5
       ],
       "source": "once-html-current"
     }
@@ -50391,6 +50535,150 @@
         "secondary": [
           1,
           4
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-01",
+        "main": [
+          9,
+          14,
+          35,
+          43,
+          50
+        ],
+        "secondary": [
+          3,
+          7
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-04",
+        "main": [
+          5,
+          14,
+          31,
+          33,
+          43
+        ],
+        "secondary": [
+          3,
+          4
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-08",
+        "main": [
+          14,
+          27,
+          34,
+          36,
+          47
+        ],
+        "secondary": [
+          3,
+          4
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-11",
+        "main": [
+          14,
+          21,
+          35,
+          37,
+          49
+        ],
+        "secondary": [
+          1,
+          12
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-15",
+        "main": [
+          5,
+          6,
+          10,
+          27,
+          42
+        ],
+        "secondary": [
+          1,
+          8
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-18",
+        "main": [
+          4,
+          25,
+          30,
+          32,
+          33
+        ],
+        "secondary": [
+          4,
+          5
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-22",
+        "main": [
+          17,
+          23,
+          33,
+          46,
+          47
+        ],
+        "secondary": [
+          4,
+          5
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-25",
+        "main": [
+          2,
+          7,
+          10,
+          29,
+          30
+        ],
+        "secondary": [
+          5,
+          10
+        ],
+        "source": "once-html-current"
+      },
+      {
+        "gameId": "eurojackpot",
+        "date": "2026-09-29",
+        "main": [
+          21,
+          30,
+          36,
+          43,
+          48
+        ],
+        "secondary": [
+          1,
+          5
         ],
         "source": "once-html-current"
       }
