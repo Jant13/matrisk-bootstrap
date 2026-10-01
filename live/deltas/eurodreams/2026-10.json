@@ -1,6 +1,7 @@
 {
-  "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-10-01T19:32:33Z",
+  "schema": "matrisk-live-delta",
+  "gameId": "eurodreams",
+  "month": "2026-10",
   "draws": [
     {
       "gameId": "eurodreams",
