@@ -1,20 +1,20 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-10-03T23:32:31Z",
+  "generatedAt": "2026-10-03T23:46:35Z",
   "draws": [
     {
       "gameId": "bonoloto",
-      "date": "2026-10-01",
+      "date": "2026-10-03",
       "main": [
-        5,
-        15,
-        18,
-        24,
-        35,
+        20,
+        27,
+        30,
+        31,
+        39,
         41
       ],
-      "complementario": 9,
-      "reintegro": 5,
+      "complementario": 11,
+      "reintegro": 9,
       "source": "selae-real-chrome"
     },
     {
@@ -31,36 +31,6 @@
       "secondary": [
         3
       ],
-      "source": "selae-real-chrome"
-    },
-    {
-      "gameId": "primitiva",
-      "date": "2026-10-01",
-      "main": [
-        4,
-        14,
-        16,
-        22,
-        33,
-        45
-      ],
-      "complementario": 46,
-      "reintegro": 7,
-      "source": "selae-real-chrome"
-    },
-    {
-      "gameId": "bonoloto",
-      "date": "2026-10-02",
-      "main": [
-        3,
-        9,
-        13,
-        15,
-        23,
-        44
-      ],
-      "complementario": 49,
-      "reintegro": 3,
       "source": "selae-real-chrome"
     },
     {
@@ -93,21 +63,6 @@
         2,
         10
       ],
-      "source": "selae-real-chrome"
-    },
-    {
-      "gameId": "bonoloto",
-      "date": "2026-10-03",
-      "main": [
-        20,
-        27,
-        30,
-        31,
-        39,
-        41
-      ],
-      "complementario": 11,
-      "reintegro": 9,
       "source": "selae-real-chrome"
     },
     {
