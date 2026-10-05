@@ -40,7 +40,7 @@ CHROME_PROFILE = ROOT / ".pw-chrome-profile"
 EUROJACKPOT_URL = "https://www.juegosonce.es/resultados-eurojackpot"
 PRIMITIVA_URL = "https://www.loteriasyapuestas.es/es/resultados/primitiva"
 EUROMILLONES_URL = "https://www.loteriasyapuestas.es/es/resultados/euromillones"
-GORDO_URL = "https://www.loteriasyapuestas.es/es/gordo-primitiva/resultados"
+GORDO_URL = "https://www.loteriasyapuestas.es/es/resultados/gordo-primitiva"
 BONOLOTO_URL = "https://www.loteriasyapuestas.es/es/resultados/bonoloto"
 EURODREAMS_URL = "https://www.loteriasyapuestas.es/es/resultados/eurodreams"
 
