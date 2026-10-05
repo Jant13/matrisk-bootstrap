@@ -1,20 +1,20 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-10-05T00:10:01Z",
+  "generatedAt": "2026-10-05T10:08:44Z",
   "draws": [
     {
       "gameId": "bonoloto",
-      "date": "2026-10-03",
+      "date": "2026-10-01",
       "main": [
-        20,
-        27,
-        30,
-        31,
-        39,
+        5,
+        15,
+        18,
+        24,
+        35,
         41
       ],
-      "complementario": 11,
-      "reintegro": 9,
+      "complementario": 9,
+      "reintegro": 5,
       "source": "selae-real-chrome"
     },
     {
@@ -31,6 +31,36 @@
       "secondary": [
         3
       ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-10-01",
+      "main": [
+        4,
+        14,
+        16,
+        22,
+        33,
+        45
+      ],
+      "complementario": 46,
+      "reintegro": 7,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-10-02",
+      "main": [
+        3,
+        9,
+        13,
+        15,
+        23,
+        44
+      ],
+      "complementario": 49,
+      "reintegro": 3,
       "source": "selae-real-chrome"
     },
     {
@@ -66,6 +96,21 @@
       "source": "selae-real-chrome"
     },
     {
+      "gameId": "bonoloto",
+      "date": "2026-10-03",
+      "main": [
+        20,
+        27,
+        30,
+        31,
+        39,
+        41
+      ],
+      "complementario": 11,
+      "reintegro": 9,
+      "source": "selae-real-chrome"
+    },
+    {
       "gameId": "primitiva",
       "date": "2026-10-03",
       "main": [
@@ -79,6 +124,36 @@
       "complementario": 12,
       "reintegro": 2,
       "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "bonoloto",
+      "date": "2026-10-04",
+      "main": [
+        5,
+        6,
+        24,
+        30,
+        47,
+        49
+      ],
+      "complementario": 29,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-10-04",
+      "main": [
+        2,
+        3,
+        20,
+        41,
+        47
+      ],
+      "secondary": [
+        8
+      ],
+      "source": "selae-real-chrome-detail"
     }
   ]
 }
