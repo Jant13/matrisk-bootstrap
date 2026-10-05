@@ -2,9 +2,6 @@ name: Update live latest.json
 
 on:
   workflow_dispatch:
-  schedule:
-    # Cada 30 min entre 18:15 y 22:45 UTC
-    - cron: "15,45 18-22 * * *"
 
 permissions:
   contents: write
