@@ -47,6 +47,21 @@
         8
       ],
       "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "gordo",
+      "date": "2026-10-25",
+      "main": [
+        9,
+        26,
+        41,
+        43,
+        46
+      ],
+      "secondary": [
+        7
+      ],
+      "source": "selae-real-chrome-detail"
     }
   ]
 }
