@@ -114,6 +114,22 @@
         1
       ],
       "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-26",
+      "main": [
+        3,
+        19,
+        21,
+        26,
+        35,
+        38
+      ],
+      "secondary": [
+        3
+      ],
+      "source": "selae-real-chrome"
     }
   ]
 }
