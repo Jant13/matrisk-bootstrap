@@ -1,7 +1,7 @@
 {
   "schema": "matrisk-bootstrap-game",
   "manifestVersion": 2,
-  "generatedAt": "2026-10-01T02:10:02Z",
+  "generatedAt": "2026-11-01T03:10:02Z",
   "sourceBackupCreatedAt": "2026-09-26T17:46:16.254Z",
   "backupType": "matrisk_data_backup",
   "backupVersion": 2,
@@ -12,8 +12,8 @@
   "appBuild": "Phase61",
   "gameId": "eurodreams",
   "dateMin": "2023-11-06",
-  "dateMax": "2026-09-28",
-  "draws": 303,
+  "dateMax": "2026-10-29",
+  "draws": 312,
   "historico": [
     {
       "id": "eurodreams::2023-11-06",
@@ -11055,6 +11055,150 @@
       ],
       "secondary": [
         3
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-01",
+      "main": [
+        6,
+        9,
+        12,
+        21,
+        36,
+        37
+      ],
+      "secondary": [
+        3
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-05",
+      "main": [
+        3,
+        6,
+        16,
+        24,
+        29,
+        40
+      ],
+      "secondary": [
+        2
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-08",
+      "main": [
+        6,
+        13,
+        20,
+        27,
+        35,
+        38
+      ],
+      "secondary": [
+        4
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-12",
+      "main": [
+        3,
+        4,
+        6,
+        19,
+        30,
+        36
+      ],
+      "secondary": [
+        2
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-15",
+      "main": [
+        4,
+        19,
+        27,
+        31,
+        34,
+        39
+      ],
+      "secondary": [
+        5
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-19",
+      "main": [
+        1,
+        2,
+        10,
+        15,
+        23,
+        26
+      ],
+      "secondary": [
+        3
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-22",
+      "main": [
+        6,
+        7,
+        13,
+        14,
+        25,
+        30
+      ],
+      "secondary": [
+        1
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-26",
+      "main": [
+        3,
+        19,
+        21,
+        26,
+        35,
+        38
+      ],
+      "secondary": [
+        3
+      ],
+      "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-10-29",
+      "main": [
+        3,
+        8,
+        11,
+        13,
+        34,
+        40
+      ],
+      "secondary": [
+        5
       ],
       "source": "selae-real-chrome"
     }
@@ -22101,6 +22245,150 @@
         ],
         "secondary": [
           3
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-01",
+        "main": [
+          6,
+          9,
+          12,
+          21,
+          36,
+          37
+        ],
+        "secondary": [
+          3
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-05",
+        "main": [
+          3,
+          6,
+          16,
+          24,
+          29,
+          40
+        ],
+        "secondary": [
+          2
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-08",
+        "main": [
+          6,
+          13,
+          20,
+          27,
+          35,
+          38
+        ],
+        "secondary": [
+          4
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-12",
+        "main": [
+          3,
+          4,
+          6,
+          19,
+          30,
+          36
+        ],
+        "secondary": [
+          2
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-15",
+        "main": [
+          4,
+          19,
+          27,
+          31,
+          34,
+          39
+        ],
+        "secondary": [
+          5
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-19",
+        "main": [
+          1,
+          2,
+          10,
+          15,
+          23,
+          26
+        ],
+        "secondary": [
+          3
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-22",
+        "main": [
+          6,
+          7,
+          13,
+          14,
+          25,
+          30
+        ],
+        "secondary": [
+          1
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-26",
+        "main": [
+          3,
+          19,
+          21,
+          26,
+          35,
+          38
+        ],
+        "secondary": [
+          3
+        ],
+        "source": "selae-real-chrome"
+      },
+      {
+        "gameId": "eurodreams",
+        "date": "2026-10-29",
+        "main": [
+          3,
+          8,
+          11,
+          13,
+          34,
+          40
+        ],
+        "secondary": [
+          5
         ],
         "source": "selae-real-chrome"
       }
