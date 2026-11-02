@@ -1,0 +1,23 @@
+{
+  "schema": "matrisk-live-delta",
+  "gameId": "eurodreams",
+  "month": "2026-11",
+  "draws": [
+    {
+      "gameId": "eurodreams",
+      "date": "2026-11-02",
+      "main": [
+        5,
+        7,
+        22,
+        23,
+        29,
+        36
+      ],
+      "secondary": [
+        1
+      ],
+      "source": "selae-real-chrome"
+    }
+  ]
+}
