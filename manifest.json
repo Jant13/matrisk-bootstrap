@@ -235,8 +235,8 @@
   "monthly": {
     "mode": "per-game-per-month",
     "baseHistoricalDateMax": "2026-10-31",
-    "combinedDateMax": "2026-11-03",
-    "drawsTotal": 8,
+    "combinedDateMax": "2026-11-04",
+    "drawsTotal": 9,
     "files": [
       {
         "id": "bonoloto-2026-11",
@@ -247,9 +247,9 @@
         "schema": "matrisk-bootstrap-monthly",
         "backupType": "matrisk_monthly_bootstrap",
         "backupVersion": 1,
-        "draws": 3,
+        "draws": 4,
         "dateMin": "2026-11-01",
-        "dateMax": "2026-11-03"
+        "dateMax": "2026-11-04"
       },
       {
         "id": "eurodreams-2026-11",
