@@ -1,6 +1,6 @@
 {
   "schema": "matrisk-official-sync-payload",
-  "generatedAt": "2026-11-23T02:32:30Z",
+  "generatedAt": "2026-11-23T20:32:34Z",
   "draws": [
     {
       "gameId": "bonoloto",
@@ -814,6 +814,22 @@
         6
       ],
       "source": "selae-real-chrome-detail"
+    },
+    {
+      "gameId": "eurodreams",
+      "date": "2026-11-23",
+      "main": [
+        2,
+        7,
+        8,
+        9,
+        16,
+        24
+      ],
+      "secondary": [
+        1
+      ],
+      "source": "selae-real-chrome"
     }
   ]
 }
