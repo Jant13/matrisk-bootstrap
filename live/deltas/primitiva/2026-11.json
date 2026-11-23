@@ -137,6 +137,21 @@
       "complementario": 15,
       "reintegro": 2,
       "source": "selae-real-chrome"
+    },
+    {
+      "gameId": "primitiva",
+      "date": "2026-11-23",
+      "main": [
+        9,
+        16,
+        26,
+        31,
+        36,
+        49
+      ],
+      "complementario": 38,
+      "reintegro": 3,
+      "source": "selae-real-chrome"
     }
   ]
 }
