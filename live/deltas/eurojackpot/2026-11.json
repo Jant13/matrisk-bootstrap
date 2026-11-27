@@ -114,6 +114,22 @@
         9
       ],
       "source": "once-html-current"
+    },
+    {
+      "gameId": "eurojackpot",
+      "date": "2026-11-27",
+      "main": [
+        20,
+        21,
+        23,
+        25,
+        26
+      ],
+      "secondary": [
+        3,
+        9
+      ],
+      "source": "once-html-current"
     }
   ]
 }
